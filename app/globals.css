@@ -81,10 +81,10 @@ body::before {
   pointer-events: none;
   background-image:
     linear-gradient(180deg, rgb(2 6 23 / 0.16), rgb(2 6 23 / 0.9) 75%, #020617),
-    url("/images/atlas-network-wallpaper-desktop.webp");
+    url("/images/atlas-network-wallpaper-desktop.jpg");
   background-position: center top;
   background-size: cover;
-  opacity: 0.42;
+  opacity: 0.55;
 }
 
 body::after {
@@ -200,9 +200,9 @@ textarea:focus-visible {
   body::before {
     background-image:
       linear-gradient(180deg, rgb(2 6 23 / 0.24), rgb(2 6 23 / 0.94) 70%, #020617),
-      url("/images/atlas-network-wallpaper-mobile.webp");
+      url("/images/atlas-network-wallpaper-mobile.jpg");
     background-position: center top;
-    opacity: 0.34;
+    opacity: 0.45;
   }
 
   .bg-glow-coral, .bg-glow-lime, .bg-glow-dual {
@@ -276,3 +276,17 @@ textarea:focus-visible {
     animation-iteration-count: 1 !important;
   }
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn var(--motion-reveal) ease-out forwards;
+}
+

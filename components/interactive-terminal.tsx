@@ -17,7 +17,7 @@ export function InteractiveTerminal() {
   const selected = goals.find((goal) => goal.id === active)!;
 
   return (
-    <div className="terminal-glow overflow-hidden rounded-[2rem] border border-primary/20 bg-[#07111f]/96 text-foreground backdrop-blur-xl">
+    <div className="terminal-glow overflow-hidden rounded-[2rem] border border-primary/20 bg-black/95 text-foreground backdrop-blur-xl">
       <div className="flex items-center gap-2 border-b border-white/10 px-5 py-4 sm:px-6">
         <span className="size-2.5 rounded-full bg-primary" />
         <span className="size-2.5 rounded-full bg-cyan-300" />

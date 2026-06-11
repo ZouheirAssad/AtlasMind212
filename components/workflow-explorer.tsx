@@ -10,6 +10,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { workflows } from "@/lib/site-data";
+import { ToolBadge } from "@/components/tool-badge";
+import { brandRegistry } from "@/lib/brand-registry";
 
 const categories = ["All", ...new Set(workflows.map((workflow) => workflow.category))];
 
@@ -30,7 +32,8 @@ export function WorkflowExplorer() {
   const filtered = useMemo(() => workflows.filter((workflow) => {
     const matchesCategory = category === "All" || workflow.category === category;
     const search = query.toLowerCase();
-    const matchesQuery = !search || [workflow.title, workflow.description, ...workflow.tools].join(" ").toLowerCase().includes(search);
+    const toolNames = workflow.tools.map((slug) => brandRegistry[slug]?.displayName ?? slug);
+    const matchesQuery = !search || [workflow.title, workflow.description, ...toolNames].join(" ").toLowerCase().includes(search);
     return matchesCategory && matchesQuery;
   }), [category, query]);
 
@@ -77,9 +80,16 @@ export function WorkflowExplorer() {
                 <CardTitle className="pt-3 text-2xl">{workflow.title}</CardTitle>
                 <CardDescription className="text-base leading-7">{workflow.description}</CardDescription>
               </CardHeader>
-              <CardContent className="flex flex-wrap gap-2">
-                <Badge variant="secondary"><Gauge /> {workflow.difficulty}</Badge>
-                <Badge variant="secondary"><Clock3 /> {workflow.estimatedTime}</Badge>
+              <CardContent className="flex flex-col gap-4">
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary" className="flex items-center gap-1.5"><Gauge className="size-3.5" /> {workflow.difficulty}</Badge>
+                  <Badge variant="secondary" className="flex items-center gap-1.5"><Clock3 className="size-3.5" /> {workflow.estimatedTime}</Badge>
+                </div>
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {workflow.tools.map((toolSlug) => (
+                    <ToolBadge key={toolSlug} slug={toolSlug} />
+                  ))}
+                </div>
               </CardContent>
               <CardFooter className="mt-auto">
                 <Button variant="ghost" onClick={() => updateParams({ workflow: workflow.slug }, "push")} className="-ml-3 text-primary">
@@ -94,7 +104,11 @@ export function WorkflowExplorer() {
       {selected && (
         <ResponsiveDetail open onOpenChange={(open) => !open && updateParams({ workflow: null })} title={selected.title} description={selected.outcome}>
           <div className="flex flex-col gap-7">
-            <div className="flex flex-wrap gap-2">{selected.tools.map((tool) => <Badge key={tool}>{tool}</Badge>)}</div>
+            <div className="flex flex-wrap gap-2">
+              {selected.tools.map((toolSlug) => (
+                <ToolBadge key={toolSlug} slug={toolSlug} interactive />
+              ))}
+            </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <Info label="Difficulty" value={selected.difficulty} />
               <Info label="Estimated time" value={selected.estimatedTime} />
@@ -111,3 +125,4 @@ export function WorkflowExplorer() {
 function Info({ label, value }: { label: string; value: string }) {
   return <div className="rounded-2xl border bg-background p-4"><p className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{label}</p><p className="mt-2 font-semibold">{value}</p></div>;
 }
+

@@ -28,6 +28,8 @@ shareable query parameters, and responsive detail panels.
 ## Data And APIs
 
 - Static product data lives in `lib/site-data.ts`.
+- A typed brand registry mapping 18 slugs to SVG assets, official brand colors, and URLs is in `lib/brand-registry.ts`.
+- Tools and workflows in `lib/site-data.ts` reference these stable brand slugs instead of display name strings.
 - `POST /api/leads` validates submissions and writes to `public.leads`.
 - `POST /api/contact` validates submissions and writes to
   `public.contact_messages`.
@@ -59,6 +61,8 @@ The active design direction is dark editorial technology:
 The site uses a responsive Atlas Network wallpaper and five generated dark 3D
 editorial illustrations in `public/images`. Typography uses Calistoga, Inter,
 and JetBrains Mono. Motion respects `prefers-reduced-motion`.
+
+Official brand logos (`public/brands/`) render in their vendor colors inside dark rounded tiles (`#0B1626`, border `#1E3A4A`, radius `16px`) for visual harmony. Backgrounds feature a sparse, non-interactive logo constellation (`components/logo-constellation.tsx`) at 12% opacity with responsive viewport filtering (fewer nodes on mobile).
 
 ## Quality Baseline
 

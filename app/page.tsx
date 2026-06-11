@@ -11,6 +11,7 @@ import { SystemStory } from "@/components/system-story";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { workflows } from "@/lib/site-data";
+import { LogoConstellation } from "@/components/logo-constellation";
 
 export default function HomePage() {
   return (
@@ -19,6 +20,7 @@ export default function HomePage() {
         {/* Layered technical grid and restrained cyan atmosphere. */}
         <div className="absolute inset-0 -z-10 editorial-grid-soft paper-grain mask-fade-y" />
         <div className="absolute inset-0 -z-10 bg-glow-dual opacity-80 mask-fade-y" />
+        <LogoConstellation />
         <Container className="relative grid items-center gap-14 lg:grid-cols-[1.04fr_0.96fr]">
           <Reveal className="flex flex-col items-start gap-7">
             <Badge>AI systems for real work</Badge>
@@ -102,9 +104,9 @@ export default function HomePage() {
           <Reveal><SectionHeading eyebrow="What AtlasMind212 helps with" title="Use AI across the whole workflow." description="Learn the tool, build the asset, automate the repetition, and turn it into growth." /></Reveal>
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {[
-              { title: "Use AI tools", description: "Choose the right assistant for the job.", icon: Bot },
-              { title: "Build with code", description: "Create faster with Claude Code and Codex.", icon: Code2 },
-              { title: "Automate work", description: "Connect repetitive steps with n8n.", icon: Workflow },
+              { title: "Use AI tools", description: "Choose the right assistant for the job.", icon: Bot, tools: ["chatgpt", "claude", "gemini"] },
+              { title: "Build with code", description: "Create faster with Claude Code and Codex.", icon: Code2, tools: ["claude-code", "codex"] },
+              { title: "Automate work", description: "Connect repetitive steps with n8n.", icon: Workflow, tools: ["n8n"] },
               { title: "Create systems", description: "Turn scattered tasks into one repeatable process.", icon: Layers3 },
             ].map((item, index) => <Reveal key={item.title} delay={index * 0.05}><FeatureCard {...item} /></Reveal>)}
           </div>

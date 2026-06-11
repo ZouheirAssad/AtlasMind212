@@ -1,0 +1,166 @@
+import {
+  Bot,
+  Clapperboard,
+  Code2,
+  FileSearch,
+  Palette,
+  PanelsTopLeft,
+  Sparkles,
+  Workflow,
+} from "lucide-react";
+
+export interface BrandAsset {
+  slug: string;
+  displayName: string;
+  logoPath: string;
+  brandColor: string;
+  websiteUrl: string;
+  fallbackIcon: React.ComponentType<{ className?: string }>;
+}
+
+export const brandRegistry: Record<string, BrandAsset> = {
+  chatgpt: {
+    slug: "chatgpt",
+    displayName: "ChatGPT",
+    logoPath: "/brands/chatgpt.svg",
+    brandColor: "#10a37f",
+    websiteUrl: "https://chatgpt.com",
+    fallbackIcon: Bot,
+  },
+  claude: {
+    slug: "claude",
+    displayName: "Claude",
+    logoPath: "/brands/claude.svg",
+    brandColor: "#d9775f",
+    websiteUrl: "https://claude.ai",
+    fallbackIcon: Bot,
+  },
+  gemini: {
+    slug: "gemini",
+    displayName: "Gemini",
+    logoPath: "/brands/gemini.svg",
+    brandColor: "#1a73e8",
+    websiteUrl: "https://gemini.google.com",
+    fallbackIcon: Bot,
+  },
+  perplexity: {
+    slug: "perplexity",
+    displayName: "Perplexity",
+    logoPath: "/brands/perplexity.svg",
+    brandColor: "#20b2aa",
+    websiteUrl: "https://perplexity.ai",
+    fallbackIcon: FileSearch,
+  },
+  notebooklm: {
+    slug: "notebooklm",
+    displayName: "NotebookLM",
+    logoPath: "/brands/notebooklm.svg",
+    brandColor: "#0f9d58",
+    websiteUrl: "https://notebooklm.google",
+    fallbackIcon: FileSearch,
+  },
+  "claude-code": {
+    slug: "claude-code",
+    displayName: "Claude Code",
+    logoPath: "/brands/claude-code.svg",
+    brandColor: "#d9775f",
+    websiteUrl: "https://anthropic.com/claude/code",
+    fallbackIcon: Code2,
+  },
+  codex: {
+    slug: "codex",
+    displayName: "Codex",
+    logoPath: "/brands/codex.svg",
+    brandColor: "#10a37f",
+    websiteUrl: "https://openai.com/blog/openai-codex",
+    fallbackIcon: Code2,
+  },
+  cursor: {
+    slug: "cursor",
+    displayName: "Cursor",
+    logoPath: "/brands/cursor.svg",
+    brandColor: "#38bdf8",
+    websiteUrl: "https://cursor.com",
+    fallbackIcon: Code2,
+  },
+  n8n: {
+    slug: "n8n",
+    displayName: "n8n",
+    logoPath: "/brands/n8n.svg",
+    brandColor: "#ff6d5a",
+    websiteUrl: "https://n8n.io",
+    fallbackIcon: Workflow,
+  },
+  make: {
+    slug: "make",
+    displayName: "Make",
+    logoPath: "/brands/make.svg",
+    brandColor: "#8a2be2",
+    websiteUrl: "https://make.com",
+    fallbackIcon: Workflow,
+  },
+  canva: {
+    slug: "canva",
+    displayName: "Canva",
+    logoPath: "/brands/canva.svg",
+    brandColor: "#00c4cc",
+    websiteUrl: "https://canva.com",
+    fallbackIcon: Palette,
+  },
+  capcut: {
+    slug: "capcut",
+    displayName: "CapCut",
+    logoPath: "/brands/capcut.svg",
+    brandColor: "#3b82f6",
+    websiteUrl: "https://capcut.com",
+    fallbackIcon: Clapperboard,
+  },
+  "kling-ai": {
+    slug: "kling-ai",
+    displayName: "Kling AI",
+    logoPath: "/brands/kling-ai.svg",
+    brandColor: "#f59e0b",
+    websiteUrl: "https://klingai.com",
+    fallbackIcon: Clapperboard,
+  },
+  runway: {
+    slug: "runway",
+    displayName: "Runway",
+    logoPath: "/brands/runway.svg",
+    brandColor: "#ea580c",
+    websiteUrl: "https://runwayml.com",
+    fallbackIcon: Clapperboard,
+  },
+  heygen: {
+    slug: "heygen",
+    displayName: "HeyGen",
+    logoPath: "/brands/heygen.svg",
+    brandColor: "#2563eb",
+    websiteUrl: "https://heygen.com",
+    fallbackIcon: Clapperboard,
+  },
+  higgsfield: {
+    slug: "higgsfield",
+    displayName: "Higgsfield",
+    logoPath: "/brands/higgsfield.svg",
+    brandColor: "#f43f5e",
+    websiteUrl: "https://higgsfield.ai",
+    fallbackIcon: Clapperboard,
+  },
+  vercel: {
+    slug: "vercel",
+    displayName: "Vercel",
+    logoPath: "/brands/vercel.svg",
+    brandColor: "#ffffff",
+    websiteUrl: "https://vercel.com",
+    fallbackIcon: PanelsTopLeft,
+  },
+  tiktok: {
+    slug: "tiktok",
+    displayName: "TikTok",
+    logoPath: "/brands/tiktok.svg",
+    brandColor: "#01f1e2",
+    websiteUrl: "https://tiktok.com",
+    fallbackIcon: Sparkles,
+  },
+};

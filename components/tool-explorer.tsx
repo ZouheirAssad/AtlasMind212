@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ArrowRight, Search, Sparkles } from "lucide-react";
 import { ResponsiveDetail } from "@/components/responsive-detail";
+import { BrandLogo } from "@/components/brand-logo";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -50,11 +51,13 @@ export function ToolExplorer() {
       <p className="mb-6 text-sm text-muted-foreground" aria-live="polite">{filtered.length} tool{filtered.length === 1 ? "" : "s"} found</p>
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {filtered.map((tool) => {
-          const Icon = tool.icon;
           return (
             <Card key={tool.slug} className="group h-full transition-all duration-300 hover:-translate-y-1 hover:border-primary/45 hover:shadow-xl">
               <CardHeader>
-                <div className="flex items-center justify-between"><span className="flex size-12 items-center justify-center rounded-2xl bg-secondary text-primary"><Icon className="size-5" /></span><Badge variant="outline">{tool.level}</Badge></div>
+                <div className="flex items-center justify-between">
+                  <BrandLogo slug={tool.slug} variant="tile" className="size-12" />
+                  <Badge variant="outline">{tool.level}</Badge>
+                </div>
                 <CardTitle className="pt-3 text-2xl">{tool.name}</CardTitle>
                 <CardDescription className="text-base leading-7">{tool.description}</CardDescription>
               </CardHeader>
@@ -65,7 +68,13 @@ export function ToolExplorer() {
         })}
       </div>
       {selected && (
-        <ResponsiveDetail open onOpenChange={(open) => !open && updateParams({ tool: null })} title={selected.name} description={selected.description}>
+        <ResponsiveDetail
+          open
+          onOpenChange={(open) => !open && updateParams({ tool: null })}
+          title={selected.name}
+          description={selected.description}
+          logo={<BrandLogo slug={selected.slug} size={36} variant="inline" className="size-9" />}
+        >
           <div className="flex flex-col gap-7">
             <div><p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">Best for</p><div className="mt-3 flex flex-wrap gap-2">{selected.bestFor.map((item) => <Badge key={item}>{item}</Badge>)}</div></div>
             <div className="rounded-2xl border bg-secondary/35 p-5"><p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">Learning level</p><p className="mt-2 text-xl font-semibold">{selected.level}</p></div>

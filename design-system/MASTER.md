@@ -62,7 +62,15 @@ markers, and occasional geometric details. Never use red for a large section.
 Use text-free editorial 3D scenes built from dark brushed metal, smoked glass,
 frosted cyan glass, precise light routes, and sparse red calibration markers.
 Images should feel technical but approachable. Avoid purple gradients, neon
-overload, generic glowing brains, fake UI text, logos, and busy compositions.
+overload, generic glowing brains, fake UI text, and busy compositions.
+
+## Brand Assets & Tool Logos
+
+- **Local Storage**: Official vector SVGs are stored under `public/brands/` to prevent third-party runtime dependencies.
+- **Sizing & Aspect Ratio**: Logos must preserve official proportions without stretching or cropping.
+- **Visual Contrast (Dark Tiles)**: Render official brand colors inside rounded dark elevated tiles (`#0B1626`, border `#1E3A4A`, radius `16px`) to ensure harmonized aesthetics on Atlas Night (`#020617`) and satisfy contrast requirements.
+- **Logo Constellation**: scattered absolute-positioned background logos must maintain low opacity (`opacity: 0.12`) with background blur and navy overlays to stay subtle. Desktop displays up to 10 nodes, while mobile is limited to 3 key nodes to prevent clutter.
+- **Micro-Animations**: Limit to soft entrance fades and subtle hover scale adjustments (no continuous rotation or floating).
 
 ## Accessibility
 
@@ -73,5 +81,6 @@ overload, generic glowing brains, fake UI text, logos, and busy compositions.
 - Dialogs and sheets require titles, descriptions, Escape handling, focus
   trapping, and focus return.
 - Navigation exposes `aria-current`.
-- Wallpaper is decorative and must not carry information.
+- Wallpaper and logo constellations are decorative and must use `aria-hidden="true"`.
 - All motion has a reduced-motion equivalent.
+
