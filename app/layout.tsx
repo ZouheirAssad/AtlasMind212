@@ -12,15 +12,15 @@ const jetBrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jet
 
 export const metadata: Metadata = {
   title: {
-    default: "AtlasMind212 — AI Tools, Workflows & Automation Guides",
+    default: "AtlasMind212 — Business Websites, AI Integration & Automation",
     template: "%s | AtlasMind212",
   },
   description:
-    "AtlasMind212 helps creators, marketers, beginners, and small businesses use AI tools, Claude Code, automation, and content workflows to build smarter.",
+    "AtlasMind212 builds high-performance business websites, connects custom AI assistants, and automates background workflows.",
   metadataBase: new URL("https://atlasmind212.com"),
   openGraph: {
-    title: "AtlasMind212 — AI Tools, Workflows & Automation Guides",
-    description: "Simple AI workflows, automation ideas, and beginner-friendly guides.",
+    title: "AtlasMind212 — Business Websites, AI Integration & Automation",
+    description: "High-performance business websites, AI integration, and workflow automation.",
     type: "website",
   },
 };

@@ -20,7 +20,7 @@ export function MobileNav() {
         <nav className="flex flex-col gap-1 p-4" aria-label="Mobile navigation">
           <ActiveNav mobile />
           <SheetClose asChild>
-            <Button asChild size="lg" className="mt-4 h-12"><Link href="/free-guide">Get the free guide</Link></Button>
+            <Button asChild size="lg" className="mt-4 h-12"><Link href="/contact">Start a project</Link></Button>
           </SheetClose>
         </nav>
       </SheetContent>

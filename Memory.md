@@ -2,18 +2,14 @@
 
 ## Product
 
-AtlasMind212 is an AI education and workflow brand focused on AI tools, Claude
-Code, n8n automation, content systems, business ideas, and beginner-friendly
-tutorials.
+AtlasMind212 builds high-performance business websites, connects custom AI
+assistants, and automates background workflows.
 
 ## Current MVP
 
 Public routes:
 
 - `/`
-- `/free-guide`
-- `/workflows`
-- `/tools`
 - `/services`
 - `/about`
 - `/contact`
@@ -21,20 +17,23 @@ Public routes:
 - `/imprint`
 
 The homepage includes an interactive goal terminal, a before/after system
-comparison, workflow cards, a connected learning story, guide promotion, and
-service CTAs. Workflow and tool libraries support search, category filters,
-shareable query parameters, and responsive detail panels.
+comparison, a connected implementation story, and service cards.
 
 ## Data And APIs
 
 - Static product data lives in `lib/site-data.ts`.
-- A typed brand registry mapping 18 slugs to SVG assets, official brand colors, and URLs is in `lib/brand-registry.ts`.
-- Tools and workflows in `lib/site-data.ts` reference these stable brand slugs instead of display name strings.
+- A typed brand registry mapping 18 slugs to SVG assets, official brand colors, and URLs is in `lib/brand-registry.ts` (used for background constellation).
 - `POST /api/leads` validates submissions and writes to `public.leads`.
-- `POST /api/contact` validates submissions and writes to
-  `public.contact_messages`.
+- `POST /api/contact` validates submissions, writes to
+  `public.contact_messages`, then sends a Resend notification email.
+  Email failure is logged server-side but still returns success to the user
+  so the stored message is not duplicated on resubmit.
 - SQL setup is documented in `supabase/schema.sql`.
 - Supabase writes use a server-only service role client.
+- The active Supabase project initialized for AtlasMind contact/lead tables is
+  `oxupwsbvkgcwyzktsvwm` (`https://oxupwsbvkgcwyzktsvwm.supabase.co`).
+- Contact notification email is handled by `lib/email/contact-notification.ts`
+  (server-only, Resend SDK).
 
 Required environment variables:
 
@@ -42,6 +41,9 @@ Required environment variables:
 NEXT_PUBLIC_SUPABASE_URL
 NEXT_PUBLIC_SUPABASE_ANON_KEY
 SUPABASE_SERVICE_ROLE_KEY
+RESEND_API_KEY
+CONTACT_NOTIFICATION_TO
+CONTACT_NOTIFICATION_FROM
 ```
 
 ## Design State
@@ -78,13 +80,22 @@ As of June 11, 2026:
 
 ## Deployment
 
-The project is prepared for Vercel. Add all three environment variables in the
-Vercel project settings and run `supabase/schema.sql` before testing form
-submissions against a production Supabase project.
+The project is prepared for Vercel. Add all environment variables in the
+Vercel project settings (`NEXT_PUBLIC_SUPABASE_URL`,
+`NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`,
+`CONTACT_NOTIFICATION_TO`, `CONTACT_NOTIFICATION_FROM`), run
+`supabase/schema.sql` before testing form submissions against a production
+Supabase project, and verify the Resend sender domain
+before production delivery. Local first-pass tests can use
+`AtlasMind212 <onboarding@resend.dev>` for `CONTACT_NOTIFICATION_FROM`, but
+Resend only permits that sender to email the Resend account address.
+`supabase/schema.sql` grants `service_role` insert/select access for
+`public.leads` and `public.contact_messages`; no public insert policies are
+intended.
 
 ## Known Boundaries
 
 - Workflow and tool content is static TypeScript data.
-- Lead delivery currently records data in Supabase; email delivery is not
-  implemented.
+- Lead delivery records data in Supabase; lead email notification is not
+  implemented (contact form only).
 - Lighthouse scores have not been recorded yet.

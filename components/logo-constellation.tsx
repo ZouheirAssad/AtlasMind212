@@ -7,18 +7,7 @@ interface ConstellationItem {
   desktopOnly: boolean;
 }
 
-const CONSTELLATION_ITEMS: ConstellationItem[] = [
-  { slug: "chatgpt", position: "top-[12%] left-[8%]", desktopOnly: true },
-  { slug: "claude", position: "top-[20%] right-[10%]", desktopOnly: false },
-  { slug: "gemini", position: "bottom-[22%] left-[10%]", desktopOnly: false },
-  { slug: "perplexity", position: "bottom-[15%] right-[8%]", desktopOnly: true },
-  { slug: "n8n", position: "top-[58%] left-[5%]", desktopOnly: false },
-  { slug: "cursor", position: "top-[48%] right-[12%]", desktopOnly: true },
-  { slug: "vercel", position: "top-[10%] left-[45%]", desktopOnly: true },
-  { slug: "canva", position: "bottom-[42%] right-[25%]", desktopOnly: true },
-  { slug: "tiktok", position: "bottom-[12%] left-[32%]", desktopOnly: true },
-  { slug: "make", position: "top-[40%] left-[24%]", desktopOnly: true },
-];
+const CONSTELLATION_ITEMS: ConstellationItem[] = [];
 
 export function LogoConstellation() {
   return (

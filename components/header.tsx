@@ -23,7 +23,7 @@ export function Header() {
         </nav>
         <div className="hidden lg:block">
           <Button asChild>
-            <Link href="/free-guide">Free guide <ArrowUpRight data-icon="inline-end" /></Link>
+            <Link href="/contact">Start a project <ArrowUpRight data-icon="inline-end" /></Link>
           </Button>
         </div>
         <div className="lg:hidden"><MobileNav /></div>

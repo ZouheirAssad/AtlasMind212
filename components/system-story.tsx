@@ -1,13 +1,13 @@
 "use client";
 
 import { m, useReducedMotion } from "motion/react";
-import { BookOpen, Code2, Rocket, Workflow } from "lucide-react";
+import { PanelsTopLeft, Bot, Rocket, Workflow } from "lucide-react";
 
 const chapters = [
-  { number: "01", title: "Learn", description: "Understand the small set of tools that match your actual goal.", icon: BookOpen },
-  { number: "02", title: "Build", description: "Turn the idea into a concrete asset, prototype, or content engine.", icon: Code2 },
-  { number: "03", title: "Automate", description: "Connect the repetitive handoffs so the system keeps moving.", icon: Workflow },
-  { number: "04", title: "Grow", description: "Measure what works, improve the process, and reuse the system.", icon: Rocket },
+  { number: "01", title: "Launch", description: "Deploy a high-performance business website to establish your presence.", icon: PanelsTopLeft },
+  { number: "02", title: "Integrate", description: "Connect smart AI assistants to CRM, spreadsheets, and databases.", icon: Bot },
+  { number: "03", title: "Automate", description: "Set up background workflows with n8n to handle repetitive tasks.", icon: Workflow },
+  { number: "04", title: "Scale", description: "Optimize performance, report metrics, and scale your operations.", icon: Rocket },
 ];
 
 export function SystemStory() {

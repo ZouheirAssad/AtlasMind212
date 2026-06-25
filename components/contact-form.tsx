@@ -6,7 +6,7 @@ import { CheckCircle2, LoaderCircle, Send } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { useForm, useWatch } from "react-hook-form";
 import { Button } from "@/components/ui/button";
-import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
+import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { contactSchema, type ContactInput } from "@/lib/validations";
@@ -14,18 +14,14 @@ import { contactSchema, type ContactInput } from "@/lib/validations";
 export function ContactForm() {
   const searchParams = useSearchParams();
   const projectOptions = [
-    { value: "AI Workflow Audit", label: "Workflow audit" },
-    { value: "n8n Automation Setup", label: "n8n automation" },
-    { value: "AI Content System", label: "Content system" },
-    { value: "Website + AI Chatbot", label: "Website + chatbot" },
-    { value: "Custom AI Tool Stack", label: "Custom tool stack" },
+    { value: "Business Website", label: "Business website" },
+    { value: "AI Integration", label: "AI integration" },
+    { value: "AI Automation", label: "AI automation" },
   ];
   const queryMap: Record<string, string> = {
-    "workflow-audit": "AI Workflow Audit",
-    "n8n-setup": "n8n Automation Setup",
-    "content-system": "AI Content System",
-    "website-chatbot": "Website + AI Chatbot",
-    "custom-stack": "Custom AI Tool Stack",
+    "business-website": "Business Website",
+    "ai-integration": "AI Integration",
+    "ai-automation": "AI Automation",
   };
   const initialProject = queryMap[searchParams.get("project") ?? ""] ?? "";
   const [success, setSuccess] = useState(false);
@@ -53,10 +49,10 @@ export function ContactForm() {
 
   if (success) {
     return (
-      <div className="flex min-h-80 flex-col items-center justify-center gap-4 rounded-3xl border bg-card p-8 text-center">
+      <div className="flex min-h-80 flex-col items-center justify-center gap-4 rounded-3xl border bg-card p-8 text-center shadow-xl">
         <CheckCircle2 className="size-10 text-primary" />
-        <h2 className="text-3xl font-semibold">Message received.</h2>
-        <p className="max-w-md text-muted-foreground">Thanks for the context. AtlasMind212 will get back to you soon.</p>
+        <h2 className="text-3xl font-semibold">Your message is on its way.</h2>
+        <p className="max-w-md text-muted-foreground">Thanks for the context. Your message was sent and stored — we read every submission and reply with a direct, useful answer, usually within 2 business days.</p>
       </div>
     );
   }
@@ -78,6 +74,7 @@ export function ContactForm() {
         </div>
         <Field>
           <FieldLabel>Project type</FieldLabel>
+          <FieldDescription>Pick the closest fit — it helps us route your message to the right person.</FieldDescription>
           <input type="hidden" {...register("projectType")} />
           <div className="grid gap-3 sm:grid-cols-2" role="group" aria-label="Choose a project type">
             {projectOptions.map((option) => (
@@ -95,14 +92,16 @@ export function ContactForm() {
         </Field>
         <Field data-invalid={Boolean(errors.message)}>
           <FieldLabel htmlFor="message">Message</FieldLabel>
+          <FieldDescription>Tell us what you want to build, improve, or automate. The more context, the better the first reply.</FieldDescription>
           <Textarea id="message" placeholder="Tell us what you want to build, improve, or automate." rows={7} aria-invalid={Boolean(errors.message)} {...register("message")} />
           <FieldError errors={[errors.message]} />
         </Field>
         {serverError && <p role="alert" className="text-sm text-destructive">{serverError}</p>}
         <Button type="submit" size="lg" disabled={isSubmitting}>
           {isSubmitting ? <LoaderCircle data-icon="inline-start" className="animate-spin" /> : <Send data-icon="inline-start" />}
-          {isSubmitting ? "Sending..." : "Send message"}
+          {isSubmitting ? "Sending your message…" : "Send your message"}
         </Button>
+        <p className="text-xs text-muted-foreground">We reply with a real answer — no automated funnels or sales scripts. Your details are only used to respond to this message.</p>
       </FieldGroup>
     </form>
   );

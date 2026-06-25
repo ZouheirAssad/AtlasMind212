@@ -2,70 +2,66 @@
 
 ## Project
 
-AtlasMind212 is a Next.js App Router website for practical AI education,
-workflows, tools, services, and lead generation.
-
-## Stack
-
-- Next.js App Router and TypeScript
-- Tailwind CSS v4
-- Supabase server-side client
-- React Hook Form and Zod
-- Motion for isolated client-side animation
-- Lucide React and Radix-based UI primitives
+AtlasMind212 is a single Next.js App Router marketing site for AI education,
+workflow/tool libraries, services, lead capture, and contact intake.
 
 ## Commands
 
-```bash
-npm install
-npm run dev
-npm run lint
-npm run build
-npm audit --omit=dev
-```
+- Use npm with the committed `package-lock.json`; do not switch package managers.
+- `npm install` installs dependencies.
+- `npm run dev` starts Next.js locally.
+- `npm run lint` runs ESLint over the repo.
+- `npm run build` is the only configured typecheck/production verification.
+- `npm audit --omit=dev` is part of the documented release check.
+- There is no test script or CI workflow in this repo; verify changes with lint
+  and build, plus browser checks for rendered UI.
 
-Run lint and the production build before considering a code change complete.
-For rendered UI changes, verify the affected routes at mobile and desktop
-widths and check the browser console.
+## App Boundaries
 
-## Architecture
-
-- Keep pages and static content as Server Components where possible.
-- Use Client Components only for forms, navigation, motion, filters, dialogs,
-  sheets, and other interactive state.
-- Put shared static workflow, tool, service, and navigation data in
+- Public App Router pages live in `app/*/page.tsx`; API routes are only
+  `app/api/leads/route.ts` and `app/api/contact/route.ts`.
+- Keep static pages as Server Components unless they need forms, navigation
+  state, motion, filters, dialogs, or sheets.
+- Shared navigation, workflow, tool, and service content lives in
   `lib/site-data.ts`.
-- Put reusable UI primitives in `components/ui` and composed site components
-  in `components`.
-- Keep validation schemas in `lib/validations.ts`.
-- Keep server-only Supabase access in `lib/supabase/server.ts`.
+- Tool/workflow brand slugs must exist in `lib/brand-registry.ts` and map to
+  local SVGs under `public/brands/`; update `public/brands/manifest.md` for new
+  brand assets.
+- Reusable shadcn/Radix-style primitives live in `components/ui`; composed site
+  components live in `components`.
 
-## Security
+## Data And API
 
-- Never commit `.env`, `.env.local`, credentials, access tokens, or Supabase
-  keys.
-- `SUPABASE_SERVICE_ROLE_KEY` must remain server-only and must never use the
-  `NEXT_PUBLIC_` prefix.
-- Validate all API input with Zod before database writes.
-- Preserve Row Level Security on the documented Supabase tables.
+- Setup requires `.env.local` with `NEXT_PUBLIC_SUPABASE_URL`,
+  `NEXT_PUBLIC_SUPABASE_ANON_KEY`, and server-only `SUPABASE_SERVICE_ROLE_KEY`.
+- Run `supabase/schema.sql` before testing form submissions against Supabase.
+- API writes use `createAdminClient()` from `lib/supabase/server.ts` and the
+  service role key; never expose it with a `NEXT_PUBLIC_` prefix.
+- Keep request validation in `lib/validations.ts` with Zod before database
+  writes.
+- `supabase/schema.sql` enables RLS for `public.leads` and
+  `public.contact_messages`; public insert policies are intentionally absent
+  because writes use the service role route handlers.
 
-## Design
+## Styling And Design
 
-- Treat `design-system/MASTER.md` as the visual source of truth.
-- Use Atlas Night `#020617` for the canvas, navy surfaces, Electric Cyan for
-  functional emphasis, and Atlas Red only for sparse accents.
+- Tailwind CSS v4 is configured through `app/globals.css` and
+  `@tailwindcss/postcss`; there is no `tailwind.config.*` file.
+- Treat `design-system/MASTER.md` as the visual source of truth: Atlas Night
+  `#020617`, navy surfaces, Electric Cyan for functional emphasis, sparse Atlas
+  Red only.
 - Preserve visible focus states, 44px minimum touch targets, keyboard access,
   and reduced-motion behavior.
 - Use `next/image` for project imagery with stable dimensions and useful alt
   text.
-- Avoid introducing purple gradients, neon overload, large red surfaces, or
-  generic AI imagery.
+- Avoid purple gradients, neon overload, large red surfaces, generic AI imagery,
+  stretched brand logos, and third-party runtime logo dependencies.
 
-## Editing
+## Workflow Notes
 
-- Follow existing component patterns before adding abstractions.
-- Keep changes scoped and avoid unrelated refactors.
-- Do not change the public API routes or Supabase schema without documenting
-  the migration and compatibility impact.
+- For UI changes, check affected routes at mobile and desktop widths and inspect
+  the browser console.
+- Do not change API routes or `supabase/schema.sql` without documenting migration
+  and compatibility impact.
 - Update `Memory.md` when architecture, deployment requirements, major design
-  decisions, or known limitations change.
+  decisions, quality baselines, or known limitations change.
