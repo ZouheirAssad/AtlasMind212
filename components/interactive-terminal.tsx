@@ -109,7 +109,7 @@ export function InteractiveTerminal() {
   const [runKey, setRunKey] = useState(0);
 
   const inputRef = useRef<HTMLInputElement>(null);
-  const scrollAnchorRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const selected = goals.find((g) => g.id === active)!;
 
   /* ------ Animation orchestration ------ */
@@ -172,13 +172,16 @@ export function InteractiveTerminal() {
     return () => clearTimeout(t);
   }, [phase, visibleLines, selected.lines.length]);
 
+  const isComplete = phase === "complete";
+
   /* Auto-scroll on content change */
   useEffect(() => {
-    scrollAnchorRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "end",
+    if (!scrollContainerRef.current) return;
+    scrollContainerRef.current.scrollTo({
+      top: scrollContainerRef.current.scrollHeight,
+      behavior: reduceMotion ? "auto" : "smooth",
     });
-  }, [history.length, visibleLines, phase]);
+  }, [history.length, isComplete, active, reduceMotion]);
 
 
   const handleSubmit = useCallback(() => {
@@ -308,7 +311,10 @@ export function InteractiveTerminal() {
               </div>
 
               {/* Scrollable output area */}
-              <div className="terminal-scroll flex flex-1 flex-col gap-3 overflow-y-auto">
+              <div
+                ref={scrollContainerRef}
+                className="terminal-scroll flex flex-1 flex-col gap-3 overflow-y-auto"
+              >
                 {/* History entries */}
                 {history.map((entry, i) => (
                   <div key={i} className="font-mono text-sm">
@@ -416,8 +422,6 @@ export function InteractiveTerminal() {
                   )}
                 </div>
 
-                {/* Scroll anchor */}
-                <div ref={scrollAnchorRef} />
               </div>
 
               {/* Input prompt */}
