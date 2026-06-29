@@ -11,6 +11,9 @@ Public routes:
 
 - `/`
 - `/services`
+- `/blog`
+- `/blog/[slug]`
+- `/blog/[slug]/download`
 - `/about`
 - `/contact`
 - `/privacy`
@@ -28,8 +31,20 @@ comparison, a connected implementation story, and service cards.
   `public.contact_messages`, then sends a Resend notification email.
   Email failure is logged server-side but still returns success to the user
   so the stored message is not duplicated on resubmit.
+- Published AI guides are stored in `public.guides` and rendered on `/blog`.
+  Each guide has a shareable page at `/blog/[slug]` and a direct PDF redirect
+  at `/blog/[slug]/download`.
+- Guide thumbnails and PDFs live in the public Supabase Storage bucket
+  `guide-assets`.
+- The private CMS at `/admin/guides` uses Supabase Auth plus the server-only
+  `ADMIN_EMAILS` allowlist. Guide mutations are server actions that verify the
+  signed-in admin before using the service role client.
 - SQL setup is documented in `supabase/schema.sql`.
 - Supabase writes use a server-only service role client.
+- Local Supabase testing is configured as its own CLI project,
+  `atlasmind212`, with API `55321`, database `55322`, Studio `55323`, and
+  email inbox `55324`. The local migration lives in `supabase/migrations/`
+  and mirrors `supabase/schema.sql`.
 - The active Supabase project initialized for AtlasMind contact/lead tables is
   `oxupwsbvkgcwyzktsvwm` (`https://oxupwsbvkgcwyzktsvwm.supabase.co`).
 - Contact notification email is handled by `lib/email/contact-notification.ts`
@@ -41,6 +56,7 @@ Required environment variables:
 NEXT_PUBLIC_SUPABASE_URL
 NEXT_PUBLIC_SUPABASE_ANON_KEY
 SUPABASE_SERVICE_ROLE_KEY
+ADMIN_EMAILS
 RESEND_API_KEY
 CONTACT_NOTIFICATION_TO
 CONTACT_NOTIFICATION_FROM
@@ -91,11 +107,14 @@ before production delivery. Local first-pass tests can use
 Resend only permits that sender to email the Resend account address.
 `supabase/schema.sql` grants `service_role` insert/select access for
 `public.leads` and `public.contact_messages`; no public insert policies are
-intended.
+intended. It also creates `public.guides`, grants public select access only to
+published guide rows through RLS, and creates the public `guide-assets` storage
+bucket for guide thumbnails/PDFs.
 
 ## Known Boundaries
 
 - Workflow and tool content is static TypeScript data.
+- Guide/blog content is managed through Supabase, not static TypeScript.
 - Lead delivery records data in Supabase; lead email notification is not
   implemented (contact form only).
 - Lighthouse scores have not been recorded yet.

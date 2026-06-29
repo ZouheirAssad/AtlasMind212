@@ -27,8 +27,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${calistoga.variable} ${jetBrainsMono.variable}`}>
-      <body className="min-h-screen antialiased">
+    <html
+      lang="en"
+      className={`${inter.variable} ${calistoga.variable} ${jetBrainsMono.variable}`}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
+      <body className="min-h-screen antialiased" suppressHydrationWarning>
         <a href="#main-content" className="skip-link">Skip to content</a>
         <MotionProvider>
           <ScrollProgress />

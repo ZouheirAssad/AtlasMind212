@@ -12,5 +12,20 @@ export const contactSchema = z.object({
   message: z.string().trim().min(10, "Please share a little more about your project.").max(3000),
 });
 
+export const guideMetadataSchema = z.object({
+  title: z.string().trim().min(3, "Title must be at least 3 characters.").max(140),
+  slug: z
+    .string()
+    .trim()
+    .max(90)
+    .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Use lowercase letters, numbers, and hyphens only.")
+    .optional()
+    .or(z.literal("")),
+  description: z.string().trim().min(20, "Description must be at least 20 characters.").max(700),
+  thumbnailAlt: z.string().trim().max(180).optional().or(z.literal("")),
+  status: z.enum(["draft", "published"]).default("draft"),
+});
+
 export type LeadInput = z.infer<typeof leadSchema>;
 export type ContactInput = z.infer<typeof contactSchema>;
+export type GuideMetadataInput = z.infer<typeof guideMetadataSchema>;
