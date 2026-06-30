@@ -36,7 +36,7 @@ export default function ServicesPage() {
               <ul className="grid gap-3 text-sm text-muted-foreground font-mono">
                 <li className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  Fixed-scope delivery in 2â€“5 weeks
+                  Fixed-scope delivery in 2–5 weeks
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-accent" />
@@ -81,21 +81,21 @@ export default function ServicesPage() {
               {
                 title: "Business Website",
                 focus: "Lead Capture & Performance",
-                timeline: "2â€“3 weeks",
+                timeline: "2–3 weeks",
                 target: "#business-website",
                 desc: "High-performance web presence ready to convert."
               },
               {
                 title: "AI Integration",
                 focus: "Customer & CRM Sync",
-                timeline: "2â€“4 weeks",
+                timeline: "2–4 weeks",
                 target: "#ai-integration",
                 desc: "Smart assistants embedded and connected."
               },
               {
                 title: "AI Automation",
                 focus: "Ops & Workflow Speed",
-                timeline: "3â€“5 weeks",
+                timeline: "3–5 weeks",
                 target: "#ai-automation",
                 desc: "Background tasks running on n8n / APIs."
               }
@@ -118,7 +118,7 @@ export default function ServicesPage() {
                   </p>
                   <div className="mt-4 flex items-center justify-between font-mono text-[10px] uppercase tracking-wider text-primary opacity-80 group-hover:opacity-100">
                     <span>{item.focus}</span>
-                    <span className="transition-transform duration-300 group-hover:translate-x-1">â†’</span>
+                    <ArrowRight aria-hidden="true" className="size-3 transition-transform duration-300 group-hover:translate-x-1" />
                   </div>
                 </Link>
               </Reveal>

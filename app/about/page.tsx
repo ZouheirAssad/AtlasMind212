@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Check } from "lucide-react";
+import { Check, X } from "lucide-react";
 import { Container } from "@/components/container";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
@@ -175,7 +175,7 @@ export default function AboutPage() {
                     "You need 24/7 custom application support SLA agreements (we build and hand over maintainable setups, we do not run round-the-clock IT helpdesks)."
                   ].map((text, idx) => (
                     <li key={idx} className="flex items-start gap-3">
-                      <span className="text-accent text-lg leading-[0.5] font-bold select-none shrink-0 mt-0.5 font-sans">Ã—</span>
+                      <X aria-hidden="true" className="size-4 shrink-0 text-accent mt-1" />
                       <span className="text-sm text-muted-foreground leading-relaxed font-sans">{text}</span>
                     </li>
                   ))}
