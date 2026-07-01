@@ -83,7 +83,7 @@ export default function HomePage() {
                   description={service.description}
                   icon={service.icon}
                   meta={service.timeline}
-                  href={`/services#${service.slug}`}
+                  href={`/services/${service.slug}`}
                   ctaLabel="View service details"
                 />
               </Reveal>

@@ -11,6 +11,7 @@ Public routes:
 
 - `/`
 - `/services`
+- `/services/[slug]`
 - `/blog`
 - `/blog/[slug]`
 - `/blog/[slug]/download`
@@ -25,6 +26,15 @@ comparison, a connected implementation story, and service cards.
 ## Data And APIs
 
 - Static product data lives in `lib/site-data.ts`.
+- Canonical site metadata is centralized through `lib/site-config.ts` and
+  `NEXT_PUBLIC_SITE_URL`.
+- SEO/GEO helpers live in `lib/seo.tsx`; public pages use route metadata and
+  JSON-LD for organization, website, services, FAQs, breadcrumbs, and guide
+  documents.
+- Machine-readable AI context files are served from `public/llms.txt`,
+  `public/services.md`, and `public/company.md`.
+- `app/robots.ts` and `app/sitemap.ts` provide crawler directives and dynamic
+  sitemap entries for static pages, service detail pages, and published guides.
 - A typed brand registry mapping 18 slugs to SVG assets, official brand colors, and URLs is in `lib/brand-registry.ts` (used for background constellation).
 - `POST /api/leads` validates submissions and writes to `public.leads`.
 - `POST /api/contact` validates submissions, writes to
@@ -94,10 +104,20 @@ As of June 11, 2026:
 - Homepage terminal, mobile navigation, workflow/tool filtering, URL detail
   state, Escape dismissal, and client-side form validation were exercised.
 
+Additional SEO/GEO verification on July 1, 2026:
+
+- ESLint passes.
+- The Next.js production build passes.
+- `npm audit --omit=dev` reports zero vulnerabilities.
+- Local route checks pass for `/robots.txt`, `/sitemap.xml`, `/llms.txt`,
+  `/services.md`, `/company.md`, and the three service detail pages.
+
 ## Deployment
 
-The project is prepared for Vercel. Add all environment variables in the
-Vercel project settings (`NEXT_PUBLIC_SUPABASE_URL`,
+The project is prepared for Vercel. The production canonical domain is
+`https://atlasmind212.com`; set `NEXT_PUBLIC_SITE_URL` to that value. Add all
+environment variables in the Vercel project settings (`NEXT_PUBLIC_SITE_URL`,
+`NEXT_PUBLIC_SUPABASE_URL`,
 `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`,
 `CONTACT_NOTIFICATION_TO`, `CONTACT_NOTIFICATION_FROM`), run
 `supabase/schema.sql` before testing form submissions against a production

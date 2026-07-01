@@ -81,7 +81,7 @@ body::before {
   pointer-events: none;
   background-image:
     linear-gradient(180deg, rgb(2 6 23 / 0.05), rgb(2 6 23 / 0.7) 75%, #020617),
-    url("/images/atlas-network-wallpaper-desktop.jpg");
+    url("/images/atlas-network-wallpaper-desktop.webp");
   background-position: center top;
   background-size: cover;
   opacity: 0.85;
@@ -200,7 +200,7 @@ textarea:focus-visible {
   body::before {
     background-image:
       linear-gradient(180deg, rgb(2 6 23 / 0.1), rgb(2 6 23 / 0.75) 70%, #020617),
-      url("/images/atlas-network-wallpaper-mobile.jpg");
+      url("/images/atlas-network-wallpaper-mobile.webp");
     background-position: center top;
     opacity: 0.75;
   }

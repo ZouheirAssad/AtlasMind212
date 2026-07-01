@@ -7,6 +7,8 @@ import { Container } from "@/components/container";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { getGuideThumbnailUrl, getPublishedGuideBySlug } from "@/lib/guides";
+import { JsonLd, breadcrumbJsonLd, guideDigitalDocumentJsonLd } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/site-config";
 
 export const dynamic = "force-dynamic";
 
@@ -27,10 +29,14 @@ export async function generateMetadata({ params }: GuidePageProps): Promise<Meta
   return {
     title: guide.title,
     description: guide.description,
+    alternates: { canonical: `/blog/${guide.slug}` },
     openGraph: {
       title: guide.title,
       description: guide.description,
       type: "article",
+      url: absoluteUrl(`/blog/${guide.slug}`),
+      publishedTime: guide.published_at ?? guide.created_at,
+      modifiedTime: guide.updated_at,
       images: [{ url: thumbnailUrl, alt: guide.thumbnail_alt ?? guide.title }],
     },
     twitter: {
@@ -52,6 +58,14 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
   return (
     <article>
+      <JsonLd data={[
+        guideDigitalDocumentJsonLd(guide, thumbnailUrl),
+        breadcrumbJsonLd([
+          { name: "Home", href: "/" },
+          { name: "AI Guides", href: "/blog" },
+          { name: guide.title, href: `/blog/${guide.slug}` },
+        ]),
+      ]} />
       <section className="relative overflow-hidden bg-cream py-10 sm:py-16">
         <div className="absolute inset-0 -z-10 editorial-grid-soft paper-grain mask-fade-y opacity-70" />
         <Container>

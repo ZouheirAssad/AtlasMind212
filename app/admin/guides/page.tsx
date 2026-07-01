@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Download, Eye, FileText, LogOut, Pencil, Plus, Trash2 } from "lucide-react";
@@ -12,7 +13,19 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Guide CMS" };
+export const metadata: Metadata = {
+  title: "Guide CMS",
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+    googleBot: {
+      index: false,
+      follow: false,
+      noimageindex: true,
+    },
+  },
+};
 
 type AdminGuidesPageProps = {
   searchParams: Promise<{ message?: string; error?: string }>;

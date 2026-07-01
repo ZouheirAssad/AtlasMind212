@@ -93,7 +93,7 @@ export function ActiveNav({ mobile = false }: { mobile?: boolean }) {
                   {services.map((service) => (
                     <SheetClose key={service.slug} asChild>
                       <Link
-                        href={`/services#${service.slug}`}
+                        href={`/services/${service.slug}`}
                         className="flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-secondary/40 hover:text-foreground"
                       >
                         {service.title}

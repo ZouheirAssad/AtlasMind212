@@ -30,7 +30,7 @@ export function ServicesDropdown({ onClose }: ServicesDropdownProps) {
             return (
               <Link
                 key={service.slug}
-                href={`/services#${service.slug}`}
+                href={`/services/${service.slug}`}
                 onClick={onClose}
                 className="group flex items-start gap-4 rounded-xl p-3 transition-all duration-200 hover:bg-secondary/45"
               >

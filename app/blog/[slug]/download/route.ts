@@ -14,5 +14,8 @@ export async function GET(_request: Request, { params }: DownloadRouteContext) {
 
   if (!guide) notFound();
 
-  return NextResponse.redirect(getGuidePdfUrl(guide), { status: 302 });
+  const response = NextResponse.redirect(getGuidePdfUrl(guide), { status: 302 });
+  response.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
+
+  return response;
 }

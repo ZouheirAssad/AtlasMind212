@@ -51,6 +51,7 @@ The local schema is managed through `supabase/migrations/` and mirrors
 Create a `.env.local` file by copying `.env.example`. Ensure the following keys are populated:
 
 ```text
+NEXT_PUBLIC_SITE_URL=https://atlasmind212.com
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=
@@ -61,6 +62,7 @@ CONTACT_NOTIFICATION_FROM=AtlasMind212 <onboarding@resend.dev>
 CONTACT_NOTIFICATION_TO=zouhirassad@gmail.com
 ```
 
+- `NEXT_PUBLIC_SITE_URL` controls absolute metadata, canonical, and social preview URLs. Production should use `https://atlasmind212.com`.
 - `SUPABASE_SERVICE_ROLE_KEY` and `RESEND_API_KEY` are only used on the server side and must never be exposed or prefixed with `NEXT_PUBLIC_`.
 - `ADMIN_EMAILS` is a comma-separated allowlist for the private guide CMS. Create matching Supabase Auth users manually in the Supabase dashboard.
 - For first email tests, use Resend's default sender: `AtlasMind212 <onboarding@resend.dev>`. Resend only allows this sender to email the address associated with your Resend account.

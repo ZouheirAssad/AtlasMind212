@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/container";
 import { Separator } from "@/components/ui/separator";
-import { navItems } from "@/lib/site-data";
+import { navItems, services } from "@/lib/site-data";
 
 export function Footer() {
   return (
@@ -30,20 +30,16 @@ export function Footer() {
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
               Services
             </p>
-            <Link href="/services#business-website" className="flex min-h-11 w-fit items-center text-muted-foreground hover:text-primary">
-              Business Website
-            </Link>
-            <Link href="/services#ai-integration" className="flex min-h-11 w-fit items-center text-muted-foreground hover:text-primary">
-              AI Integration
-            </Link>
-            <Link href="/services#ai-automation" className="flex min-h-11 w-fit items-center text-muted-foreground hover:text-primary">
-              AI Automation
-            </Link>
+            {services.map((service) => (
+              <Link key={service.slug} href={`/services/${service.slug}`} className="flex min-h-11 w-fit items-center text-muted-foreground hover:text-primary">
+                {service.title}
+              </Link>
+            ))}
           </div>
         </div>
         <Separator className="my-10 bg-border" />
         <div className="flex flex-col gap-4 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} AtlasMind212. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} AtlasMind212. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="/privacy" className="hover:text-primary transition-colors">Privacy</Link>
             <Link href="/imprint" className="hover:text-primary transition-colors">Imprint</Link>

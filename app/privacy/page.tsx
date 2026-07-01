@@ -1,7 +1,24 @@
+import type { Metadata } from "next";
 import { LegalLayout } from "@/components/legal-layout";
 import { PageHero } from "@/components/page-hero";
+import { absoluteUrl } from "@/lib/site-config";
 
-export const metadata = { title: "Privacy Policy" };
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description: "How AtlasMind212 handles information submitted through this website.",
+  alternates: { canonical: "/privacy" },
+  openGraph: {
+    title: "Privacy Policy",
+    description: "How AtlasMind212 handles information submitted through this website.",
+    url: absoluteUrl("/privacy"),
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Privacy Policy",
+    description: "How AtlasMind212 handles information submitted through this website.",
+  },
+};
 
 export default function PrivacyPage() {
   const sections = [

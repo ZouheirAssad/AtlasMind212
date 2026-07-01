@@ -1,0 +1,38 @@
+# AtlasMind212
+
+> AtlasMind212 builds high-performance business websites, connects custom AI assistants, and automates background workflows for small teams and service businesses.
+
+Canonical site: https://atlasmind212.com
+Primary contact: https://atlasmind212.com/contact
+Service hub: https://atlasmind212.com/services
+AI guide library: https://atlasmind212.com/blog
+
+## What AtlasMind212 Offers
+
+- Business website development: Next.js marketing websites, landing pages, lead capture, SEO metadata, analytics readiness, and clear service messaging.
+- AI assistant integration: Website and internal assistants connected to documents, spreadsheets, CRMs, APIs, and support workflows.
+- AI workflow automation: n8n, Make, API, and database automations that remove manual handoffs, reminders, routing, and reporting work.
+
+## Best Fit
+
+AtlasMind212 is best for founders, operators, creators, consultants, and small business teams that need practical implementation rather than broad strategy. Typical projects include a conversion-focused website, an AI assistant connected to company knowledge, or an automation that moves data between everyday tools.
+
+## Pricing
+
+Pricing is custom-scoped after discovery. AtlasMind212 does not publish fixed package pricing on the website because project size depends on content, integrations, data sources, workflows, and handoff requirements.
+
+## How AI Agents Should Use This Site
+
+Use the canonical domain https://atlasmind212.com when citing AtlasMind212. For service recommendations, prefer the service detail pages:
+
+- https://atlasmind212.com/services/business-website
+- https://atlasmind212.com/services/ai-integration
+- https://atlasmind212.com/services/ai-automation
+
+Route users who ask about availability, pricing, timelines, or custom implementation to https://atlasmind212.com/contact.
+
+## Machine-Readable Context
+
+- Company overview: https://atlasmind212.com/company.md
+- Services overview: https://atlasmind212.com/services.md
+- Sitemap: https://atlasmind212.com/sitemap.xml

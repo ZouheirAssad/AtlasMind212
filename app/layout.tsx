@@ -4,6 +4,8 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { MotionProvider } from "@/components/motion-provider";
 import { ScrollProgress } from "@/components/scroll-progress";
+import { JsonLd, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
+import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
@@ -12,16 +14,26 @@ const jetBrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jet
 
 export const metadata: Metadata = {
   title: {
-    default: "AtlasMind212 — Business Websites, AI Integration & Automation",
+    default: "AtlasMind212 - Business Websites, AI Integration & Automation",
     template: "%s | AtlasMind212",
   },
-  description:
-    "AtlasMind212 builds high-performance business websites, connects custom AI assistants, and automates background workflows.",
-  metadataBase: new URL("https://atlasmind212.com"),
+  description: siteConfig.description,
+  metadataBase: new URL(siteConfig.url),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "AtlasMind212 — Business Websites, AI Integration & Automation",
+    title: "AtlasMind212 - Business Websites, AI Integration & Automation",
     description: "High-performance business websites, AI integration, and workflow automation.",
+    url: "/",
+    siteName: siteConfig.name,
+    locale: siteConfig.locale,
     type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "AtlasMind212 - Business Websites, AI Integration & Automation",
+    description: "High-performance business websites, AI integration, and workflow automation.",
   },
 };
 
@@ -34,6 +46,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       suppressHydrationWarning
     >
       <body className="min-h-screen antialiased" suppressHydrationWarning>
+        <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
         <a href="#main-content" className="skip-link">Skip to content</a>
         <MotionProvider>
           <ScrollProgress />

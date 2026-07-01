@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Check, X } from "lucide-react";
@@ -5,8 +6,27 @@ import { Container } from "@/components/container";
 import { PageHero } from "@/components/page-hero";
 import { Reveal } from "@/components/reveal";
 import { Button } from "@/components/ui/button";
+import { absoluteUrl } from "@/lib/site-config";
 
-export const metadata = { title: "About Us & Engineering Principles" };
+export const metadata: Metadata = {
+  title: "About AtlasMind212",
+  description:
+    "Learn how AtlasMind212 builds reliable business websites, AI integrations, and workflow automations with clear scopes and documented handoff.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About AtlasMind212",
+    description:
+      "Reliable business websites, AI integrations, and workflow automations built with clear scopes and documented handoff.",
+    url: absoluteUrl("/about"),
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "About AtlasMind212",
+    description:
+      "Reliable business websites, AI integrations, and workflow automations built with clear scopes and documented handoff.",
+  },
+};
 
 export default function AboutPage() {
   return (

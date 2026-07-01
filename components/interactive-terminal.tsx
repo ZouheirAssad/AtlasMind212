@@ -16,9 +16,9 @@ const goals = [
     label: "Website",
     command: "atlasmind launch website",
     lines: [
-      { text: "responsive layout generated", href: "/services#business-website" },
-      { text: "lead captures configured", href: "/services#business-website" },
-      { text: "seo basics validated", href: "/services#business-website" },
+      { text: "responsive layout generated", href: "/services/business-website" },
+      { text: "lead captures configured", href: "/services/business-website" },
+      { text: "seo basics validated", href: "/services/business-website" },
     ],
   },
   {
@@ -26,9 +26,9 @@ const goals = [
     label: "Integration",
     command: "atlasmind connect assistant",
     lines: [
-      { text: "website assistant initialized", href: "/services#ai-integration" },
-      { text: "crm syncing established", href: "/services#ai-integration" },
-      { text: "internal tool APIs mapped", href: "/services#ai-integration" },
+      { text: "website assistant initialized", href: "/services/ai-integration" },
+      { text: "crm syncing established", href: "/services/ai-integration" },
+      { text: "internal tool APIs mapped", href: "/services/ai-integration" },
     ],
   },
   {
@@ -36,9 +36,9 @@ const goals = [
     label: "Automation",
     command: "atlasmind deploy automation",
     lines: [
-      { text: "n8n/Make trigger set", href: "/services#ai-automation" },
-      { text: "error alerts activated", href: "/services#ai-automation" },
-      { text: "handover docs compiled", href: "/services#ai-automation" },
+      { text: "n8n/Make trigger set", href: "/services/ai-automation" },
+      { text: "error alerts activated", href: "/services/ai-automation" },
+      { text: "handover docs compiled", href: "/services/ai-automation" },
     ],
   },
 ] as const;

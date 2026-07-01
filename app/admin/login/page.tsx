@@ -1,10 +1,23 @@
+import type { Metadata } from "next";
 import { Suspense } from "react";
 import { LockKeyhole } from "lucide-react";
 import { AdminLoginForm } from "@/components/admin-login-form";
 import { Container } from "@/components/container";
 import { Badge } from "@/components/ui/badge";
 
-export const metadata = { title: "Admin Login" };
+export const metadata: Metadata = {
+  title: "Admin Login",
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+    googleBot: {
+      index: false,
+      follow: false,
+      noimageindex: true,
+    },
+  },
+};
 
 type AdminLoginPageProps = {
   searchParams: Promise<{ next?: string }>;

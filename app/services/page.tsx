@@ -1,42 +1,75 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { CheckCircle2, Clock3, Check, ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle2, Clock3 } from "lucide-react";
 import { Container } from "@/components/container";
-import { Reveal } from "@/components/reveal";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { LogoConstellation } from "@/components/logo-constellation";
+import { Reveal } from "@/components/reveal";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  JsonLd,
+  breadcrumbJsonLd,
+  servicesItemListJsonLd,
+} from "@/lib/seo";
 import { services } from "@/lib/site-data";
 
-export const metadata = { title: "AI Services & Implementation" };
+export const metadata: Metadata = {
+  title: "AI Services & Implementation",
+  description:
+    "Explore AtlasMind212 services for business websites, AI assistant integrations, and AI workflow automation.",
+  alternates: {
+    canonical: "/services",
+  },
+  openGraph: {
+    title: "AI Services & Implementation | AtlasMind212",
+    description:
+      "Explore AtlasMind212 services for business websites, AI assistant integrations, and AI workflow automation.",
+    url: "/services",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "AI Services & Implementation | AtlasMind212",
+    description:
+      "Explore AtlasMind212 services for business websites, AI assistant integrations, and AI workflow automation.",
+  },
+};
 
 export default function ServicesPage() {
   return (
     <>
-      {/* Premium Technical B2B Hero */}
-      <section className="relative overflow-hidden border-b border-border/40 bg-background/40 py-16 sm:py-24 backdrop-blur-[2px]">
-        {/* Background layers with soft grid, grain and dual soft glow */}
+      <JsonLd
+        data={[
+          breadcrumbJsonLd([
+            { name: "Home", href: "/" },
+            { name: "Services", href: "/services" },
+          ]),
+          servicesItemListJsonLd(services),
+        ]}
+      />
+
+      <section className="relative overflow-hidden border-b border-border/40 bg-background/40 py-16 backdrop-blur-[2px] sm:py-24">
         <div className="absolute inset-0 -z-10 editorial-grid-soft paper-grain mask-fade-y" />
         <div className="absolute inset-0 -z-10 bg-glow-dual opacity-70 mask-fade-y" />
         <LogoConstellation />
 
         <Container>
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-            <Reveal className="lg:col-span-7 flex flex-col gap-6">
-              <Badge variant="secondary" className="w-fit font-mono text-[10px] tracking-widest uppercase">
+            <Reveal className="flex flex-col gap-6 lg:col-span-7">
+              <Badge variant="secondary" className="w-fit font-mono text-[10px] uppercase tracking-widest">
                 Implementation Services
               </Badge>
               <h1 className="font-display text-balance text-5xl font-normal leading-[1.1] text-foreground sm:text-6xl md:text-7xl">
                 Turn AI ideas into <span className="text-primary">working systems</span>.
               </h1>
-              <p className="max-w-xl text-lg sm:text-xl leading-8 text-muted-foreground font-sans">
-                We build high-performance business websites, connect custom AI assistants, and automate background workflows with fixed timelines and guaranteed outcomes.
+              <p className="max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
+                AtlasMind212 builds high-performance business websites, connects useful AI assistants, and automates repeatable workflows with practical scope and clean handoff.
               </p>
-
-              <ul className="grid gap-3 text-sm text-muted-foreground font-mono">
+              <ul className="grid gap-3 font-mono text-sm text-muted-foreground">
                 <li className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  Fixed-scope delivery in 2–5 weeks
+                  Fixed-scope delivery in 2-5 weeks
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-accent" />
@@ -44,12 +77,11 @@ export default function ServicesPage() {
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  Production-grade Supabase & n8n setups
+                  Production-grade Supabase, AI, and automation setups
                 </li>
               </ul>
-
               <div className="mt-2 flex flex-wrap items-center gap-4">
-                <Button asChild size="lg" className="bg-primary text-background hover:bg-cyan-glow transition-all duration-300">
+                <Button asChild size="lg" className="bg-primary text-background transition-all duration-300 hover:bg-cyan-glow">
                   <Link href="/contact">Book project</Link>
                 </Button>
                 <Button asChild variant="secondary" size="lg">
@@ -58,7 +90,7 @@ export default function ServicesPage() {
               </div>
             </Reveal>
 
-            <Reveal className="lg:col-span-5 relative" delay={0.1}>
+            <Reveal className="relative lg:col-span-5" delay={0.1}>
               <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-primary/20 to-accent/10 opacity-30 blur-lg" />
               <Image
                 src="/images/services-studio-night.webp"
@@ -73,51 +105,28 @@ export default function ServicesPage() {
         </Container>
       </section>
 
-      {/* Service Comparison Band */}
       <section className="border-b border-border/40 bg-[#07111F]/30 py-10 backdrop-blur-sm">
         <Container>
           <div className="grid gap-6 md:grid-cols-3">
-            {[
-              {
-                title: "Business Website",
-                focus: "Lead Capture & Performance",
-                timeline: "2–3 weeks",
-                target: "#business-website",
-                desc: "High-performance web presence ready to convert."
-              },
-              {
-                title: "AI Integration",
-                focus: "Customer & CRM Sync",
-                timeline: "2–4 weeks",
-                target: "#ai-integration",
-                desc: "Smart assistants embedded and connected."
-              },
-              {
-                title: "AI Automation",
-                focus: "Ops & Workflow Speed",
-                timeline: "3–5 weeks",
-                target: "#ai-automation",
-                desc: "Background tasks running on n8n / APIs."
-              }
-            ].map((item, index) => (
-              <Reveal key={item.title} delay={index * 0.05}>
+            {services.map((service, index) => (
+              <Reveal key={service.slug} delay={index * 0.05}>
                 <Link
-                  href={item.target}
+                  href={`/services/${service.slug}`}
                   className="group relative flex h-full flex-col gap-2 rounded-2xl border border-border/40 bg-[#0b1626]/40 p-6 transition-all duration-300 hover:border-primary/40 hover:bg-[#0b1626]/80"
                 >
-                  <div className="flex items-center justify-between">
-                    <h3 className="font-mono text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
-                      {item.title}
-                    </h3>
-                    <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-wider bg-secondary/80 px-2 py-0.5 rounded border border-border/20">
-                      {item.timeline}
+                  <div className="flex items-center justify-between gap-3">
+                    <h2 className="font-mono text-sm font-semibold text-foreground transition-colors group-hover:text-primary">
+                      {service.title}
+                    </h2>
+                    <span className="rounded border border-border/20 bg-secondary/80 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                      {service.timeline}
                     </span>
                   </div>
-                  <p className="font-sans text-xs text-muted-foreground leading-relaxed mt-2">
-                    {item.desc}
+                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                    {service.description}
                   </p>
                   <div className="mt-4 flex items-center justify-between font-mono text-[10px] uppercase tracking-wider text-primary opacity-80 group-hover:opacity-100">
-                    <span>{item.focus}</span>
+                    <span>{service.shortTitle}</span>
                     <ArrowRight aria-hidden="true" className="size-3 transition-transform duration-300 group-hover:translate-x-1" />
                   </div>
                 </Link>
@@ -127,11 +136,8 @@ export default function ServicesPage() {
         </Container>
       </section>
 
-      {/* Services List Section */}
       <section id="services-list" className="relative overflow-hidden bg-neutral-surface py-16 sm:py-24">
-        {/* Soft grid + grain overlay */}
         <div className="absolute inset-0 -z-10 editorial-grid-soft paper-grain mask-fade-y opacity-70" />
-
         <Container className="relative">
           <div className="flex flex-col gap-16">
             {services.map((service, index) => {
@@ -139,135 +145,87 @@ export default function ServicesPage() {
               const num = String(index + 1).padStart(2, "0");
               return (
                 <Reveal key={service.slug} delay={index * 0.05}>
-                  <div
+                  <article
                     id={service.slug}
-                    className="scroll-mt-28 rounded-[2rem] border border-border/40 bg-[#07111F] p-8 shadow-[0_24px_65px_rgb(0_0_0/0.28)] transition-all duration-300 hover:border-primary/30 sm:p-10 lg:p-12 relative overflow-hidden"
+                    className="relative scroll-mt-28 overflow-hidden rounded-[2rem] border border-border/40 bg-[#07111F] p-8 shadow-[0_24px_65px_rgb(0_0_0/0.28)] transition-all duration-300 hover:border-primary/30 sm:p-10 lg:p-12"
                   >
-                    {/* Corner gradient glow */}
-                    <div className="absolute top-0 right-0 -z-10 h-64 w-64 bg-gradient-to-br from-primary/5 to-transparent blur-3xl rounded-full" />
+                    <div className="absolute right-0 top-0 -z-10 h-64 w-64 rounded-full bg-gradient-to-br from-primary/5 to-transparent blur-3xl" />
 
-                    {/* Header Row */}
                     <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
                       <div className="flex items-start gap-5">
                         <div className="flex flex-col items-center gap-2">
-                          <span className="font-mono text-xs font-semibold text-accent/80 tracking-wider">
+                          <span className="font-mono text-xs font-semibold tracking-wider text-accent/80">
                             {num}
                           </span>
-                          <span className="flex size-14 items-center justify-center rounded-2xl bg-[#0b1626] border border-border/60 text-primary shadow-inner">
+                          <span className="flex size-14 items-center justify-center rounded-2xl border border-border/60 bg-[#0b1626] text-primary shadow-inner">
                             <Icon className="size-6" />
                           </span>
                         </div>
                         <div>
                           <span className="font-mono text-[10px] uppercase tracking-widest text-primary/80">Service Module</span>
-                          <h2 className="text-3xl font-display font-normal text-foreground mt-1">{service.title}</h2>
-                          <p className="mt-4 text-base leading-relaxed text-muted-foreground max-w-2xl font-sans">
-                            {service.description}
+                          <h2 className="mt-1 text-3xl font-display font-normal text-foreground">{service.title}</h2>
+                          <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground">
+                            {service.definition}
                           </p>
                         </div>
                       </div>
 
-                      <div className="flex flex-col items-start lg:items-end gap-2 shrink-0 self-start">
-                        <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">Guaranteed Timeline</span>
-                        <span className="flex items-center gap-2 rounded-full border border-border/50 bg-[#0B1626] px-4 py-2 text-sm font-mono text-foreground font-medium shadow-sm">
+                      <div className="flex shrink-0 flex-col items-start gap-2 self-start lg:items-end">
+                        <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Typical Timeline</span>
+                        <span className="flex items-center gap-2 rounded-full border border-border/50 bg-[#0B1626] px-4 py-2 font-mono text-sm font-medium text-foreground shadow-sm">
                           <Clock3 className="size-4 text-primary" /> {service.timeline}
                         </span>
                       </div>
                     </div>
 
-                    {/* Content Section */}
                     <div className="mt-10 grid gap-8 border-t border-border/30 pt-10 lg:grid-cols-12">
-                      {/* Left: Deliverables */}
                       <div className="space-y-4 lg:col-span-7">
-                        <h4 className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">Deliverables & Specs</h4>
+                        <h3 className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">Deliverables & Specs</h3>
                         <ul className="grid gap-3 sm:grid-cols-2">
                           {service.deliverables.map((item) => (
-                            <li key={item} className="flex items-start gap-3 rounded-2xl bg-[#0B1626]/60 border border-border/20 p-4">
-                              <Check className="size-4 shrink-0 text-primary mt-0.5" />
+                            <li key={item} className="flex items-start gap-3 rounded-2xl border border-border/20 bg-[#0B1626]/60 p-4">
+                              <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary" />
                               <span className="text-sm font-medium text-foreground">{item}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
 
-                      {/* Right: Best Fit & Outcome */}
-                      <div className="flex flex-col justify-between gap-6 bg-[#0B1626]/40 border border-border/30 rounded-2xl p-6 lg:p-8 lg:col-span-5">
+                      <div className="flex flex-col justify-between gap-6 rounded-2xl border border-border/30 bg-[#0B1626]/40 p-6 lg:col-span-5 lg:p-8">
                         <div className="space-y-5">
                           <div>
-                            <h4 className="font-mono text-[10px] uppercase tracking-wider text-primary/80">Best Fit For</h4>
-                            <p className="mt-2 text-sm leading-relaxed text-muted-foreground font-sans">
+                            <h3 className="font-mono text-[10px] uppercase tracking-wider text-primary/80">Best Fit For</h3>
+                            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                               {service.bestFor}
                             </p>
                           </div>
                           <div className="border-t border-border/20 pt-4">
-                            <h4 className="font-mono text-[10px] uppercase tracking-wider text-accent/80">Target Outcome</h4>
-                            <p className="mt-2 text-sm leading-relaxed text-foreground/90 font-medium font-sans">
+                            <h3 className="font-mono text-[10px] uppercase tracking-wider text-accent/80">Target Outcome</h3>
+                            <p className="mt-2 text-sm font-medium leading-relaxed text-foreground/90">
                               {service.outcome}
                             </p>
                           </div>
                         </div>
 
-                        {/* CTA button */}
-                        <div className="flex justify-end pt-4 border-t border-border/20">
-                          <Button asChild size="lg" className="w-full sm:w-auto bg-primary text-background hover:bg-cyan-glow transition-all duration-300">
+                        <div className="flex flex-col gap-3 border-t border-border/20 pt-4 sm:flex-row sm:justify-end">
+                          <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
+                            <Link href={`/services/${service.slug}`}>
+                              View full service <ArrowRight className="ml-1 size-4" />
+                            </Link>
+                          </Button>
+                          <Button asChild size="lg" className="w-full bg-primary text-background transition-all duration-300 hover:bg-cyan-glow sm:w-auto">
                             <Link href={`/contact?project=${service.slug}`}>
-                              Book {service.title} project <ArrowRight className="size-4 ml-1" />
+                              Book project <ArrowRight className="ml-1 size-4" />
                             </Link>
                           </Button>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </article>
                 </Reveal>
               );
             })}
           </div>
-
-          {/* Engagement / Process Section */}
-          <Reveal className="mt-24 border-t border-border/30 pt-16">
-            <div className="text-center max-w-2xl mx-auto mb-12">
-              <span className="font-mono text-xs uppercase tracking-[0.2em] text-primary">Our Process</span>
-              <h2 className="mt-3 text-3xl font-display font-normal text-foreground sm:text-4xl">
-                A simple path from concept to production
-              </h2>
-              <p className="mt-4 text-muted-foreground text-sm leading-relaxed max-w-prose mx-auto">
-                We avoid long consulting engagements. We deliver production-grade systems in focused, practical milestones.
-              </p>
-            </div>
-
-            <div className="grid gap-6 md:grid-cols-3">
-              {[
-                {
-                  number: "01",
-                  title: "Scope & Align",
-                  description: "We map your current processes, identify friction points, and define the exact target outcomes and deliverables.",
-                },
-                {
-                  number: "02",
-                  title: "Iterative Build",
-                  description: "We develop in weekly sprints with visible checkpoints. You see progress on a staging environment at every step.",
-                },
-                {
-                  number: "03",
-                  title: "Smooth Handover",
-                  description: "We handle database RLS, deployment, and documentation, ensuring your team has full ownership of the completed system.",
-                },
-              ].map((step) => (
-                <div
-                  key={step.number}
-                  className="group relative rounded-2xl border border-border/40 bg-[#07111F]/30 p-8 hover:border-primary/20 hover:bg-[#07111F]/70 transition-all duration-300"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs font-bold text-accent uppercase tracking-wider bg-secondary/80 px-2.5 py-1 rounded border border-border/20">
-                      Phase {step.number}
-                    </span>
-                    <CheckCircle2 className="size-5 text-primary/80 group-hover:text-primary transition-colors duration-300" />
-                  </div>
-                  <h3 className="mt-8 text-xl font-display font-normal text-foreground">{step.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{step.description}</p>
-                </div>
-              ))}
-            </div>
-          </Reveal>
         </Container>
       </section>
     </>

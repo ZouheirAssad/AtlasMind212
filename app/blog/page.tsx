@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, FileText } from "lucide-react";
 import { Container } from "@/components/container";
@@ -6,11 +7,25 @@ import { Reveal } from "@/components/reveal";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { listPublishedGuides } from "@/lib/guides";
+import { JsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/site-config";
 
 export const dynamic = "force-dynamic";
-export const metadata = {
+export const metadata: Metadata = {
   title: "AI Guides",
   description: "Download practical AtlasMind212 AI guides shared from TikTok and the AtlasMind learning library.",
+  alternates: { canonical: "/blog" },
+  openGraph: {
+    title: "AI Guides",
+    description: "Download practical AtlasMind212 AI guides shared from TikTok and the AtlasMind learning library.",
+    url: absoluteUrl("/blog"),
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "AI Guides",
+    description: "Download practical AtlasMind212 AI guides shared from TikTok and the AtlasMind learning library.",
+  },
 };
 
 export default async function BlogPage() {
@@ -18,6 +33,10 @@ export default async function BlogPage() {
 
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd([
+        { name: "Home", href: "/" },
+        { name: "AI Guides", href: "/blog" },
+      ])} />
       <section className="relative overflow-hidden bg-cream py-16 sm:py-24">
         <div className="absolute inset-0 -z-10 editorial-grid-soft paper-grain mask-fade-y opacity-70" />
         <div className="absolute inset-0 -z-10 bg-glow-dual opacity-60 mask-fade-y" />
