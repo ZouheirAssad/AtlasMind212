@@ -46,9 +46,13 @@ comparison, a connected implementation story, and service cards.
   at `/blog/[slug]/download`.
 - Guide thumbnails and PDFs live in the public Supabase Storage bucket
   `guide-assets`.
-- The private CMS at `/admin/guides` uses Supabase Auth plus the server-only
-  `ADMIN_EMAILS` allowlist. Guide mutations are server actions that verify the
-  signed-in admin before using the service role client.
+- The private CMS at `/admin/guides` uses Supabase Auth. Bootstrap admins can
+  be listed in the server-only `ADMIN_EMAILS` allowlist, and invited admins are
+  authorized through Supabase Auth `app_metadata.role = "admin"`.
+- Admins can invite or promote other CMS admins from `/admin/admins`; new
+  invite links route through `/admin/set-password`.
+- Guide and admin mutations are server actions that verify the signed-in admin
+  before using the service role client.
 - SQL setup is documented in `supabase/schema.sql`.
 - Supabase writes use a server-only service role client.
 - Local Supabase testing is configured as its own CLI project,

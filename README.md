@@ -64,13 +64,15 @@ CONTACT_NOTIFICATION_TO=zouhirassad@gmail.com
 
 - `NEXT_PUBLIC_SITE_URL` controls absolute metadata, canonical, and social preview URLs. Production should use `https://atlasmind212.com`.
 - `SUPABASE_SERVICE_ROLE_KEY` and `RESEND_API_KEY` are only used on the server side and must never be exposed or prefixed with `NEXT_PUBLIC_`.
-- `ADMIN_EMAILS` is a comma-separated allowlist for the private guide CMS. Create matching Supabase Auth users manually in the Supabase dashboard.
+- `ADMIN_EMAILS` is a comma-separated bootstrap allowlist for the private guide CMS. Admins invited from `/admin/admins` are authorized with Supabase Auth `app_metadata.role = "admin"`.
 - For first email tests, use Resend's default sender: `AtlasMind212 <onboarding@resend.dev>`. Resend only allows this sender to email the address associated with your Resend account.
 - For production delivery to other recipients, `CONTACT_NOTIFICATION_FROM` must match a verified sender address or domain configured in your Resend account.
 
 ## AI Guides CMS
 
-The private CMS lives at `/admin/guides` and is protected by Supabase Auth plus the `ADMIN_EMAILS` allowlist. Log in at `/admin/login` with a Supabase Auth email/password account whose email appears in `ADMIN_EMAILS`.
+The private CMS lives at `/admin/guides` and is protected by Supabase Auth. Log in at `/admin/login` with a Supabase Auth email/password account whose email appears in `ADMIN_EMAILS` or whose `app_metadata.role` is `admin`.
+
+Existing admins can invite or promote additional admins from `/admin/admins`. New invite links send users to `/admin/set-password` so they can finish account setup before managing guides.
 
 The public guide library lives at `/blog`. Each published guide also has:
 

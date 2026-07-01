@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Download, Eye, FileText, LogOut, Pencil, Plus, Trash2 } from "lucide-react";
+import { Download, Eye, FileText, LogOut, Pencil, Plus, ShieldCheck, Trash2 } from "lucide-react";
 import { requireAdminUser } from "@/lib/admin-auth";
 import { getGuidePdfUrl, getGuideThumbnailUrl, listAdminGuides, type Guide } from "@/lib/guides";
 import { createGuide, deleteGuide, signOutAdmin, toggleGuideStatus, updateGuide } from "@/app/admin/guides/actions";
@@ -171,11 +171,18 @@ export default async function AdminGuidesPage({ searchParams }: AdminGuidesPageP
               Upload TikTok guide PDFs, publish them as shareable cards, and manage the public guide library.
             </p>
           </div>
-          <form action={signOutAdmin}>
-            <Button type="submit" variant="outline">
-              <LogOut data-icon="inline-start" /> Sign out {user.email}
+          <div className="flex flex-wrap gap-2">
+            <Button asChild variant="outline">
+              <Link href="/admin/admins">
+                <ShieldCheck data-icon="inline-start" /> Admins
+              </Link>
             </Button>
-          </form>
+            <form action={signOutAdmin}>
+              <Button type="submit" variant="outline">
+                <LogOut data-icon="inline-start" /> Sign out {user.email}
+              </Button>
+            </form>
+          </div>
         </div>
 
         {(params.message || params.error) && (

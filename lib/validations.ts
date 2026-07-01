@@ -26,6 +26,11 @@ export const guideMetadataSchema = z.object({
   status: z.enum(["draft", "published"]).default("draft"),
 });
 
+export const adminInviteSchema = z.object({
+  email: z.string().trim().toLowerCase().email("Please enter a valid admin email address."),
+});
+
 export type LeadInput = z.infer<typeof leadSchema>;
 export type ContactInput = z.infer<typeof contactSchema>;
 export type GuideMetadataInput = z.infer<typeof guideMetadataSchema>;
+export type AdminInviteInput = z.infer<typeof adminInviteSchema>;
