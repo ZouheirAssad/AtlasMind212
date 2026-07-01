@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Download, Eye, FileText, LogOut, Pencil, Plus, ShieldCheck, Trash2 } from "lucide-react";
+import { BarChart3, Download, Eye, FileText, LogOut, Pencil, Plus, ShieldCheck, Trash2 } from "lucide-react";
 import { requireAdminUser } from "@/lib/admin-auth";
 import { getGuidePdfUrl, getGuideThumbnailUrl, listAdminGuides, type Guide } from "@/lib/guides";
 import { createGuide, deleteGuide, signOutAdmin, toggleGuideStatus, updateGuide } from "@/app/admin/guides/actions";
@@ -172,6 +172,11 @@ export default async function AdminGuidesPage({ searchParams }: AdminGuidesPageP
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
+            <Button asChild variant="outline">
+              <Link href="/admin/analytics">
+                <BarChart3 data-icon="inline-start" /> Analytics
+              </Link>
+            </Button>
             <Button asChild variant="outline">
               <Link href="/admin/admins">
                 <ShieldCheck data-icon="inline-start" /> Admins

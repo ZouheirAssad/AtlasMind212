@@ -46,6 +46,16 @@ comparison, a connected implementation story, and service cards.
   at `/blog/[slug]/download`.
 - Guide thumbnails and PDFs live in the public Supabase Storage bucket
   `guide-assets`.
+- Privacy-safe first-party analytics events are stored in
+  `public.analytics_events`. Guide downloads are tracked through
+  `/blog/[slug]/download`, and successful lead/contact submissions log
+  server-side events without storing raw IP addresses or emails in analytics
+  rows.
+- The private analytics dashboard at `/admin/analytics` combines Supabase
+  business logs with Vercel Web Analytics API aggregates when Vercel analytics
+  env vars are configured. Optional Vercel Web Analytics Drains can POST to
+  `/api/vercel/analytics-drain` and store privacy-safe rows in
+  `public.vercel_analytics_events`.
 - The private CMS at `/admin/guides` uses Supabase Auth. Bootstrap admins can
   be listed in the server-only `ADMIN_EMAILS` allowlist, and invited admins are
   authorized through Supabase Auth `app_metadata.role = "admin"`.
@@ -74,6 +84,11 @@ ADMIN_EMAILS
 RESEND_API_KEY
 CONTACT_NOTIFICATION_TO
 CONTACT_NOTIFICATION_FROM
+VERCEL_ANALYTICS_TOKEN
+VERCEL_PROJECT_ID
+VERCEL_TEAM_ID
+VERCEL_TEAM_SLUG
+VERCEL_ANALYTICS_DRAIN_SECRET
 ```
 
 ## Design State
@@ -133,7 +148,13 @@ Resend only permits that sender to email the Resend account address.
 `public.leads` and `public.contact_messages`; no public insert policies are
 intended. It also creates `public.guides`, grants public select access only to
 published guide rows through RLS, and creates the public `guide-assets` storage
-bucket for guide thumbnails/PDFs.
+bucket for guide thumbnails/PDFs. It creates `public.analytics_events` and
+`public.vercel_analytics_events` with service-role-only `insert/select` grants;
+no public analytics policies are intended. For Vercel aggregates, configure
+`VERCEL_ANALYTICS_TOKEN` and `VERCEL_PROJECT_ID`; for team projects also set
+either `VERCEL_TEAM_ID` or `VERCEL_TEAM_SLUG`. For Vercel Web Analytics Drains,
+set `VERCEL_ANALYTICS_DRAIN_SECRET` and configure the Vercel drain endpoint as
+`https://atlasmind212.com/api/vercel/analytics-drain`.
 
 ## Known Boundaries
 

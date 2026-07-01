@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { recordAnalyticsEvent } from "@/lib/analytics/events";
 import { createAdminClient } from "@/lib/supabase/server";
 import { leadSchema } from "@/lib/validations";
 
@@ -15,6 +16,12 @@ export async function POST(request: Request) {
       source: "free-guide",
     });
     if (error) throw error;
+    await recordAnalyticsEvent({
+      eventName: "lead_submitted",
+      request,
+      route: "/api/leads",
+      metadata: { source: "free-guide" },
+    });
     return NextResponse.json({ ok: true }, { status: 201 });
   } catch (error) {
     console.error("Lead submission failed:", error);

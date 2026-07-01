@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { recordAnalyticsEvent } from "@/lib/analytics/events";
 import { createAdminClient } from "@/lib/supabase/server";
 import { sendContactNotification } from "@/lib/email/contact-notification";
 import { contactSchema } from "@/lib/validations";
@@ -20,6 +21,15 @@ export async function POST(request: Request) {
       message: parsed.data.message,
     });
     if (error) throw error;
+
+    await recordAnalyticsEvent({
+      eventName: "contact_submitted",
+      request,
+      route: "/api/contact",
+      metadata: {
+        project_type: parsed.data.projectType || null,
+      },
+    });
 
     // The message is safely stored. Email delivery is best-effort: if it
     // fails we log server-side but still return success so the user does not
