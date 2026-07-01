@@ -54,6 +54,9 @@ create index if not exists vercel_analytics_events_path_idx
 alter table public.analytics_events enable row level security;
 alter table public.vercel_analytics_events enable row level security;
 
+revoke all privileges on table public.analytics_events from anon, authenticated, service_role;
+revoke all privileges on table public.vercel_analytics_events from anon, authenticated, service_role;
+
 grant insert, select on table public.analytics_events to service_role;
 grant insert, select on table public.vercel_analytics_events to service_role;
 
