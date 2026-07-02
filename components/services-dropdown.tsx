@@ -7,11 +7,16 @@ import { services } from "@/lib/site-data";
 
 interface ServicesDropdownProps {
   onClose: () => void;
+  id?: string;
+  labelledBy?: string;
 }
 
-export function ServicesDropdown({ onClose }: ServicesDropdownProps) {
+export function ServicesDropdown({ onClose, id, labelledBy }: ServicesDropdownProps) {
   return (
     <m.div
+      id={id}
+      role="menu"
+      aria-labelledby={labelledBy}
       initial={{ opacity: 0, y: 10, scale: 0.98 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: 8, scale: 0.98 }}
@@ -32,7 +37,8 @@ export function ServicesDropdown({ onClose }: ServicesDropdownProps) {
                 key={service.slug}
                 href={`/services/${service.slug}`}
                 onClick={onClose}
-                className="group flex items-start gap-4 rounded-xl p-3 transition-all duration-200 hover:bg-secondary/45"
+                role="menuitem"
+                className="group flex items-start gap-4 rounded-xl p-3 transition-all duration-200 hover:bg-secondary/45 focus-visible:outline-none focus-visible:bg-secondary/45"
               >
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-secondary text-primary transition-colors duration-200 group-hover:bg-primary group-hover:text-primary-foreground">
                   <Icon className="size-5" />
@@ -53,11 +59,20 @@ export function ServicesDropdown({ onClose }: ServicesDropdownProps) {
       </div>
 
       <div className="mt-3 border-t border-primary/10 pt-3 px-3 flex items-center justify-between">
+        <Link
+          href="/services"
+          onClick={onClose}
+          role="menuitem"
+          className="text-xs font-semibold text-foreground/80 hover:text-primary focus-visible:outline-none focus-visible:text-primary"
+        >
+          All services
+        </Link>
         <span className="text-[11px] text-muted-foreground">Ready to start?</span>
         <Link
           href="/contact"
           onClick={onClose}
-          className="flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
+          role="menuitem"
+          className="flex items-center gap-1 text-xs font-semibold text-primary hover:underline focus-visible:outline-none focus-visible:underline"
         >
           Book a discovery call <ArrowRight className="size-3.5" />
         </Link>

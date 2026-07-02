@@ -6,7 +6,7 @@ import { GuideCard } from "@/components/guide-card";
 import { Reveal } from "@/components/reveal";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { listPublishedGuides } from "@/lib/guides";
+import { listPublishedGuidesRecoverable } from "@/lib/guides";
 import { JsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site-config";
 
@@ -29,7 +29,9 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
-  const guides = await listPublishedGuides();
+  const result = await listPublishedGuidesRecoverable();
+  const guides = result.status === "ok" ? result.guides : [];
+  const isUnavailable = result.status === "unavailable";
 
   return (
     <>
@@ -64,6 +66,23 @@ export default async function BlogPage() {
                 </Reveal>
               ))}
             </div>
+          ) : isUnavailable ? (
+            <Reveal>
+              <div className="mx-auto flex max-w-2xl flex-col items-center rounded-3xl border border-dashed border-primary/40 bg-card/80 p-10 text-center shadow-xl">
+                <span className="flex size-14 items-center justify-center rounded-2xl border border-primary/30 bg-secondary text-primary">
+                  <FileText className="size-6" />
+                </span>
+                <h2 className="mt-6 font-display text-4xl tracking-[-0.04em]">Guide library is temporarily unavailable.</h2>
+                <p className="mt-4 text-muted-foreground">
+                  We couldn&rsquo;t reach the guide library right now. Please check back shortly, or reach out and we&rsquo;ll share what you need directly.
+                </p>
+                <Button asChild className="mt-7">
+                  <Link href="/contact?project=ai-integration">
+                    Contact the team <ArrowRight data-icon="inline-end" />
+                  </Link>
+                </Button>
+              </div>
+            </Reveal>
           ) : (
             <Reveal>
               <div className="mx-auto flex max-w-2xl flex-col items-center rounded-3xl border border-dashed bg-card/80 p-10 text-center shadow-xl">

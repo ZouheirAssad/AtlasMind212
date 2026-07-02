@@ -18,8 +18,14 @@ workflow/tool libraries, services, lead capture, and contact intake.
 
 ## App Boundaries
 
-- Public App Router pages live in `app/*/page.tsx`; API routes are only
-  `app/api/leads/route.ts` and `app/api/contact/route.ts`.
+- Public App Router pages live in `app/*/page.tsx` (marketing, services,
+  blog/guides, contact, legal pages such as `about`, `privacy`, `imprint`).
+- Private admin CMS routes live under `app/admin/*`
+  (`admin/guides`, `admin/admins`, `admin/analytics`, `admin/login`,
+  `admin/set-password`); admin mutations happen in server actions
+  (`app/admin/guides/actions.ts`, `app/admin/admins/actions.ts`).
+- API routes are `app/api/contact/route.ts`, `app/api/leads/route.ts`, and
+  `app/api/vercel/analytics-drain/route.ts`.
 - Keep static pages as Server Components unless they need forms, navigation
   state, motion, filters, dialogs, or sheets.
 - Shared navigation, workflow, tool, and service content lives in

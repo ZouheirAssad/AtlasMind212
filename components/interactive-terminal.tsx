@@ -248,18 +248,24 @@ export function InteractiveTerminal() {
         <button
           type="button"
           onClick={() => setCollapsed(true)}
-          className="size-2.5 cursor-pointer rounded-full bg-accent transition-all hover:brightness-125 focus-visible:ring-2 focus-visible:ring-ring"
           aria-label="Collapse terminal"
-          title="Close"
-        />
-        <span className="size-2.5 rounded-full bg-yellow-400" title="Minimize" />
+          aria-pressed={collapsed}
+          title="Collapse"
+          className="flex size-11 items-center justify-center rounded-lg transition-all hover:bg-white/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+        >
+          <span aria-hidden="true" className="size-2.5 rounded-full bg-accent transition-all group-hover:brightness-125" />
+        </button>
+        <span aria-hidden="true" className="size-2.5 rounded-full bg-yellow-400" title="Minimize" />
         <button
           type="button"
           onClick={() => setCollapsed(false)}
-          className="size-2.5 cursor-pointer rounded-full bg-emerald-400 transition-all hover:brightness-125 focus-visible:ring-2 focus-visible:ring-ring"
           aria-label="Restore terminal"
+          aria-pressed={!collapsed}
           title="Restore"
-        />
+          className="flex size-11 items-center justify-center rounded-lg transition-all hover:bg-white/5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+        >
+          <span aria-hidden="true" className="size-2.5 rounded-full bg-emerald-400" />
+        </button>
         <span className="ml-3 font-mono text-xs text-white/45">
           atlasmind / live system
         </span>

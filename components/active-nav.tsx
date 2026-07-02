@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { AnimatePresence, m } from "motion/react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -15,6 +15,17 @@ export function ActiveNav({ mobile = false }: { mobile?: boolean }) {
   const [hoveredPath, setHoveredPath] = useState<string | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const closeDropdown = () => setDropdownOpen(false);
+
+  const handleDropdownKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Escape") {
+      e.preventDefault();
+      setDropdownOpen(false);
+      (e.currentTarget as HTMLElement).focus();
+    }
+  };
 
   return (
     <div
@@ -29,19 +40,29 @@ export function ActiveNav({ mobile = false }: { mobile?: boolean }) {
         const isServices = item.label === "Services";
 
         if (!mobile && isServices) {
+          const buttonId = "services-trigger";
+          const menuId = "services-menu";
           return (
             <div
               key={item.href}
+              ref={dropdownRef}
               className="relative"
               onMouseEnter={() => setDropdownOpen(true)}
               onMouseLeave={() => setDropdownOpen(false)}
+              onKeyDown={handleDropdownKeyDown}
             >
-              <Link
-                href={item.href}
-                onMouseEnter={() => setHoveredPath(item.href)}
+              <button
+                type="button"
+                id={buttonId}
+                aria-haspopup="menu"
+                aria-expanded={dropdownOpen}
+                aria-controls={menuId}
+                onClick={() => setDropdownOpen((open) => !open)}
+                onFocus={() => setHoveredPath(item.href)}
+                onBlur={() => setHoveredPath((h) => (h === item.href ? null : h))}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "relative flex min-h-11 items-center gap-1 rounded-xl px-3 py-2 text-sm font-medium transition-colors duration-200 z-10",
+                  "relative flex min-h-11 items-center gap-1 rounded-xl px-3 py-2 text-sm font-medium transition-colors duration-200 z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                   active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
                 )}
               >
@@ -61,10 +82,14 @@ export function ActiveNav({ mobile = false }: { mobile?: boolean }) {
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
-              </Link>
+              </button>
               <AnimatePresence>
                 {dropdownOpen && (
-                  <ServicesDropdown onClose={() => setDropdownOpen(false)} />
+                  <ServicesDropdown
+                    id={menuId}
+                    labelledBy={buttonId}
+                    onClose={closeDropdown}
+                  />
                 )}
               </AnimatePresence>
             </div>
@@ -72,9 +97,14 @@ export function ActiveNav({ mobile = false }: { mobile?: boolean }) {
         }
 
         if (mobile && isServices) {
+          const accordionId = "mobile-services-accordion";
+          const triggerId = "mobile-services-trigger";
           return (
             <div key={item.href} className="w-full">
               <button
+                id={triggerId}
+                aria-expanded={mobileServicesOpen}
+                aria-controls={accordionId}
                 onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                 className={cn(
                   "flex w-full min-h-11 items-center justify-between rounded-xl px-4 py-3 text-lg font-medium transition-colors duration-200",
@@ -85,6 +115,7 @@ export function ActiveNav({ mobile = false }: { mobile?: boolean }) {
                 <ChevronDown className={cn("size-5 transition-transform duration-200", mobileServicesOpen && "rotate-180")} />
               </button>
               <m.div
+                id={accordionId}
                 initial={false}
                 animate={{ height: mobileServicesOpen ? "auto" : 0 }}
                 className="overflow-hidden"

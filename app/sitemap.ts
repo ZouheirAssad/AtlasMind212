@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { absoluteUrl } from "@/lib/site-config";
-import { listPublishedGuides } from "@/lib/guides";
+import { listPublishedGuidesRecoverable } from "@/lib/guides";
 import { services } from "@/lib/site-data";
 
 export const dynamic = "force-dynamic";
@@ -41,9 +41,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
 async function getGuideRoutes(): Promise<MetadataRoute.Sitemap> {
   try {
-    const guides = await listPublishedGuides();
+    const result = await listPublishedGuidesRecoverable();
+    if (result.status !== "ok") return [];
 
-    return guides.map((guide) => ({
+    return result.guides.map((guide) => ({
       url: absoluteUrl(`/blog/${guide.slug}`),
       lastModified: guide.updated_at ? new Date(guide.updated_at) : new Date(),
       changeFrequency: "monthly" as const,

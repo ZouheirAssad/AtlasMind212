@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { notFound } from "next/navigation";
 import { recordAnalyticsEvent } from "@/lib/analytics/events";
-import { getGuidePdfUrl, getPublishedGuideBySlug } from "@/lib/guides";
+import { getGuidePdfUrl, getPublishedGuideBySlugRecoverable } from "@/lib/guides";
 
 export const dynamic = "force-dynamic";
 
@@ -11,9 +11,12 @@ type DownloadRouteContext = {
 
 export async function GET(request: Request, { params }: DownloadRouteContext) {
   const { slug } = await params;
-  const guide = await getPublishedGuideBySlug(slug);
+  const result = await getPublishedGuideBySlugRecoverable(slug);
 
-  if (!guide) notFound();
+  // Recoverable read failures and missing guides both degrade to notFound
+  // rather than surfacing a Next server-error page for a transient outage.
+  if (result.status === "unavailable" || !result.guide) notFound();
+  const guide = result.guide;
 
   await recordAnalyticsEvent({
     eventName: "guide_downloaded",

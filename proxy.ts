@@ -30,9 +30,13 @@ export async function proxy(request: NextRequest) {
   const user = data.user;
   const pathname = request.nextUrl.pathname;
   const isAdminLogin = pathname === "/admin/login";
+  const isAdminSetPassword = pathname === "/admin/set-password";
   const hasAdminAccess = Boolean(user && isAdminEmail(user.email));
 
-  if (pathname.startsWith("/admin") && !isAdminLogin && !hasAdminAccess) {
+  // Invite password setup is an unauthenticated bootstrap flow — the page
+  // itself renders a "missing active session" message when there is no session,
+  // so do not gate it behind admin access.
+  if (pathname.startsWith("/admin") && !isAdminLogin && !isAdminSetPassword && !hasAdminAccess) {
     const redirectUrl = request.nextUrl.clone();
     redirectUrl.pathname = "/admin/login";
     redirectUrl.searchParams.set("next", pathname);

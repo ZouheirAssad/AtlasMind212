@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Download, FileText, Share2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Download, FileText, Share2 } from "lucide-react";
 import { Container } from "@/components/container";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { getGuideThumbnailUrl, getPublishedGuideBySlug } from "@/lib/guides";
+import { getGuideThumbnailUrl, getPublishedGuideBySlugRecoverable } from "@/lib/guides";
 import { JsonLd, breadcrumbJsonLd, guideDigitalDocumentJsonLd } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site-config";
 
@@ -18,8 +18,14 @@ type GuidePageProps = {
 
 export async function generateMetadata({ params }: GuidePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const guide = await getPublishedGuideBySlug(slug);
+  const result = await getPublishedGuideBySlugRecoverable(slug);
 
+  if (result.status === "unavailable") {
+    // Noindex until the guide store is reachable again.
+    return { title: "Guide temporarily unavailable", robots: { index: false, follow: false } };
+  }
+
+  const guide = result.guide;
   if (!guide) {
     return { title: "Guide not found" };
   }
@@ -50,8 +56,37 @@ export async function generateMetadata({ params }: GuidePageProps): Promise<Meta
 
 export default async function GuidePage({ params }: GuidePageProps) {
   const { slug } = await params;
-  const guide = await getPublishedGuideBySlug(slug);
+  const result = await getPublishedGuideBySlugRecoverable(slug);
 
+  if (result.status === "unavailable") {
+    return (
+      <article>
+        <section className="relative overflow-hidden bg-cream py-16 sm:py-24">
+          <div className="absolute inset-0 -z-10 editorial-grid-soft paper-grain mask-fade-y opacity-70" />
+          <Container>
+            <div className="mx-auto flex max-w-2xl flex-col items-center rounded-3xl border border-dashed border-primary/40 bg-card/80 p-10 text-center shadow-xl">
+              <span className="flex size-14 items-center justify-center rounded-2xl border border-primary/30 bg-secondary text-primary">
+                <FileText className="size-6" />
+              </span>
+              <h1 className="mt-6 font-display text-4xl tracking-[-0.04em] sm:text-5xl">
+                This guide is temporarily unavailable.
+              </h1>
+              <p className="mt-4 max-w-xl text-muted-foreground">
+                We couldn&rsquo;t reach the guide right now. Please check back shortly, or get in touch and we&rsquo;ll send it to you directly.
+              </p>
+              <Button asChild variant="outline" className="mt-7">
+                <Link href="/contact?project=ai-integration">
+                  Contact the team <ArrowRight data-icon="inline-end" />
+                </Link>
+              </Button>
+            </div>
+          </Container>
+        </section>
+      </article>
+    );
+  }
+
+  const guide = result.guide;
   if (!guide) notFound();
 
   const thumbnailUrl = getGuideThumbnailUrl(guide);
