@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
@@ -42,11 +43,13 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
       description: service.metaDescription,
       url: path,
       type: "website",
+      images: [{ url: service.image.src, alt: service.image.alt }],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: service.seoTitle,
       description: service.metaDescription,
+      images: [service.image.src],
     },
   };
 }
@@ -83,7 +86,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                 <ArrowLeft data-icon="inline-start" /> All services
               </Link>
             </Button>
-            <div className="grid gap-10 lg:grid-cols-[0.72fr_0.28fr] lg:items-start">
+            <div className="grid gap-10 lg:grid-cols-[0.6fr_0.4fr] lg:items-start">
               <Reveal className="max-w-4xl">
                 <Badge variant="secondary" className="mb-6">
                   {service.timeline}
@@ -110,7 +113,18 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                   </Button>
                 </div>
               </Reveal>
-              <Reveal delay={0.08}>
+              <Reveal delay={0.08} className="space-y-5">
+                <div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-card/70 shadow-[0_24px_70px_rgb(0_0_0/0.34)]">
+                  <Image
+                    src={service.image.src}
+                    alt={service.image.alt}
+                    width={1536}
+                    height={1024}
+                    priority
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                    className="aspect-[3/2] w-full object-cover"
+                  />
+                </div>
                 <aside className="rounded-2xl border bg-card/94 p-6 shadow-xl">
                   <p className="font-mono text-xs uppercase tracking-[0.16em] text-primary">Best fit</p>
                   <p className="mt-4 text-sm leading-7 text-muted-foreground">{service.audience}</p>

@@ -73,8 +73,8 @@ export default function AboutPage() {
           {/* Main image / story section */}
           <Reveal className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
             <Image
-              src="/images/about-atlas-night.webp"
-              alt="A dark 3D knowledge atlas connecting tools, ideas, and outcomes with cyan routes"
+              src="/images/about-implementation-handoff-tools.webp"
+              alt="A dark implementation handoff workspace with AI, automation, database, deployment, and documentation tool badges"
               width={1536}
               height={1024}
               loading="eager"

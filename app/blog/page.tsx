@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, FileText } from "lucide-react";
 import { Container } from "@/components/container";
@@ -42,7 +43,7 @@ export default async function BlogPage() {
       <section className="relative overflow-hidden bg-cream py-16 sm:py-24">
         <div className="absolute inset-0 -z-10 editorial-grid-soft paper-grain mask-fade-y opacity-70" />
         <div className="absolute inset-0 -z-10 bg-glow-dual opacity-60 mask-fade-y" />
-        <Container className="relative">
+        <Container className="relative grid items-center gap-12 lg:grid-cols-[0.64fr_0.36fr]">
           <Reveal className="max-w-3xl">
             <Badge className="mb-6">AI Guides</Badge>
             <h1 className="font-display text-6xl leading-[0.96] tracking-[-0.055em] sm:text-7xl">
@@ -51,6 +52,19 @@ export default async function BlogPage() {
             <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
               A focused library of practical PDF guides from AtlasMind212, ready to share, save, and use alongside your AI workflow.
             </p>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <div className="relative mx-auto max-w-[20rem] overflow-hidden rounded-2xl border border-primary/20 bg-card/70 shadow-[0_24px_70px_rgb(0_0_0/0.34)] lg:ml-auto">
+              <Image
+                src="/images/guide-cover-tools-night.webp"
+                alt="A dark AI guide cover with learning cards and AI tool badges"
+                width={1024}
+                height={1536}
+                priority
+                sizes="(min-width: 1024px) 22rem, 80vw"
+                className="aspect-[2/3] w-full object-cover"
+              />
+            </div>
           </Reveal>
         </Container>
       </section>

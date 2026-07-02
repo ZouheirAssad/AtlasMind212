@@ -20,6 +20,10 @@ export const services = [
     icon: PanelsTopLeft,
     description:
       "Conversion-focused business websites with responsive pages, integrated lead/contact flows, SEO foundations, and analytics-ready setup.",
+    image: {
+      src: "/images/service-business-website-tools.webp",
+      alt: "A dark business website implementation dashboard connected to AI and automation tool badges",
+    },
     seoTitle: "Business Website Development for Lead Generation",
     metaDescription:
       "AtlasMind212 builds fast, conversion-focused business websites with SEO foundations, lead capture, contact flows, and clean handoff.",
@@ -106,6 +110,10 @@ export const services = [
     icon: Bot,
     description:
       "Intelligent website AI assistants coupled with automated connections to CRM, email, docs, spreadsheets, or internal tools.",
+    image: {
+      src: "/images/service-ai-integration-tools.webp",
+      alt: "A secure website AI assistant connected to documents, data tools, and automation app badges",
+    },
     seoTitle: "AI Assistant Integration for Business Websites",
     metaDescription:
       "Connect AI assistants to your website, CRM, documents, spreadsheets, and internal tools with AtlasMind212 implementation services.",
@@ -192,6 +200,10 @@ export const services = [
     icon: Workflow,
     description:
       "Custom n8n, Make, or API background workflows to handle automated follow-ups, alerts, reporting, and handover documentation.",
+    image: {
+      src: "/images/service-ai-automation-tools.webp",
+      alt: "A dark AI automation workflow board connecting n8n, Make, spreadsheets, email, and database nodes",
+    },
     seoTitle: "AI Workflow Automation with n8n, Make, and APIs",
     metaDescription:
       "AtlasMind212 builds AI workflow automations for follow-ups, alerts, reporting, CRM sync, and background business operations.",
