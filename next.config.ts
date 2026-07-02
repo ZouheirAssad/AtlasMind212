@@ -33,6 +33,12 @@ const nextConfig: NextConfig = {
             port: supabaseImageUrl.port,
             pathname: "/storage/v1/object/public/guide-assets/**",
           },
+          {
+            protocol: supabaseImageUrl.protocol.replace(":", "") as "http" | "https",
+            hostname: supabaseImageUrl.hostname,
+            port: supabaseImageUrl.port,
+            pathname: "/storage/v1/object/sign/guide-assets/**",
+          },
         ]
       : [],
   },

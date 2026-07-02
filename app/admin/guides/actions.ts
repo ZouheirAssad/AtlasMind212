@@ -124,6 +124,16 @@ function parseGuideMetadata(formData: FormData) {
     description: getString(formData, "description"),
     thumbnailAlt: getString(formData, "thumbnailAlt"),
     status: getString(formData, "status") || "draft",
+    contentType: getString(formData, "contentType") || "article",
+    articleBody: getString(formData, "articleBody"),
+    metaTitle: getString(formData, "metaTitle"),
+    metaDescription: getString(formData, "metaDescription"),
+    canonicalSlug: getString(formData, "canonicalSlug"),
+    hasAffiliateLinks: formData.get("hasAffiliateLinks") === "on",
+    isSponsored: formData.get("isSponsored") === "on",
+    sponsorName: getString(formData, "sponsorName"),
+    disclosureNote: getString(formData, "disclosureNote"),
+    gateType: getString(formData, "gateType") || "hard",
   });
 }
 
@@ -136,36 +146,36 @@ export async function createGuide(formData: FormData) {
 
   const parsed = parseGuideMetadata(formData);
   if (!parsed.success) {
-    redirectToGuides({ error: parsed.error.issues[0]?.message ?? "Please check the guide fields." });
+    redirectToGuides({ error: parsed.error.issues[0]?.message ?? "Please check the content fields." });
   }
 
   const thumbnail = getFile(formData, "thumbnail");
   const pdf = getFile(formData, "pdf");
   const thumbnailError = validateFile(thumbnail, {
-    required: true,
+    required: false,
     maxBytes: GUIDE_THUMBNAIL_MAX_BYTES,
     allowedTypes: GUIDE_THUMBNAIL_TYPES,
     label: "Thumbnail",
   });
   const pdfError = validateFile(pdf, {
-    required: true,
+    required: false,
     maxBytes: GUIDE_PDF_MAX_BYTES,
     allowedTypes: GUIDE_PDF_TYPES,
     label: "PDF",
   });
 
-  if (thumbnailError || pdfError || !thumbnail || !pdf) {
-    redirectToGuides({ error: thumbnailError ?? pdfError ?? "Please upload the guide files." });
+  if (thumbnailError || pdfError) {
+    redirectToGuides({ error: thumbnailError ?? pdfError ?? "Please upload valid files." });
   }
 
   const supabase = createAdminClient();
   const slug = await ensureUniqueSlug(parsed.data.slug || parsed.data.title);
   const uploadedPaths: string[] = [];
 
-  const thumbnailPath = await uploadGuideAsset(thumbnail, "thumbnails", slug);
-  uploadedPaths.push(thumbnailPath);
-  const pdfPath = await uploadGuideAsset(pdf, "pdfs", slug);
-  uploadedPaths.push(pdfPath);
+  const thumbnailPath = thumbnail ? await uploadGuideAsset(thumbnail, "thumbnails", slug) : null;
+  if (thumbnailPath) uploadedPaths.push(thumbnailPath);
+  const pdfPath = pdf ? await uploadGuideAsset(pdf, "pdfs", slug) : null;
+  if (pdfPath) uploadedPaths.push(pdfPath);
 
   const now = new Date().toISOString();
   const { error } = await supabase.from("guides").insert({
@@ -179,30 +189,40 @@ export async function createGuide(formData: FormData) {
     published_at: publishedAtFor(parsed.data.status),
     created_at: now,
     updated_at: now,
+    content_type: parsed.data.contentType,
+    article_body: parsed.data.articleBody || null,
+    meta_title: parsed.data.metaTitle || null,
+    meta_description: parsed.data.metaDescription || null,
+    canonical_slug: parsed.data.canonicalSlug || null,
+    has_affiliate_links: parsed.data.hasAffiliateLinks,
+    is_sponsored: parsed.data.isSponsored,
+    sponsor_name: parsed.data.sponsorName || null,
+    disclosure_note: parsed.data.disclosureNote || null,
+    gate_type: parsed.data.gateType,
   });
 
   if (error) {
     await removeGuideAssets(uploadedPaths);
-    redirectToGuides({ error: "Unable to create the guide. Please try again." });
+    redirectToGuides({ error: "Unable to create the content item. Please try again." });
   }
 
   revalidatePath("/blog");
   revalidatePath("/admin/guides");
-  redirectToGuides({ message: "Guide created." });
+  redirectToGuides({ message: "Content item created." });
 }
 
 export async function updateGuide(formData: FormData) {
   await requireAdminUser();
 
   const id = getString(formData, "id");
-  if (!id) redirectToGuides({ error: "Missing guide id." });
+  if (!id) redirectToGuides({ error: "Missing content id." });
 
   const current = await getAdminGuideById(id);
-  if (!current) redirectToGuides({ error: "Guide not found." });
+  if (!current) redirectToGuides({ error: "Content item not found." });
 
   const parsed = parseGuideMetadata(formData);
   if (!parsed.success) {
-    redirectToGuides({ error: parsed.error.issues[0]?.message ?? "Please check the guide fields." });
+    redirectToGuides({ error: parsed.error.issues[0]?.message ?? "Please check the content fields." });
   }
 
   const thumbnail = getFile(formData, "thumbnail");
@@ -228,9 +248,9 @@ export async function updateGuide(formData: FormData) {
   const slug = await ensureUniqueSlug(parsed.data.slug || parsed.data.title, current.id);
   const uploadedPaths: string[] = [];
   const thumbnailPath = thumbnail ? await uploadGuideAsset(thumbnail, "thumbnails", slug) : current.thumbnail_path;
-  if (thumbnail) uploadedPaths.push(thumbnailPath);
+  if (thumbnail && thumbnailPath) uploadedPaths.push(thumbnailPath);
   const pdfPath = pdf ? await uploadGuideAsset(pdf, "pdfs", slug) : current.pdf_path;
-  if (pdf) uploadedPaths.push(pdfPath);
+  if (pdf && pdfPath) uploadedPaths.push(pdfPath);
 
   const { error } = await supabase
     .from("guides")
@@ -244,12 +264,22 @@ export async function updateGuide(formData: FormData) {
       status: parsed.data.status,
       published_at: publishedAtFor(parsed.data.status, current.published_at),
       updated_at: new Date().toISOString(),
+      content_type: parsed.data.contentType,
+      article_body: parsed.data.articleBody || null,
+      meta_title: parsed.data.metaTitle || null,
+      meta_description: parsed.data.metaDescription || null,
+      canonical_slug: parsed.data.canonicalSlug || null,
+      has_affiliate_links: parsed.data.hasAffiliateLinks,
+      is_sponsored: parsed.data.isSponsored,
+      sponsor_name: parsed.data.sponsorName || null,
+      disclosure_note: parsed.data.disclosureNote || null,
+      gate_type: parsed.data.gateType,
     })
     .eq("id", current.id);
 
   if (error) {
     await removeGuideAssets(uploadedPaths);
-    redirectToGuides({ error: "Unable to update the guide. Please try again." });
+    redirectToGuides({ error: "Unable to update the content item. Please try again." });
   }
 
   await removeGuideAssets([
@@ -261,7 +291,7 @@ export async function updateGuide(formData: FormData) {
   revalidatePath(`/blog/${current.slug}`);
   revalidatePath(`/blog/${slug}`);
   revalidatePath("/admin/guides");
-  redirectToGuides({ message: "Guide updated." });
+  redirectToGuides({ message: "Content item updated." });
 }
 
 export async function toggleGuideStatus(formData: FormData) {

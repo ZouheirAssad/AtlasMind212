@@ -294,13 +294,16 @@ export function AdminAnalyticsDashboard({ data }: { data: AnalyticsDashboardData
       </div>
 
       <div className="grid gap-6 xl:grid-cols-12">
-        <Panel title="Top guides" eyebrow="Downloads" className="xl:col-span-4">
+        <Panel title="Top guides" eyebrow="Downloads" className="xl:col-span-3">
           <RankList rows={data.topGuides} emptyLabel="Tracked guide downloads will appear here." />
         </Panel>
-        <Panel title="Top pages" eyebrow="Pageviews" className="xl:col-span-4">
+        <Panel title="Top leads" eyebrow="Attribution" className="xl:col-span-3">
+          <RankList rows={data.topLeads || []} emptyLabel="Lead capture rankings will appear here." />
+        </Panel>
+        <Panel title="Top pages" eyebrow="Pageviews" className="xl:col-span-3">
           <RankList rows={data.topPages} emptyLabel="Vercel page rankings will appear here." />
         </Panel>
-        <Panel title="Top referrers" eyebrow="Acquisition" className="xl:col-span-4">
+        <Panel title="Top referrers" eyebrow="Acquisition" className="xl:col-span-3">
           <RankList rows={data.topReferrers} emptyLabel="Referrer data will appear when Vercel has traffic." />
         </Panel>
       </div>

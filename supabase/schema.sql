@@ -5,6 +5,8 @@ create table if not exists public.leads (
   name text,
   email text not null,
   source text default 'free-guide',
+  content_slug text,
+  content_title text,
   created_at timestamptz default now()
 );
 
@@ -22,10 +24,21 @@ create table if not exists public.guides (
   slug text not null unique,
   title text not null,
   description text not null,
-  thumbnail_path text not null,
+  thumbnail_path text,
   thumbnail_alt text,
-  pdf_path text not null,
+  pdf_path text,
   status text not null default 'draft' check (status in ('draft', 'published')),
+  content_type text not null default 'article' check (content_type in ('article', 'guide')),
+  article_body text,
+  meta_title text,
+  meta_description text,
+  canonical_slug text,
+  has_affiliate_links boolean not null default false,
+  is_sponsored boolean not null default false,
+  sponsor_name text,
+  disclosure_note text,
+  gate_type text not null default 'hard' check (gate_type in ('hard', 'soft', 'none')),
+  has_pdf boolean generated always as (pdf_path is not null) stored,
   published_at timestamptz,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
@@ -77,6 +90,8 @@ create index if not exists analytics_events_event_name_idx
   on public.analytics_events (event_name);
 create index if not exists analytics_events_guide_slug_idx
   on public.analytics_events (guide_slug);
+create index if not exists leads_content_slug_idx
+  on public.leads (content_slug);
 create index if not exists vercel_analytics_events_occurred_at_idx
   on public.vercel_analytics_events (occurred_at desc);
 create index if not exists vercel_analytics_events_event_type_idx
@@ -122,7 +137,7 @@ insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_typ
 values (
   'guide-assets',
   'guide-assets',
-  true,
+  false,
   26214400,
   array['image/jpeg', 'image/png', 'image/webp', 'application/pdf']
 )
@@ -132,22 +147,7 @@ set
   file_size_limit = excluded.file_size_limit,
   allowed_mime_types = excluded.allowed_mime_types;
 
-do $$
-begin
-  if not exists (
-    select 1
-    from pg_policies
-    where schemaname = 'storage'
-      and tablename = 'objects'
-      and policyname = 'Guide assets are publicly readable'
-  ) then
-    create policy "Guide assets are publicly readable"
-      on storage.objects
-      for select
-      to anon, authenticated
-      using (bucket_id = 'guide-assets');
-  end if;
-end
-$$;
+-- No public storage read policy: service-role reads bypass RLS, and public pages
+-- receive only short-lived signed URLs. Raw object paths are never exposed.
 
 -- API writes use the server-only service role key, so no public insert policy is required.

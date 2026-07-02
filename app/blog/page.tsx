@@ -7,7 +7,7 @@ import { GuideCard } from "@/components/guide-card";
 import { Reveal } from "@/components/reveal";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { listPublishedGuidesRecoverable } from "@/lib/guides";
+import { getGuideThumbnailUrl, listPublishedGuidesRecoverable } from "@/lib/guides";
 import { JsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site-config";
 
@@ -33,6 +33,13 @@ export default async function BlogPage() {
   const result = await listPublishedGuidesRecoverable();
   const guides = result.status === "ok" ? result.guides : [];
   const isUnavailable = result.status === "unavailable";
+
+  const guidesWithThumbnails = await Promise.all(
+    guides.map(async (guide) => ({
+      guide,
+      thumbnailUrl: await getGuideThumbnailUrl(guide),
+    })),
+  );
 
   return (
     <>
@@ -72,11 +79,11 @@ export default async function BlogPage() {
       <section className="relative overflow-hidden bg-neutral-surface py-16 sm:py-24">
         <div className="absolute inset-0 -z-10 editorial-grid-soft paper-grain mask-fade-y opacity-60" />
         <Container>
-          {guides.length ? (
+          {guidesWithThumbnails.length ? (
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {guides.map((guide, index) => (
+              {guidesWithThumbnails.map(({ guide, thumbnailUrl }, index) => (
                 <Reveal key={guide.id} delay={index * 0.04}>
-                  <GuideCard guide={guide} priority={index < 3} />
+                  <GuideCard guide={guide} thumbnailUrl={thumbnailUrl} priority={index < 3} />
                 </Reveal>
               ))}
             </div>

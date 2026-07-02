@@ -7,7 +7,13 @@ type JsonPrimitive = string | number | boolean | null;
 type AnalyticsMetadata = Record<string, JsonPrimitive>;
 
 type RecordAnalyticsEventInput = {
-  eventName: "guide_downloaded" | "lead_submitted" | "contact_submitted";
+  eventName:
+    | "guide_downloaded"
+    | "lead_submitted"
+    | "contact_submitted"
+    | "article_viewed"
+    | "download_form_submitted"
+    | "gated_download_completed";
   request?: Request;
   path?: string;
   route?: string;

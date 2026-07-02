@@ -204,7 +204,7 @@ function buildTrends(
   });
 
   events
-    .filter((event) => event.event_name === "guide_downloaded")
+    .filter((event) => event.event_name === "guide_downloaded" || event.event_name === "gated_download_completed")
     .forEach((event) => {
       ensurePoint(getDayKey(event.occurred_at)).downloads += 1;
     });
@@ -217,7 +217,7 @@ function buildTopGuides(events: AnalyticsEventRow[]) {
   const titles = new Map<string, string>();
 
   events
-    .filter((event) => event.event_name === "guide_downloaded")
+    .filter((event) => event.event_name === "guide_downloaded" || event.event_name === "gated_download_completed")
     .forEach((event) => {
       const slug = event.guide_slug ?? "unknown-guide";
       increment(counts, slug);
@@ -232,6 +232,37 @@ function buildTopGuides(events: AnalyticsEventRow[]) {
       value,
       secondary: `/${slug}`,
       href: slug === "unknown-guide" ? undefined : `/blog/${slug}`,
+    }));
+}
+
+async function getTopLeadContent(since: string | null): Promise<BreakdownRow[]> {
+  const supabase = createAdminClient();
+  let query = supabase
+    .from("leads")
+    .select("content_slug, content_title");
+  if (since) query = query.gte("created_at", since);
+  const { data, error } = await query;
+  if (error) throw error;
+
+  const counts = new Map<string, number>();
+  const titles = new Map<string, string>();
+
+  (data ?? []).forEach((row) => {
+    if (!row.content_slug) return;
+    const slug = row.content_slug;
+    const title = row.content_title || slug;
+    increment(counts, slug);
+    titles.set(slug, title);
+  });
+
+  return [...counts.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 8)
+    .map(([slug, value]) => ({
+      label: titles.get(slug) ?? slug,
+      value,
+      secondary: `/${slug}`,
+      href: `/blog/${slug}`,
     }));
 }
 
@@ -304,17 +335,25 @@ export async function getAnalyticsDashboardData(range: AnalyticsRange): Promise<
   let downloads = 0;
   let leads = 0;
   let contactMessages = 0;
+  let topLeads: BreakdownRow[] = [];
 
   try {
-    [events, downloads, leads, contactMessages] = await withTimeout(
+    const [eventsData, downloadsNonGated, downloadsGated, leadsCount, contactCount, topLeadsData] = await withTimeout(
       Promise.all([
         getAnalyticsEvents(range),
         countAnalyticsEvent("guide_downloaded", range.since),
+        countAnalyticsEvent("gated_download_completed", range.since),
         countRows("leads", range.since, "created_at"),
         countRows("contact_messages", range.since, "created_at"),
+        getTopLeadContent(range.since),
       ]),
       "Supabase analytics",
     );
+    events = eventsData;
+    downloads = downloadsNonGated + downloadsGated;
+    leads = leadsCount;
+    contactMessages = contactCount;
+    topLeads = topLeadsData;
     statuses.push(sourceStatus("supabase", "Supabase business logs", "ready", "Counts and recent events loaded."));
   } catch (error) {
     statuses.push(sourceStatus(
@@ -384,6 +423,7 @@ export async function getAnalyticsDashboardData(range: AnalyticsRange): Promise<
     },
     trends: buildTrends(range, vercel.trafficTrend, events),
     topGuides: buildTopGuides(events),
+    topLeads,
     topPages: vercelBreakdown(vercel.topPages, "requestPath"),
     topReferrers: vercelBreakdown(vercel.topReferrers, "referrerHostname"),
     countries: vercelBreakdown(vercel.countries, "country"),

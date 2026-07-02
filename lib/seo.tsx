@@ -2,7 +2,7 @@ import { absoluteUrl, siteConfig } from "@/lib/site-config";
 import type { Guide } from "@/lib/guides";
 import type { Service } from "@/lib/site-data";
 
-type JsonLdValue = Record<string, unknown> | Array<Record<string, unknown>>;
+export type JsonLdValue = Record<string, unknown> | Array<Record<string, unknown>>;
 
 function stringifyJsonLd(data: JsonLdValue) {
   return JSON.stringify(data).replace(/</g, "\\u003c");
@@ -126,8 +126,33 @@ export function guideDigitalDocumentJsonLd(guide: Guide, imageUrl: string) {
     "@type": "DigitalDocument",
     name: guide.title,
     description: guide.description,
-    image: imageUrl,
+    image: imageUrl || undefined,
     encodingFormat: "application/pdf",
+    url: pageUrl,
+    datePublished: guide.published_at ?? guide.created_at,
+    dateModified: guide.updated_at,
+    author: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    publisher: { "@id": absoluteUrl("/#organization") },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": pageUrl,
+    },
+  };
+}
+
+export function articleBlogPostingJsonLd(guide: Guide, imageUrl: string) {
+  const pageUrl = absoluteUrl(`/blog/${guide.slug}`);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: guide.title,
+    description: guide.description,
+    image: imageUrl || undefined,
     url: pageUrl,
     datePublished: guide.published_at ?? guide.created_at,
     dateModified: guide.updated_at,

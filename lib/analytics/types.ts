@@ -52,6 +52,7 @@ export type AnalyticsDashboardData = {
   };
   trends: TrendPoint[];
   topGuides: BreakdownRow[];
+  topLeads: BreakdownRow[];
   topPages: BreakdownRow[];
   topReferrers: BreakdownRow[];
   countries: BreakdownRow[];
