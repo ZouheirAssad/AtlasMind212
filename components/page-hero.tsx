@@ -1,37 +1,69 @@
+import Image from "next/image";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 import { Badge } from "@/components/ui/badge";
-import { LogoConstellation } from "@/components/logo-constellation";
+import { cn } from "@/lib/utils";
+
+type HeroImage = { src: string; alt: string };
 
 export function PageHero({
   eyebrow,
   title,
   description,
-  showConstellation = true,
+  variant = "minimal",
+  image,
+  imagePosition = "center",
 }: {
   eyebrow: string;
   title: string;
   description: string;
+  variant?: "photo" | "split" | "minimal";
+  image?: HeroImage;
+  imagePosition?: "left" | "center" | "right";
   showConstellation?: boolean;
 }) {
+  if (variant === "photo" && image) {
+    return (
+      <section className="relative min-h-[36rem] overflow-hidden bg-black text-white sm:min-h-[44rem]">
+        <Image src={image.src} alt={image.alt} fill priority sizes="100vw" className={cn("object-cover", imagePosition === "left" && "object-left", imagePosition === "right" && "object-right")} />
+        <div className="photo-overlay absolute inset-0" />
+        <Container className="relative flex min-h-[36rem] items-end pb-14 pt-32 sm:min-h-[44rem] sm:pb-20">
+          <Reveal className="max-w-6xl">
+            <Badge className="mb-6 bg-white text-black">{eyebrow}</Badge>
+            <h1 className="text-balance text-5xl leading-[0.95] sm:text-7xl lg:text-[6.4rem]">{title}</h1>
+            <p className="mt-6 max-w-3xl text-lg leading-8 text-white/88 sm:text-2xl sm:leading-9">{description}</p>
+          </Reveal>
+        </Container>
+      </section>
+    );
+  }
+
+  if (variant === "split" && image) {
+    return (
+      <section className="border-b bg-[#0a0a0a] text-white">
+        <Container className="grid min-h-[38rem] gap-0 px-0 lg:grid-cols-2 lg:px-10">
+          <Reveal className="flex flex-col justify-center px-5 py-20 sm:px-8 lg:px-0 lg:pr-16">
+            <Badge className="mb-6">{eyebrow}</Badge>
+            <h1 className="text-balance text-5xl leading-[0.96] text-display-violet sm:text-7xl">{title}</h1>
+            <p className="mt-7 max-w-xl text-lg leading-8 text-white/78">{description}</p>
+          </Reveal>
+          <div className="relative min-h-[28rem] lg:min-h-full">
+            <Image src={image.src} alt={image.alt} fill priority sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+          </div>
+        </Container>
+      </section>
+    );
+  }
+
   return (
-    <section className="relative overflow-hidden border-b bg-background/46 py-20 backdrop-blur-[2px] sm:py-28">
-      {/* Background layer with soft grid, grain and dual soft glow */}
-      <div className="absolute inset-0 -z-10 editorial-grid-soft paper-grain mask-fade-y" />
-      <div className="absolute inset-0 -z-10 bg-glow-dual opacity-70 mask-fade-y" />
-      {showConstellation && <LogoConstellation />}
+    <section className="border-b bg-[#f7f6ff] py-20 sm:py-28">
       <Container>
-        <Reveal className="flex max-w-4xl flex-col gap-6">
+        <Reveal className="max-w-5xl">
           <Badge variant="secondary">{eyebrow}</Badge>
-          <h1 className="text-balance text-5xl font-semibold tracking-[-0.055em] sm:text-7xl">
-            {title}
-          </h1>
-          <p className="max-w-2xl text-xl leading-8 text-muted-foreground">
-            {description}
-          </p>
+          <h1 className="mt-6 text-balance text-5xl leading-[0.98] text-display-violet sm:text-7xl lg:text-8xl">{title}</h1>
+          <p className="mt-7 max-w-3xl text-xl leading-8 text-muted-foreground">{description}</p>
         </Reveal>
       </Container>
     </section>
   );
 }
-

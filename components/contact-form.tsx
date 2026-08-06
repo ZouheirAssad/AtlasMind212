@@ -49,7 +49,7 @@ export function ContactForm() {
 
   if (success) {
     return (
-      <div className="flex min-h-80 flex-col items-center justify-center gap-4 rounded-3xl border bg-card p-8 text-center shadow-xl">
+      <div className="flex min-h-80 flex-col items-center justify-center gap-4 border bg-card p-8 text-center shadow-[0_12px_40px_rgb(34_25_85/0.08)]">
         <CheckCircle2 className="size-10 text-primary" />
         <h2 className="text-3xl font-semibold">Your message is on its way.</h2>
         <p className="max-w-md text-muted-foreground">Thanks for the context. Your message was sent and stored — we read every submission and reply with a direct, useful answer, usually within 2 business days.</p>
@@ -58,7 +58,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="rounded-3xl border bg-card p-6 shadow-xl sm:p-10" noValidate>
+    <form onSubmit={handleSubmit(onSubmit)} className="border bg-card p-6 shadow-[0_12px_40px_rgb(34_25_85/0.08)] sm:p-10" noValidate>
       <FieldGroup>
         <div className="grid gap-7 sm:grid-cols-2">
           <Field data-invalid={Boolean(errors.name)}>
@@ -83,7 +83,7 @@ export function ContactForm() {
                 type="button"
                 aria-pressed={projectType === option.value}
                 onClick={() => setValue("projectType", option.value, { shouldDirty: true })}
-                className={`min-h-14 cursor-pointer rounded-2xl border p-4 text-left text-sm font-semibold transition-all ${projectType === option.value ? "border-primary bg-primary text-primary-foreground shadow-[0_10px_28px_rgb(0_200_245/0.16)]" : "bg-background hover:border-primary/40 hover:bg-secondary/40"}`}
+                className={`min-h-14 cursor-pointer rounded-sm border p-4 text-left text-sm font-semibold transition-colors ${projectType === option.value ? "border-primary bg-primary text-primary-foreground" : "bg-background hover:border-primary hover:bg-secondary"}`}
               >
                 {option.label}
               </button>

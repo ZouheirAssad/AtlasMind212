@@ -85,7 +85,7 @@ export function AdminSetPasswordForm() {
 
   if (isLoading) {
     return (
-      <div className="rounded-3xl border bg-card/95 p-6 shadow-xl sm:p-8">
+      <div className="w-full border bg-card p-6 shadow-[0_12px_40px_rgb(34_25_85/0.08)] sm:p-8">
         <div className="flex items-center gap-3 text-muted-foreground">
           <LoaderCircle className="size-5 animate-spin text-primary" />
           Preparing your invite...
@@ -96,7 +96,7 @@ export function AdminSetPasswordForm() {
 
   if (!isReady) {
     return (
-      <div className="rounded-3xl border bg-card/95 p-6 shadow-xl sm:p-8">
+      <div className="w-full border bg-card p-6 shadow-[0_12px_40px_rgb(34_25_85/0.08)] sm:p-8">
         <FieldError>
           {error || "This invite link is missing an active session. Request a new admin invite and open the latest email link."}
         </FieldError>
@@ -105,7 +105,7 @@ export function AdminSetPasswordForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="rounded-3xl border bg-card/95 p-6 shadow-xl sm:p-8" noValidate>
+    <form onSubmit={onSubmit} className="w-full border bg-card p-6 shadow-[0_12px_40px_rgb(34_25_85/0.08)] sm:p-8" noValidate>
       <FieldGroup>
         <Field data-invalid={Boolean(error)}>
           <FieldLabel htmlFor="admin-password">New password</FieldLabel>

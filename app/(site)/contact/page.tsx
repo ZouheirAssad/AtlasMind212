@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { CheckCircle2, Clock3, Mail, Sparkles } from "lucide-react";
+import { Check, Clock3, Mail } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 import { Container } from "@/components/container";
 import { PageHero } from "@/components/page-hero";
@@ -59,39 +59,35 @@ export default function ContactPage() {
         title="Tell us the bottleneck."
         description="Share the project, workflow, or blocker. A little context is enough to start - we read every message and reply with a direct, useful answer."
       />
-      <section className="relative overflow-hidden bg-neutral-surface py-16 sm:py-24">
-        <div className="absolute inset-0 -z-10 editorial-grid-soft paper-grain mask-fade-y opacity-70" />
-        <Container className="relative grid gap-12 lg:grid-cols-[0.58fr_1.42fr]">
+      <section className="bg-white py-16 sm:py-24">
+        <Container className="grid gap-12 lg:grid-cols-[0.62fr_1.38fr]">
           <Reveal className="flex flex-col gap-10 lg:sticky lg:top-28 lg:self-start">
-            <span className="flex size-14 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
-              <Sparkles className="size-6" />
-            </span>
 
             <div>
-              <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">
                 Good fit
               </p>
-              <h2 className="mt-3 text-4xl tracking-[-0.035em]">
-                AI workflows, n8n builds, content systems, and practical tool strategy.
+              <h2 className="mt-4 text-4xl leading-[1.08]">
+                Websites, assistants, and workflows built around a real bottleneck.
               </h2>
               <ul className="mt-6 flex flex-col gap-3">
                 {projectFit.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-muted-foreground">
-                    <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary" />
+                  <li key={item} className="flex items-start gap-3 leading-7 text-muted-foreground">
+                    <Check className="mt-1 size-4 shrink-0 text-primary" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="rounded-2xl border border-border/50 bg-secondary/30 p-6">
-              <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary">
+            <div className="border-l-4 border-primary-display bg-[#f7f6ff] p-6">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">
                 What happens next
               </p>
               <ol className="mt-5 flex flex-col gap-5">
                 {nextSteps.map((step, index) => (
                   <li key={step.title} className="flex gap-4">
-                    <span className="flex size-7 shrink-0 items-center justify-center rounded-full border border-primary/40 bg-secondary font-mono text-xs font-semibold text-primary">
+                    <span className="flex size-7 shrink-0 items-center justify-center bg-primary text-xs font-semibold text-white">
                       {index + 1}
                     </span>
                     <div>
@@ -124,7 +120,7 @@ export default function ContactPage() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <Suspense fallback={<div className="min-h-[36rem] rounded-3xl bg-secondary/30" />}>
+            <Suspense fallback={<div className="min-h-[36rem] border bg-secondary/30" />}>
               <ContactForm />
             </Suspense>
           </Reveal>

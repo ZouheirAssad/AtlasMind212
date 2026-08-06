@@ -5,23 +5,33 @@ import { Menu } from "lucide-react";
 import { ActiveNav } from "@/components/active-nav";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
 
-export function MobileNav() {
+export function MobileNav({ inverse = false }: { inverse?: boolean }) {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon" aria-label="Open navigation" className="size-11 rounded-xl"><Menu /></Button>
+        <Button
+          variant="outline"
+          size="icon"
+          aria-label="Open navigation"
+          className={cn("size-11 bg-transparent", inverse && "border-white/50 text-white hover:bg-white/10 hover:text-white")}
+        >
+          <Menu />
+        </Button>
       </SheetTrigger>
-      <SheetContent className="w-[88vw] bg-background p-0">
-        <SheetHeader className="border-b p-6 text-left">
-          <SheetTitle className="font-display text-2xl">Build smarter.</SheetTitle>
+      <SheetContent side="top" className="gap-0 border-black/15 bg-white/94 p-0 backdrop-blur-xl">
+        <SheetHeader className="border-b border-black/15 px-5 py-5 text-left">
+          <SheetTitle className="text-xl tracking-[-0.03em]">AtlasMind<span className="text-primary">212</span></SheetTitle>
           <SheetDescription className="sr-only">Navigate to the main AtlasMind212 pages.</SheetDescription>
         </SheetHeader>
-        <nav className="flex flex-col gap-1 p-4" aria-label="Mobile navigation">
+        <nav aria-label="Mobile navigation">
           <ActiveNav mobile />
-          <SheetClose asChild>
-            <Button asChild size="lg" className="mt-4 h-12"><Link href="/contact">Start a project</Link></Button>
-          </SheetClose>
+          <div className="p-5">
+            <SheetClose asChild>
+              <Button asChild size="lg" className="h-12 w-full"><Link href="/contact">Start a project</Link></Button>
+            </SheetClose>
+          </div>
         </nav>
       </SheetContent>
     </Sheet>

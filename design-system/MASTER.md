@@ -2,85 +2,86 @@
 
 ## Direction
 
-Dark editorial technology: calm, intelligent, premium, and practical. The
-experience uses an Atlas Night canvas, layered navy surfaces, precise cyan
-signals, and very limited Atlas Red details inspired by Moroccan geometry.
+Light editorial technology: direct, capable, human, and practical. The system
+uses documentary workplace photography, oversized sans-serif statements,
+white and pale-violet canvases, thin rules, and restrained violet/aqua brand
+signals. It is inspired by modern European digital studios without copying
+another company’s imagery, identity, copy, or page content.
 
 ## Typography
 
-- Display: Calistoga, weight 400, for `h1`, `h2`, and editorial statements.
-- Interface/body: Inter, weights 400-700.
-- Technical: JetBrains Mono for metadata, commands, indexes, and status labels.
-- Keep body copy between 60-72 characters per line where practical.
+- One family: Inter, weights 400–800.
+- Display headings are bold, tightly tracked, and fluid from mobile to desktop.
+- Navigation and metadata use small uppercase Inter with measured tracking.
+- Body copy stays 60–72 characters per line where practical.
+- Do not use serif or monospace typography as a decorative device.
 
 ## Color
 
-- Main background / Atlas Night: `#020617`
-- Deep surface / Dark Navy: `#07111F`
-- Elevated surface / Tech Panel: `#0B1626`
-- Primary / Electric Cyan: `#00C8F5`
-- Hover and focus glow / Neon Cyan: `#38DDFB`
-- Main text / Ice White: `#F8FAFC`
-- Muted text / Steel Gray: `#94A3B8`
-- Accent / Atlas Red: `#F0323D`
-- Border / Soft Blue Border: `#1E3A4A`
+- Canvas: `#FFFFFF`
+- Soft neutral surface: `#F7F7FA`
+- Tinted editorial surface: `#F7F6FF`
+- Main text: `#0A0A0A`
+- Muted text: `#60616B`
+- Reference violet for large display accents: `#7F6BFF`
+- Accessible interactive violet: `#5B45D6`
+- Violet hover: `#4933BD`
+- Aqua accent: `#4EF9F3`
+- Border: `#DEDEE6`
+- Destructive: `#C92A35`
 
-Cyan is the functional brand color for primary actions, links, selected states,
-icons, progress, and focus. Red is limited to small labels, alerts, status
-markers, and occasional geometric details. Never use red for a large section.
+Use display violet for large text and decorative rules. Use the stronger
+interactive violet for buttons, links, focus, and small text. Aqua is a sparse
+highlight with dark foreground text; it is not body text on white. Red and
+amber remain semantic colors only.
 
-## Background And Surfaces
+## Layout And Surfaces
 
-- The global Atlas Network wallpaper remains text-free and low contrast.
-- Desktop uses `atlas-network-wallpaper-desktop.webp`; mobile uses the dedicated
-  portrait crop.
-- Content sections use 78-96% opaque navy surfaces so wallpaper detail never
-  competes with copy.
-- Cards use Dark Navy; elevated controls and panels use Tech Panel.
-- Cyan glow is restrained to one focal element per viewport and never reduces
-  edge or text contrast.
-
-## Shape And Elevation
-
-- Controls: 12-16px radius.
-- Cards and imagery: 24-32px radius.
-- Shadows use neutral black and optional low-opacity cyan, never warm brown.
-- Interactive cards may move up by at most 6px on hover.
+- Use full-bleed photographic heroes or clean split compositions.
+- Alternate white, soft neutral, and pale-violet sections.
+- Prefer asymmetrical editorial grids and generous vertical rhythm.
+- Cards are flat white surfaces with 0–8px radii, thin borders, and subtle
+  violet-neutral shadows.
+- Use 1–4px violet rules and section dividers instead of glow, glass, or
+  decorative technical grids.
+- Admin pages use the same tokens in a denser dedicated private shell.
 
 ## Motion
 
-- Press and hover feedback: 150-260ms.
-- Scroll reveals: 580ms using an ease-out curve.
-- Animate one or two focal elements per viewport.
-- Never use scroll-jacking, custom cursors, parallax wallpaper, or continuous
-  decorative motion.
-- Under `prefers-reduced-motion`, present all content immediately and remove
-  staged transforms and typewriter effects.
+- Hover and press feedback: 160–240ms.
+- Scroll reveals: 480ms, opacity plus no more than 14px vertical movement.
+- No continuous decorative motion, typewriter effects, parallax, or custom
+  cursors.
+- Under `prefers-reduced-motion`, show content immediately.
 
 ## Imagery
 
-Use text-free editorial 3D scenes built from dark brushed metal, smoked glass,
-frosted cyan glass, precise light routes, and sparse red calibration markers.
-Images should feel technical but approachable. Avoid purple gradients, neon
-overload, generic glowing brains, fake UI text, and busy compositions.
+Use original, text-free documentary workplace photography: real-looking
+people, modest studios, whiteboards, laptops, notes, cables, and natural light.
+Keep skin, fabric, paper, and architectural texture believable. Add violet or
+aqua line motifs with CSS or local SVG overlays rather than baking branding
+into photographs. Avoid copied reference assets, staged stock-photo smiles,
+generic robots, holograms, neon lighting, fake UI text, and futuristic AI
+cliches.
 
-## Brand Assets & Tool Logos
+Project imagery is local under `public/images/`, rendered with `next/image`,
+stable dimensions, responsive `sizes`, useful alt text, and priority only for
+the LCP image.
 
-- **Local Storage**: Official vector SVGs are stored under `public/brands/` to prevent third-party runtime dependencies.
-- **Sizing & Aspect Ratio**: Logos must preserve official proportions without stretching or cropping.
-- **Visual Contrast (Dark Tiles)**: Render official brand colors inside rounded dark elevated tiles (`#0B1626`, border `#1E3A4A`, radius `16px`) to ensure harmonized aesthetics on Atlas Night (`#020617`) and satisfy contrast requirements.
-- **Logo Constellation**: scattered absolute-positioned background logos must maintain low opacity (`opacity: 0.12`) with background blur and navy overlays to stay subtle. Desktop displays up to 10 nodes, while mobile is limited to 3 key nodes to prevent clutter.
-- **Micro-Animations**: Limit to soft entrance fades and subtle hover scale adjustments (no continuous rotation or floating).
+## Brand Assets
+
+Official tool logos remain local under `public/brands/` and preserve their
+original proportions and colors. When logos appear, use white or pale-violet
+tiles with neutral borders. Do not use third-party runtime logo dependencies.
 
 ## Accessibility
 
 - WCAG AA contrast for text and controls.
-- Cyan buttons use Atlas Night text.
 - Minimum interactive target: 44px.
-- Visible Neon Cyan focus rings on every interactive element.
-- Dialogs and sheets require titles, descriptions, Escape handling, focus
+- Visible violet focus rings on links, controls, fields, summaries, and menus.
+- Aqua controls always use dark text.
+- Dialogs and sheets retain titles, descriptions, Escape handling, focus
   trapping, and focus return.
-- Navigation exposes `aria-current`.
-- Wallpaper and logo constellations are decorative and must use `aria-hidden="true"`.
+- Navigation exposes `aria-current` and mobile menus remain keyboard usable.
+- Photography receives descriptive alt text unless it is purely decorative.
 - All motion has a reduced-motion equivalent.
-

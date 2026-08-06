@@ -23,7 +23,7 @@ export function SectionHeading({
       )}
     >
       {eyebrow && <Badge variant="secondary">{eyebrow}</Badge>}
-      <h2 className="text-balance text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
+      <h2 className="text-balance text-4xl leading-[1.02] text-display-violet sm:text-6xl">
         {title}
       </h2>
       {description && (

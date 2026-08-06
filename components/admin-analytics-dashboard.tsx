@@ -41,10 +41,10 @@ const RANGE_OPTIONS: Array<{ key: AnalyticsRangeKey; label: string }> = [
   { key: "all", label: "All" },
 ];
 
-const cyan = "#00c8f5";
-const cyanSoft = "rgba(0, 200, 245, 0.16)";
-const steel = "#94a3b8";
-const navyLine = "rgba(30, 58, 74, 0.78)";
+const cyan = "#5b45d6";
+const cyanSoft = "rgba(127, 107, 255, 0.14)";
+const steel = "#60616b";
+const navyLine = "rgba(91, 69, 214, 0.16)";
 
 function formatNumber(value: number | null) {
   return value === null ? "Not connected" : new Intl.NumberFormat("en").format(value);
@@ -66,13 +66,13 @@ function KpiCard({
   icon: typeof Users;
 }) {
   return (
-    <article className="min-h-36 rounded-3xl border bg-card/94 p-5 shadow-[0_18px_55px_rgb(0_0_0/0.22)]">
+    <article className="min-h-36 rounded-md border bg-card p-5 shadow-[0_10px_35px_rgb(34_25_85/0.07)]">
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-muted-foreground">{label}</p>
           <p className="mt-3 text-3xl font-semibold tracking-tight">{value}</p>
         </div>
-        <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl border border-primary/25 bg-primary/10 text-primary">
+        <span className="flex size-11 shrink-0 items-center justify-center rounded-sm border border-primary/25 bg-primary/10 text-primary">
           <Icon className="size-5" />
         </span>
       </div>
@@ -93,7 +93,7 @@ function Panel({
   className?: string;
 }) {
   return (
-    <section className={cn("rounded-3xl border bg-card/94 p-5 shadow-[0_18px_55px_rgb(0_0_0/0.22)] sm:p-6", className)}>
+    <section className={cn("rounded-md border bg-card p-5 shadow-[0_10px_35px_rgb(34_25_85/0.07)] sm:p-6", className)}>
       <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
         <div>
           {eyebrow && <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-primary">{eyebrow}</p>}
@@ -107,7 +107,7 @@ function Panel({
 
 function EmptyState({ label }: { label: string }) {
   return (
-    <div className="flex min-h-48 items-center justify-center rounded-2xl border border-dashed bg-secondary/35 p-6 text-center text-sm text-muted-foreground">
+    <div className="flex min-h-48 items-center justify-center rounded-sm border border-dashed bg-secondary/35 p-6 text-center text-sm text-muted-foreground">
       {label}
     </div>
   );
@@ -133,7 +133,7 @@ function TrafficTrend({ data }: { data: AnalyticsDashboardData }) {
           <YAxis tick={{ fill: steel, fontSize: 12 }} tickLine={false} axisLine={false} allowDecimals={false} />
           <Tooltip
             cursor={{ stroke: cyan, strokeOpacity: 0.3 }}
-            contentStyle={{ background: "#07111f", border: "1px solid #1e3a4a", borderRadius: 16, color: "#f8fafc" }}
+            contentStyle={{ background: "#ffffff", border: "1px solid #dedee6", borderRadius: 6, color: "#0a0a0a" }}
           />
           <Area type="monotone" dataKey="pageviews" name="Pageviews" stroke={cyan} fill="url(#pageviewsFill)" strokeWidth={2} />
           <Area type="monotone" dataKey="visitors" name="Visitors" stroke="#94a3b8" fill="transparent" strokeWidth={2} />
@@ -157,7 +157,7 @@ function DownloadTrend({ data }: { data: AnalyticsDashboardData }) {
           <YAxis tick={{ fill: steel, fontSize: 12 }} tickLine={false} axisLine={false} allowDecimals={false} />
           <Tooltip
             cursor={{ fill: cyanSoft }}
-            contentStyle={{ background: "#07111f", border: "1px solid #1e3a4a", borderRadius: 16, color: "#f8fafc" }}
+            contentStyle={{ background: "#ffffff", border: "1px solid #dedee6", borderRadius: 6, color: "#0a0a0a" }}
           />
           <Bar dataKey="downloads" name="Downloads" fill={cyan} radius={[8, 8, 0, 0]} />
         </BarChart>
@@ -205,7 +205,7 @@ function StatusPill({ status }: { status: SourceStatus }) {
   }[status.state];
 
   return (
-    <article className="rounded-2xl border bg-secondary/35 p-4">
+    <article className="rounded-sm border bg-secondary/35 p-4">
       <div className="flex items-start justify-between gap-3">
         <div>
           <h3 className="font-semibold">{status.label}</h3>
@@ -223,7 +223,7 @@ function RecentEvents({ rows }: { rows: RecentEventRow[] }) {
   if (!rows.length) return <EmptyState label="Recent event rows will appear after tracking starts." />;
 
   return (
-    <div className="overflow-hidden rounded-2xl border">
+    <div className="overflow-hidden rounded-sm border">
       <div className="grid grid-cols-[1.1fr_0.9fr_0.8fr] gap-3 border-b bg-secondary/45 px-4 py-3 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-muted-foreground">
         <span>Event</span>
         <span>Context</span>
@@ -251,7 +251,7 @@ function RecentEvents({ rows }: { rows: RecentEventRow[] }) {
 export function AdminAnalyticsDashboard({ data }: { data: AnalyticsDashboardData }) {
   return (
     <div className="space-y-6">
-      <div className="flex flex-col gap-4 rounded-3xl border bg-card/94 p-5 shadow-[0_18px_55px_rgb(0_0_0/0.22)] lg:flex-row lg:items-center lg:justify-between">
+      <div className="flex flex-col gap-4 rounded-md border bg-card p-5 shadow-[0_10px_35px_rgb(34_25_85/0.07)] lg:flex-row lg:items-center lg:justify-between">
         <div>
           <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-primary">Window</p>
           <h2 className="mt-1 text-2xl font-semibold">{data.range.label}</h2>
@@ -263,7 +263,7 @@ export function AdminAnalyticsDashboard({ data }: { data: AnalyticsDashboardData
               key={option.key}
               href={`/admin/analytics?range=${option.key}`}
               className={cn(
-                "flex h-11 min-w-14 items-center justify-center rounded-2xl border px-4 text-sm font-semibold transition-colors",
+                "flex h-11 min-w-14 items-center justify-center rounded-sm border px-4 text-sm font-semibold transition-colors",
                 data.range.key === option.key
                   ? "border-primary bg-primary text-primary-foreground"
                   : "bg-secondary/45 text-muted-foreground hover:border-primary/45 hover:text-foreground",
