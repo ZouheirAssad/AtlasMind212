@@ -75,7 +75,7 @@ function isRecoverableReadError(error: unknown) {
     "ENOTFOUND",
   ];
   if (code && recoverableCodes.includes(code)) return true;
-  return /fetch failed|network error|getaddrinfo|ECONNREFUSED|ETIMEDOUT|ENOTFOUND|ECONNRESET|invalid api key|Invalid API key|incorrect endpoint|JWSError|JWT/i.test(message);
+  return /fetch failed|network error|getaddrinfo|ECONNREFUSED|ETIMEDOUT|ENOTFOUND|ECONNRESET|invalid api key|incorrect endpoint|not configured|JWSError|JWT/i.test(message);
 }
 
 function logReadError(operation: string, error: unknown) {
@@ -183,8 +183,12 @@ export async function listPublishedGuidesRecoverable(): Promise<GuideListResult>
   try {
     return { status: "ok", guides: await listPublishedGuides() };
   } catch (error) {
+    if (isRecoverableReadError(error)) {
+      const message = (error as { message?: string })?.message ?? String(error);
+      console.warn("[guides] Public guide library is unavailable:", message.split("\n")[0]);
+      return { status: "unavailable" };
+    }
     logReadError("listPublishedGuidesRecoverable", error);
-    if (isRecoverableReadError(error)) return { status: "unavailable" };
     throw error;
   }
 }

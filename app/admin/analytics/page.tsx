@@ -35,8 +35,7 @@ export default async function AdminAnalyticsPage({ searchParams }: AdminAnalytic
   const data = await getAnalyticsDashboardData(range);
 
   return (
-    <section className="relative overflow-hidden bg-neutral-surface py-10 sm:py-16">
-      <div className="absolute inset-0 -z-10 editorial-grid-soft paper-grain mask-fade-y opacity-70" />
+    <section className="bg-[#f7f7fa] py-10 sm:py-16">
       <Container className="space-y-8">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div>

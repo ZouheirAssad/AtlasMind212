@@ -10,7 +10,7 @@ export function ContentDisclosure({ guide, className }: ContentDisclosureProps) 
 
   return (
     <aside
-      className={`rounded-2xl border border-border bg-secondary/40 p-5 text-sm text-muted-foreground ${className ?? ""}`}
+      className={`border-l-4 border-primary-display bg-secondary/55 p-5 text-sm text-muted-foreground ${className ?? ""}`}
     >
       {guide.is_sponsored && (
         <p className="mb-3 last:mb-0">

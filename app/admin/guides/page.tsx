@@ -197,7 +197,7 @@ type GuideEditorProps = {
 
 function GuideEditor({ guide, thumbnailUrl, pdfUrl }: GuideEditorProps) {
   return (
-    <article className="overflow-hidden rounded-3xl border bg-card/94 shadow-xl">
+    <article className="overflow-hidden rounded-md border bg-card shadow-[0_10px_35px_rgb(34_25_85/0.07)]">
       <div className="grid gap-0 lg:grid-cols-[18rem_1fr]">
         <div className="relative min-h-64 bg-secondary flex flex-col justify-center items-center p-6 border-b lg:border-b-0 lg:border-r">
           {thumbnailUrl ? (
@@ -253,7 +253,7 @@ function GuideEditor({ guide, thumbnailUrl, pdfUrl }: GuideEditorProps) {
               </form>
             </div>
           </div>
-          <details className="rounded-2xl border bg-secondary/40 p-5">
+          <details className="rounded-sm border bg-secondary/40 p-5">
             <summary className="flex min-h-11 cursor-pointer items-center gap-2 font-semibold text-primary">
               <Pencil className="size-4" /> Edit content item
             </summary>
@@ -288,8 +288,7 @@ export default async function AdminGuidesPage({ searchParams }: AdminGuidesPageP
   );
 
   return (
-    <section className="relative overflow-hidden bg-neutral-surface py-16 sm:py-24">
-      <div className="absolute inset-0 -z-10 editorial-grid-soft paper-grain mask-fade-y opacity-70" />
+    <section className="bg-[#f7f7fa] py-12 sm:py-16">
       <Container className="space-y-10">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
@@ -321,7 +320,7 @@ export default async function AdminGuidesPage({ searchParams }: AdminGuidesPageP
         {(params.message || params.error) && (
           <div
             role={params.error ? "alert" : "status"}
-            className={`rounded-2xl border p-4 text-sm font-semibold ${
+            className={`rounded-sm border p-4 text-sm font-semibold ${
               params.error
                 ? "border-destructive/40 bg-destructive/10 text-destructive"
                 : "border-primary/40 bg-primary/10 text-primary"
@@ -332,19 +331,19 @@ export default async function AdminGuidesPage({ searchParams }: AdminGuidesPageP
         )}
 
         {cmsReadIssue ? (
-          <div role="alert" className="rounded-3xl border border-destructive/40 bg-destructive/10 p-6 shadow-xl sm:p-8">
+          <div role="alert" className="rounded-md border border-destructive/40 bg-destructive/10 p-6 sm:p-8">
             <p className="font-mono text-xs uppercase tracking-[0.16em] text-destructive">CMS schema needs migration</p>
             <h2 className="mt-3 text-2xl font-semibold text-foreground">Content management is paused.</h2>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-muted-foreground">{cmsReadIssue.message}</p>
-            <p className="mt-5 rounded-2xl border bg-background/50 p-4 font-mono text-xs leading-6 text-muted-foreground">
+            <p className="mt-5 rounded-sm border bg-background/50 p-4 text-xs leading-6 text-muted-foreground">
               Required migration: supabase/migrations/20260702190000_fix_cms_monetization_columns.sql
             </p>
           </div>
         ) : (
           <>
-            <div className="rounded-3xl border bg-card/94 p-6 shadow-xl sm:p-8">
+            <div className="rounded-md border bg-card p-6 shadow-[0_10px_35px_rgb(34_25_85/0.07)] sm:p-8">
               <div className="mb-7 flex items-center gap-3">
-                <span className="flex size-11 items-center justify-center rounded-2xl bg-secondary text-primary">
+                <span className="flex size-11 items-center justify-center rounded-sm bg-secondary text-primary">
                   <Plus className="size-5" />
                 </span>
                 <div>
@@ -374,7 +373,7 @@ export default async function AdminGuidesPage({ searchParams }: AdminGuidesPageP
                   ))}
                 </div>
               ) : (
-                <div className="rounded-3xl border border-dashed bg-card/70 p-10 text-center text-muted-foreground">
+                <div className="rounded-md border border-dashed bg-card/70 p-10 text-center text-muted-foreground">
                   No content items yet. Create the first article or guide above.
                 </div>
               )}

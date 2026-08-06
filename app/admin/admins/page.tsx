@@ -43,8 +43,7 @@ export default async function AdminsPage({ searchParams }: AdminsPageProps) {
   ]);
 
   return (
-    <section className="relative overflow-hidden bg-neutral-surface py-16 sm:py-24">
-      <div className="absolute inset-0 -z-10 editorial-grid-soft paper-grain mask-fade-y opacity-70" />
+    <section className="bg-[#f7f7fa] py-12 sm:py-16">
       <Container className="space-y-8">
         <Button asChild variant="outline">
           <Link href="/admin/guides">
@@ -65,7 +64,7 @@ export default async function AdminsPage({ searchParams }: AdminsPageProps) {
         {(params.message || params.error) && (
           <div
             role={params.error ? "alert" : "status"}
-            className={`rounded-2xl border p-4 text-sm font-semibold ${
+            className={`rounded-sm border p-4 text-sm font-semibold ${
               params.error
                 ? "border-destructive/40 bg-destructive/10 text-destructive"
                 : "border-primary/40 bg-primary/10 text-primary"
@@ -76,9 +75,9 @@ export default async function AdminsPage({ searchParams }: AdminsPageProps) {
         )}
 
         <div className="grid gap-6 lg:grid-cols-[0.82fr_1.18fr]">
-          <form action={inviteAdmin} className="rounded-3xl border bg-card/94 p-6 shadow-xl sm:p-8">
+          <form action={inviteAdmin} className="rounded-md border bg-card p-6 shadow-[0_10px_35px_rgb(34_25_85/0.07)] sm:p-8">
             <div className="mb-7 flex items-center gap-3">
-              <span className="flex size-11 items-center justify-center rounded-2xl bg-secondary text-primary">
+              <span className="flex size-11 items-center justify-center rounded-sm bg-secondary text-primary">
                 <UserPlus className="size-5" />
               </span>
               <div>
@@ -101,9 +100,9 @@ export default async function AdminsPage({ searchParams }: AdminsPageProps) {
             </FieldGroup>
           </form>
 
-          <div className="rounded-3xl border bg-card/94 p-6 shadow-xl sm:p-8">
+          <div className="rounded-md border bg-card p-6 shadow-[0_10px_35px_rgb(34_25_85/0.07)] sm:p-8">
             <div className="mb-7 flex items-center gap-3">
-              <span className="flex size-11 items-center justify-center rounded-2xl bg-secondary text-primary">
+              <span className="flex size-11 items-center justify-center rounded-sm bg-secondary text-primary">
                 <ShieldCheck className="size-5" />
               </span>
               <div>
@@ -113,7 +112,7 @@ export default async function AdminsPage({ searchParams }: AdminsPageProps) {
             </div>
 
             {accounts.length ? (
-              <div className="divide-y divide-border rounded-2xl border">
+              <div className="divide-y divide-border rounded-sm border">
                 {accounts.map((account) => (
                   <div key={account.id} className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between">
                     <div>
@@ -133,7 +132,7 @@ export default async function AdminsPage({ searchParams }: AdminsPageProps) {
                 ))}
               </div>
             ) : (
-              <div className="rounded-2xl border border-dashed bg-secondary/30 p-8 text-center text-sm text-muted-foreground">
+              <div className="rounded-sm border border-dashed bg-secondary/30 p-8 text-center text-sm text-muted-foreground">
                 No Supabase Auth users currently match the admin rules.
               </div>
             )}

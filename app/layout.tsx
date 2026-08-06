@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import { Calistoga, Inter, JetBrains_Mono } from "next/font/google";
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
+import { Inter } from "next/font/google";
 import { MotionProvider } from "@/components/motion-provider";
-import { ScrollProgress } from "@/components/scroll-progress";
 import { JsonLd, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const calistoga = Calistoga({ subsets: ["latin"], variable: "--font-calistoga", weight: "400", display: "swap" });
-const jetBrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains", display: "swap" });
 
 export const metadata: Metadata = {
   title: {
@@ -42,20 +37,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${calistoga.variable} ${jetBrainsMono.variable}`}
+      className={inter.variable}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <body className="min-h-screen antialiased" suppressHydrationWarning>
         <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
         <a href="#main-content" className="skip-link">Skip to content</a>
-        <MotionProvider>
-          <ScrollProgress />
-          <Header />
-          <main id="main-content">{children}</main>
-          <Footer />
-          <Analytics />
-        </MotionProvider>
+        <MotionProvider>{children}</MotionProvider>
+        <Analytics />
       </body>
     </html>
   );

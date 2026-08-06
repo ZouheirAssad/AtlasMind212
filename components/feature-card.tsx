@@ -18,14 +18,14 @@ export function FeatureCard({
   ctaLabel?: string;
 }) {
   return (
-    <Card className="group relative h-full overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/50 hover:shadow-[0_24px_60px_rgb(0_200_245/0.1)]">
-      <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100" />
+    <Card className="group relative h-full overflow-hidden transition-colors duration-200 hover:border-primary/45">
+      <div className="absolute inset-y-0 left-0 w-1 bg-primary-display" />
       <CardHeader>
         <div className="flex items-center justify-between gap-4">
-          <span className="flex size-12 items-center justify-center rounded-2xl bg-secondary text-primary transition-transform duration-300 group-hover:rotate-3 group-hover:scale-105">
+          <span className="flex size-12 items-center justify-center rounded-sm bg-secondary text-primary">
             <Icon className="size-5" />
           </span>
-          {meta && <span className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">{meta}</span>}
+          {meta && <span className="text-xs font-bold uppercase tracking-[0.12em] text-muted-foreground">{meta}</span>}
         </div>
         <CardTitle className="pt-3 text-2xl tracking-[-0.03em]">{title}</CardTitle>
         <CardDescription className="text-base leading-7">{description}</CardDescription>

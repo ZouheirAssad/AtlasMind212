@@ -70,11 +70,10 @@ export default async function GuidePage({ params }: GuidePageProps) {
   if (result.status === "unavailable") {
     return (
       <article>
-        <section className="relative overflow-hidden bg-cream py-16 sm:py-24">
-          <div className="absolute inset-0 -z-10 editorial-grid-soft paper-grain mask-fade-y opacity-70" />
+        <section className="bg-[#f7f6ff] py-16 sm:py-24">
           <Container>
-            <div className="mx-auto flex max-w-2xl flex-col items-center rounded-3xl border border-dashed border-primary/40 bg-card/80 p-10 text-center shadow-xl">
-              <span className="flex size-14 items-center justify-center rounded-2xl border border-primary/30 bg-secondary text-primary">
+            <div className="mx-auto flex max-w-2xl flex-col items-center border border-dashed border-primary/40 bg-card p-10 text-center shadow-[0_12px_40px_rgb(34_25_85/0.08)]">
+              <span className="flex size-14 items-center justify-center border border-primary/30 bg-secondary text-primary">
                 <FileText className="size-6" />
               </span>
               <h1 className="mt-6 font-display text-4xl tracking-[-0.04em] sm:text-5xl">
@@ -135,8 +134,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
   return (
     <article>
       <JsonLd data={schemas} />
-      <section className="relative overflow-hidden bg-cream py-10 sm:py-16">
-        <div className="absolute inset-0 -z-10 editorial-grid-soft paper-grain mask-fade-y opacity-70" />
+      <section className="bg-[#f7f6ff] py-12 sm:py-20">
         <Container>
           <Button asChild variant="outline" className="mb-8">
             <Link href="/blog">
@@ -150,7 +148,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
                 {guide.content_type === "article" ? <BookOpen className="size-3" /> : <FileText className="size-3" />}
                 <span className="ml-1 uppercase tracking-wider">{guide.content_type}</span>
               </Badge>
-              <h1 className="font-display text-5xl leading-tight tracking-[-0.05em] sm:text-7xl">
+              <h1 className="text-5xl leading-[1.02] sm:text-7xl">
                 {guide.title}
               </h1>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">
@@ -185,7 +183,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
             </div>
 
             {thumbnailUrl && (
-              <div className="relative overflow-hidden rounded-[2rem] border bg-secondary shadow-[0_28px_80px_rgb(0_0_0/0.35)]">
+              <div className="relative overflow-hidden border bg-secondary shadow-[0_12px_40px_rgb(34_25_85/0.1)]">
                 <Image
                   src={thumbnailUrl}
                   alt={guide.thumbnail_alt || guide.title}
@@ -202,8 +200,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
       {/* Article Body Section & Gated Download Form */}
       {guide.article_body && (
-        <section className="relative overflow-hidden bg-neutral-surface py-16">
-          <div className="absolute inset-0 -z-10 editorial-grid-soft paper-grain mask-fade-y opacity-60" />
+        <section className="bg-white py-16">
           <Container className="max-w-3xl mx-auto">
             {guide.article_body && <MarkdownContent source={guide.article_body} />}
 
@@ -215,9 +212,9 @@ export default async function GuidePage({ params }: GuidePageProps) {
                   Get a handy downloadable PDF version of this article to save, reference, or share with your team.
                 </p>
                 {canDownload ? (
-                  <div className="rounded-3xl border border-primary/30 bg-primary/5 p-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between shadow-xl">
+                  <div className="flex flex-col gap-4 border-l-4 border-primary bg-[#f7f6ff] p-6 sm:flex-row sm:items-center sm:justify-between">
                     <div>
-                      <p className="font-mono text-xs uppercase tracking-[0.16em] text-primary">Unlocked</p>
+                      <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">Unlocked</p>
                       <h4 className="text-xl font-semibold mt-1">Your PDF is ready for download.</h4>
                     </div>
                     <Button asChild size="lg" className="h-12">
@@ -239,13 +236,12 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
       {/* Fallback direct download section if no article body but it's already unlocked/ungated */}
       {!guide.article_body && hasPdf && canDownload && (
-        <section className="relative overflow-hidden bg-neutral-surface py-16">
-          <div className="absolute inset-0 -z-10 editorial-grid-soft paper-grain mask-fade-y opacity-60" />
+        <section className="bg-white py-16">
           <Container>
-            <div className="rounded-3xl border bg-card/94 p-6 shadow-xl sm:p-8">
+            <div className="border bg-card p-6 shadow-[0_12px_40px_rgb(34_25_85/0.08)] sm:p-8">
               <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                  <p className="font-mono text-xs uppercase tracking-[0.16em] text-primary">Unlocked Direct PDF</p>
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">Unlocked Direct PDF</p>
                   <h2 className="mt-2 text-2xl font-semibold">Ready to download and send.</h2>
                   <p className="mt-2 text-sm text-muted-foreground">
                     Use this page URL for a preview card, or use the download button for the PDF file.

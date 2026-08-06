@@ -20,8 +20,9 @@ Public routes:
 - `/privacy`
 - `/imprint`
 
-The homepage includes an interactive goal terminal, a before/after system
-comparison, a connected implementation story, and service cards.
+The homepage uses an original full-bleed editorial photograph, oversized value
+statement, asymmetric implementation story, service modules, process steps,
+and a focused contact call to action.
 
 ## Data And APIs
 
@@ -102,23 +103,23 @@ VERCEL_ANALYTICS_DRAIN_SECRET
 
 ## Design State
 
-The active design direction is dark editorial technology:
+The active direction is a single light editorial technology theme:
 
-- Background: Atlas Night `#020617`
-- Deep surface: `#07111F`
-- Elevated surface: `#0B1626`
-- Primary: Electric Cyan `#00C8F5`
-- Glow and focus: Neon Cyan `#38DDFB`
-- Main text: `#F8FAFC`
-- Muted text: `#94A3B8`
-- Accent: Atlas Red `#F0323D`
-- Border: `#1E3A4A`
+- Canvas: white `#FFFFFF`
+- Tinted surface: `#F7F6FF`
+- Soft neutral surface: `#F7F7FA`
+- Main text: `#0A0A0A`
+- Muted text: `#60616B`
+- Display violet: `#7F6BFF`
+- Interactive violet: `#5B45D6`
+- Aqua accent: `#4EF9F3`
+- Border: `#DEDEE6`
 
-The site uses a responsive Atlas Network wallpaper and five generated dark 3D
-editorial illustrations in `public/images`. Typography uses Calistoga, Inter,
-and JetBrains Mono. Motion respects `prefers-reduced-motion`.
-
-Official brand logos (`public/brands/`) render in their vendor colors inside dark rounded tiles (`#0B1626`, border `#1E3A4A`, radius `16px`) for visual harmony. Backgrounds feature a sparse, non-interactive logo constellation (`components/logo-constellation.tsx`) at 12% opacity with responsive viewport filtering (fewer nodes on mobile).
+Typography uses Inter throughout. The site uses original generated documentary
+workplace photography in `public/images/editorial-*.webp`, oversized sans-serif
+headlines, thin rules, asymmetric grids, small radii, and restrained motion.
+Public routes live under the URL-neutral `app/(site)` route group. Admin routes
+use a dedicated private shell and the same light tokens in a denser layout.
 
 ## Quality Baseline
 
@@ -139,6 +140,21 @@ Additional SEO/GEO verification on July 1, 2026:
 - `npm audit --omit=dev` reports zero vulnerabilities.
 - Local route checks pass for `/robots.txt`, `/sitemap.xml`, `/llms.txt`,
   `/services.md`, `/company.md`, and the three service detail pages.
+
+Editorial redesign verification on August 6, 2026:
+
+- ESLint and the Next.js 16.2.9 production build pass.
+- Desktop (1280x720) and mobile (390x844) browser checks pass for the homepage,
+  services, about, contact, guide index, and admin login surfaces.
+- Tested routes have no horizontal overflow; generated editorial images load
+  correctly, the mobile navigation is keyboard-labelled, and primary controls
+  retain 44px minimum touch targets.
+- The public guide index now renders its unavailable state when local Supabase
+  public variables are missing instead of failing the route.
+- `npm audit --omit=dev` currently reports three high-severity advisories in the
+  Next.js/PostCSS/Sharp dependency tree. The available automatic fix upgrades
+  Next.js and rewrites the dependency tree, so it is intentionally left for a
+  dedicated dependency-upgrade change with regression testing.
 
 ## Deployment
 
