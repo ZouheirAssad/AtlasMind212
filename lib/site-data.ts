@@ -1,5 +1,7 @@
 import {
   Bot,
+  Braces,
+  Compass,
   PanelsTopLeft,
   Workflow,
 } from "lucide-react";
@@ -14,274 +16,454 @@ export const navItems = [
 
 export const services = [
   {
-    slug: "business-website",
-    title: "Business Website",
-    shortTitle: "Websites",
+    slug: "web-development",
+    title: "Web Development",
+    shortTitle: "Web Development",
     icon: PanelsTopLeft,
+    engagement: "Project delivery",
     description:
-      "Conversion-focused business websites with responsive pages, integrated lead/contact flows, SEO foundations, and analytics-ready setup.",
-    image: {
-      src: "/images/service-business-website-tools.webp",
-      alt: "A dark business website implementation dashboard connected to AI and automation tool badges",
+      "Fast, accessible business websites and web applications designed around clear user journeys and measurable business goals.",
+    heroImage: {
+      src: "/images/editorial-services.webp",
+      alt: "A developer reviewing a web application project at a studio desk",
     },
-    seoTitle: "Business Website Development for Lead Generation",
+    seoTitle: "Web Development for Business Websites & Web Apps",
     metaDescription:
-      "AtlasMind212 builds fast, conversion-focused business websites with SEO foundations, lead capture, contact flows, and clean handoff.",
+      "AtlasMind212 designs and develops fast business websites and web applications with accessible interfaces, integrations, SEO foundations, and documented handoff.",
     definition:
-      "A business website from AtlasMind212 is a high-performance marketing site built to explain your offer, earn trust, and convert visitors into qualified project inquiries. Each build combines responsive pages, technical SEO basics, lead capture, contact routing, and handoff documentation.",
+      "AtlasMind212 develops production-ready websites and web applications that make a service easier to understand, a process easier to use, or a digital product easier to operate. Each project combines clear structure, responsive implementation, accessibility, performance, integrations, deployment, and maintainable handoff.",
     audience:
-      "B2B companies, consultants, agencies, and professional service firms that need a faster, clearer website for service leads.",
+      "Small and midsize businesses, startups, and product teams that need a new website, customer portal, dashboard, or focused web application.",
     deliverables: [
-      "Responsive marketing pages",
-      "Lead and contact flow",
-      "SEO metadata and crawl basics",
+      "Responsive website or web application",
+      "Accessible interface and interaction states",
+      "SEO and performance foundations",
+      "Forms, authentication, or product integrations",
       "Analytics-ready event structure",
-      "Performance-focused Next.js build",
       "Deployment and handoff documentation",
     ],
     useCases: [
-      "Replace an outdated brochure site with a faster marketing site.",
-      "Launch a new service offer with clear conversion paths.",
-      "Create a professional web presence before outbound campaigns.",
-      "Connect website inquiries to email, CRM, or database workflows.",
-      "Prepare the site for search indexing and AI-answer citations.",
+      "Replace an outdated website with a faster, clearer digital presence.",
+      "Build a customer portal, dashboard, or internal web tool.",
+      "Launch a new service or product with a focused conversion journey.",
+      "Turn a manual browser-based process into a purpose-built application.",
+      "Improve accessibility, performance, and maintainability in an existing frontend.",
     ],
     process: [
       {
-        title: "Positioning",
-        description: "Clarify the audience, offer, proof points, and core conversion goal.",
+        title: "Discovery",
+        description: "Clarify users, business goals, requirements, constraints, and the smallest valuable release.",
       },
       {
-        title: "Structure",
-        description: "Map the page hierarchy, calls to action, metadata, and form paths.",
+        title: "Product structure",
+        description: "Define information architecture, user journeys, interface states, and technical boundaries.",
       },
       {
-        title: "Build",
-        description: "Implement responsive pages, performance-safe images, forms, and analytics-ready markup.",
+        title: "Implementation",
+        description: "Build responsive, accessible pages and features in reviewable checkpoints.",
       },
       {
-        title: "Launch",
-        description: "Deploy, verify mobile and desktop behavior, and hand over operating notes.",
+        title: "Launch and handoff",
+        description: "Verify production behavior, deploy the project, and document ownership and maintenance.",
       },
     ],
     outcomes: [
-      "A professional site that explains the offer without extra meetings.",
-      "Clear contact and lead paths for qualified prospects.",
-      "A crawlable foundation for SEO and GEO work.",
-      "A maintainable website stack your team can own.",
+      "A clear digital experience built around real users and business goals.",
+      "Faster, more accessible pages across mobile and desktop.",
+      "Reliable paths for customer actions, leads, or internal work.",
+      "A maintainable codebase and documented deployment your team can own.",
     ],
     faqs: [
       {
-        question: "What makes a business website SEO-ready?",
+        question: "What kinds of web projects do you build?",
         answer:
-          "An SEO-ready business website has crawlable pages, unique metadata, clean headings, descriptive internal links, optimized images, fast loading behavior, and content that clearly answers the buyer's search intent.",
+          "AtlasMind212 builds business websites, landing pages, web applications, dashboards, portals, and focused internal tools. The scope is shaped around the users and business outcome rather than a fixed page package.",
       },
       {
-        question: "Can AtlasMind212 connect forms to our existing tools?",
+        question: "Can you work with an existing website or application?",
         answer:
-          "Yes. The website can route contact and lead submissions to email, Supabase, CRM tools, spreadsheets, or automation platforms depending on the project scope.",
+          "Yes. A project can improve, extend, or rebuild an existing frontend when the current codebase and access allow a reliable handoff.",
       },
       {
-        question: "Do you use templates?",
+        question: "Do web projects include backend functionality?",
         answer:
-          "AtlasMind212 uses a focused implementation process, but the page structure, copy hierarchy, integrations, and visual system are built around the specific business offer.",
+          "They can. Forms, authentication, databases, APIs, and third-party services can be included directly or scoped through the Backend & API Development service.",
       },
       {
-        question: "How long does a business website project take?",
+        question: "Which technologies do you use?",
         answer:
-          "A focused business website usually takes 2-3 weeks after scope, content direction, and required integrations are agreed.",
+          "The primary stack is TypeScript, React, and Next.js, with supporting tools selected for the project's hosting, data, integration, and ownership requirements.",
       },
       {
-        question: "Is pricing public?",
+        question: "Is pricing fixed?",
         answer:
-          "Pricing is custom-scoped because page count, copy depth, integrations, and deployment requirements vary. The contact page is the best path for a project estimate.",
+          "No. Page count, product features, integrations, content readiness, and deployment requirements vary, so each project is scoped after discovery.",
       },
     ],
-    timeline: "2-3 weeks",
     bestFor:
-      "B2B and professional services firms needing a high-performance marketing site that generates and captures warm leads automatically.",
+      "Organizations that need a high-quality website or web product delivered from a clear scope through production launch.",
     outcome:
-      "A lightning-fast, conversion-optimized marketing site ready to route prospects directly to your sales funnel.",
+      "A fast, accessible, and maintainable web experience connected to the systems behind the work.",
   },
   {
-    slug: "ai-integration",
-    title: "AI Integration",
-    shortTitle: "AI Integrations",
-    icon: Bot,
+    slug: "backend-api-development",
+    title: "Backend & API Development",
+    shortTitle: "Backend & APIs",
+    icon: Braces,
+    engagement: "Project delivery",
     description:
-      "Intelligent website AI assistants coupled with automated connections to CRM, email, docs, spreadsheets, or internal tools.",
-    image: {
-      src: "/images/service-ai-integration-tools.webp",
-      alt: "A secure website AI assistant connected to documents, data tools, and automation app badges",
+      "Secure APIs, databases, middleware, and server-side systems that connect products, partners, and operational data.",
+    heroImage: {
+      src: "/images/editorial-workflow.webp",
+      alt: "Two professionals mapping the data flow for a backend system",
     },
-    seoTitle: "AI Assistant Integration for Business Websites",
+    seoTitle: "Backend & API Development for Digital Products",
     metaDescription:
-      "Connect AI assistants to your website, CRM, documents, spreadsheets, and internal tools with AtlasMind212 implementation services.",
+      "AtlasMind212 builds secure APIs, databases, middleware, webhooks, and backend services for web products and business systems.",
     definition:
-      "AI integration from AtlasMind212 connects a practical AI assistant to the systems your business already uses. The goal is to answer visitor questions, qualify leads, retrieve approved information, and send structured data to the right tools without exposing private credentials.",
+      "Backend and API development from AtlasMind212 creates the dependable layer behind a website, application, or business process. Work can include data models, authentication, integrations, webhooks, background jobs, and documented interfaces designed for secure operation and future maintenance.",
     audience:
-      "Teams that want useful AI assistants connected to website content, CRM records, documents, spreadsheets, or internal workflows.",
+      "Product teams, startups, and established businesses that need reliable server-side functionality or connections between existing systems.",
     deliverables: [
-      "Website AI assistant setup",
-      "Approved knowledge source mapping",
-      "CRM, email, docs, or spreadsheet connection",
-      "Lead qualification logic",
-      "Fallback and handoff behavior",
-      "Testing and implementation documentation",
+      "API and integration architecture",
+      "Database and data model implementation",
+      "Authentication and authorization flows",
+      "Webhooks, background jobs, or realtime behavior",
+      "Validation, error handling, and operational logging",
+      "Deployment and interface documentation",
     ],
     useCases: [
-      "Answer service questions from approved business information.",
-      "Qualify website visitors before a sales conversation.",
-      "Sync AI-collected lead details into a database or CRM.",
-      "Help teams retrieve internal process or documentation answers.",
-      "Create a safer handoff from AI chat to a human team member.",
+      "Create an API for a web application, partner, or internal team.",
+      "Connect a product to payment, email, CRM, or data services.",
+      "Replace fragile spreadsheet or webhook logic with a maintained service.",
+      "Add authentication, permissions, and secure server-side operations.",
+      "Design a database and backend for a new digital product.",
     ],
     process: [
       {
-        title: "Use-case selection",
-        description: "Choose the highest-value assistant workflow and define allowed data sources.",
+        title: "System review",
+        description: "Map consumers, data, security boundaries, integrations, and operational requirements.",
       },
       {
-        title: "System connection",
-        description: "Connect the assistant to approved tools, docs, forms, and routing logic.",
+        title: "Interface design",
+        description: "Define contracts, data models, permissions, failure behavior, and deployment boundaries.",
       },
       {
-        title: "Behavior testing",
-        description: "Test useful answers, fallback paths, and structured lead capture.",
+        title: "Implementation",
+        description: "Build the services, integrations, validation, and observability in testable increments.",
       },
       {
-        title: "Handoff",
-        description: "Document prompts, data flow, account ownership, and maintenance notes.",
+        title: "Production handoff",
+        description: "Verify critical flows, deploy safely, and document interfaces and operating responsibilities.",
       },
     ],
     outcomes: [
-      "A website assistant that supports prospects without replacing human judgment.",
-      "Cleaner lead data captured from conversational interactions.",
-      "Reduced manual lookup across docs, sheets, and CRM records.",
-      "A documented AI workflow your team can review and maintain.",
+      "Reliable interfaces between products and business systems.",
+      "Clear validation, permissions, and failure behavior.",
+      "Less fragile data movement and duplicated integration logic.",
+      "Documented backend services that can be maintained and extended.",
     ],
     faqs: [
       {
-        question: "What is AI assistant integration?",
+        question: "What backend work can AtlasMind212 deliver?",
         answer:
-          "AI assistant integration connects an AI interface to approved business systems so it can answer questions, collect structured information, and trigger handoffs using controlled data sources.",
+          "Projects can include REST APIs, server routes, databases, authentication, webhooks, scheduled jobs, realtime features, middleware, and third-party service integrations.",
       },
       {
-        question: "Can the assistant use our private documents?",
+        question: "Can you connect to our existing systems?",
         answer:
-          "Yes, when the project scope includes approved document access and appropriate security boundaries. Sensitive credentials remain server-side and are not exposed to visitors.",
+          "Yes, when the systems provide suitable API, webhook, database, or export access. Discovery confirms access, data ownership, and technical constraints before implementation.",
       },
       {
-        question: "Does AtlasMind212 train custom large language models?",
+        question: "How do you approach security?",
         answer:
-          "No. AtlasMind212 implements and connects existing AI models and tools. It does not train base models from scratch.",
+          "Sensitive credentials stay server-side, inputs are validated, permissions are enforced at the appropriate boundary, and the implementation documents the security assumptions relevant to the scope.",
       },
       {
-        question: "Which tools can be connected?",
+        question: "Do you provide API documentation?",
         answer:
-          "Common targets include CRM systems, email, Supabase, documents, spreadsheets, and workflow platforms such as n8n or Make, depending on API access.",
+          "Yes. The handoff includes the interface, authentication, environment, deployment, and operating information needed for the agreed consumers.",
       },
       {
-        question: "How long does an AI integration project take?",
+        question: "Can this service support an existing development team?",
         answer:
-          "A focused AI integration typically takes 2-4 weeks depending on the number of systems, data sources, and testing requirements.",
+          "Yes, as a clearly scoped delivery or consulting engagement with agreed interfaces and ownership. AtlasMind212 does not advertise open-ended staff augmentation.",
       },
     ],
-    timeline: "2-4 weeks",
     bestFor:
-      "Teams looking to scale customer operations, offload support load, and automate lead categorization using custom-connected AI assistants.",
+      "Teams that need secure data access, product integrations, or a dependable server-side foundation behind a digital service.",
     outcome:
-      "An embedded AI agent that instantly answers visitor questions and logs structured leads directly into your database or CRM.",
+      "A documented backend system with clear interfaces, secure data handling, and production-ready failure behavior.",
   },
   {
-    slug: "ai-automation",
-    title: "AI Automation",
+    slug: "technical-consulting",
+    title: "Technical Consulting & Product Conception",
+    shortTitle: "Technical Consulting",
+    icon: Compass,
+    engagement: "Focused advisory",
+    description:
+      "Practical technical direction for product ideas, architecture decisions, proofs of concept, delivery risks, and existing systems.",
+    heroImage: {
+      src: "/images/editorial-about.webp",
+      alt: "A product team discussing technical options around a studio table",
+    },
+    seoTitle: "Technical Consulting & Product Conception",
+    metaDescription:
+      "Get practical technical consulting for product requirements, architecture, technology selection, feasibility, proofs of concept, estimates, and delivery planning.",
+    definition:
+      "Technical consulting from AtlasMind212 turns an idea, bottleneck, or difficult technology decision into an actionable delivery path. The engagement combines business context with implementation experience to clarify requirements, evaluate options, expose risks, and define what should be built next.",
+    audience:
+      "Decision-makers, founders, and product or engineering teams that need an independent technical view before or during delivery.",
+    deliverables: [
+      "Requirements and constraint review",
+      "Architecture or technology recommendation",
+      "Feasibility study or focused proof of concept",
+      "Scope, effort, dependency, and risk assessment",
+      "Codebase, integration, or delivery review",
+      "Prioritized implementation roadmap",
+    ],
+    useCases: [
+      "Evaluate a product idea before committing to a full build.",
+      "Choose an architecture, platform, or integration approach.",
+      "Review an existing application before a major change or handover.",
+      "Turn unclear stakeholder needs into an implementable scope.",
+      "Test a risky assumption with a focused proof of concept.",
+    ],
+    process: [
+      {
+        title: "Context",
+        description: "Gather the business goal, users, current systems, constraints, and decisions that need support.",
+      },
+      {
+        title: "Evaluation",
+        description: "Review viable approaches, dependencies, evidence, implementation cost, and delivery risks.",
+      },
+      {
+        title: "Recommendation",
+        description: "Present a clear direction with tradeoffs, priorities, and decisions that can be acted on.",
+      },
+      {
+        title: "Delivery path",
+        description: "Translate the recommendation into a scope, proof of concept, or sequenced implementation roadmap.",
+      },
+    ],
+    outcomes: [
+      "A defensible technical direction tied to the business goal.",
+      "Earlier visibility into cost, dependencies, and delivery risk.",
+      "A smaller and clearer first implementation step.",
+      "Documentation stakeholders and developers can use to move forward.",
+    ],
+    faqs: [
+      {
+        question: "When should we use technical consulting?",
+        answer:
+          "Consulting is useful when the problem or opportunity is clear but the implementation path, architecture, feasibility, or scope is not yet reliable enough to build.",
+      },
+      {
+        question: "Can consulting be booked without a development project?",
+        answer:
+          "Yes. Advisory work can end with a recommendation, review, proof of concept, or roadmap that your own team implements.",
+      },
+      {
+        question: "Do you provide fixed technology recommendations?",
+        answer:
+          "No. Recommendations are based on the users, current systems, team capability, security needs, ownership model, and expected product lifecycle.",
+      },
+      {
+        question: "Can you review an existing codebase?",
+        answer:
+          "Yes, when repository access and the review goal are clearly scoped. The output focuses on actionable findings and delivery risk rather than a generic score.",
+      },
+      {
+        question: "Does this include ongoing team coaching?",
+        answer:
+          "The service can include working sessions and knowledge transfer inside a defined engagement, but AtlasMind212 does not currently offer open-ended embedded coaching or team leadership.",
+      },
+    ],
+    bestFor:
+      "Organizations that need clarity before investing in a build or an independent view on a difficult product or architecture decision.",
+    outcome:
+      "A practical recommendation and delivery path that reduces uncertainty before significant implementation work begins.",
+  },
+  {
+    slug: "llm-integration-ai-consulting",
+    title: "LLM Integration & AI Consulting",
+    shortTitle: "LLM Integration",
+    icon: Bot,
+    engagement: "Integration project",
+    description:
+      "Purpose-built assistants and language-model features connected to approved knowledge, tools, and human review paths.",
+    heroImage: {
+      src: "/images/editorial-home-hero.webp",
+      alt: "Two professionals reviewing requirements for an LLM integration",
+    },
+    seoTitle: "LLM Integration & Practical AI Consulting",
+    metaDescription:
+      "AtlasMind212 evaluates and implements LLM assistants and AI features with approved data, system integrations, guardrails, evaluation, and human handoff.",
+    definition:
+      "LLM integration and AI consulting from AtlasMind212 starts by deciding whether a language model is useful for the job. When it is, the work connects an existing model to approved knowledge and systems, defines guardrails and human fallback, evaluates real behavior, and documents the cost and ownership required for production use.",
+    audience:
+      "Businesses and product teams with a concrete knowledge, support, content, or workflow use case that may benefit from language-model capabilities.",
+    deliverables: [
+      "AI use-case and feasibility assessment",
+      "Model and provider recommendation",
+      "Knowledge retrieval and system integration",
+      "Assistant, copilot, or structured LLM feature",
+      "Guardrails, evaluation, and human fallback",
+      "Cost, privacy, operation, and handoff documentation",
+    ],
+    useCases: [
+      "Answer customer or employee questions from approved company knowledge.",
+      "Add drafting, extraction, classification, or summarization to a product.",
+      "Create a copilot that retrieves data and supports a controlled task.",
+      "Evaluate an AI product idea before committing to implementation.",
+      "Improve the reliability and governance of an existing LLM feature.",
+    ],
+    process: [
+      {
+        title: "Fit assessment",
+        description: "Define the task, expected value, approved data, risks, and conditions where AI should not be used.",
+      },
+      {
+        title: "System design",
+        description: "Choose the model, retrieval approach, integrations, evaluation criteria, and human control points.",
+      },
+      {
+        title: "Implementation",
+        description: "Build the focused feature and test it against representative inputs and failure scenarios.",
+      },
+      {
+        title: "Production handoff",
+        description: "Document behavior, limits, privacy, cost, monitoring, account ownership, and maintenance.",
+      },
+    ],
+    outcomes: [
+      "A concrete AI capability tied to a defined user task.",
+      "Clear limits, fallback behavior, and human responsibility.",
+      "Better visibility into model quality, privacy, and operating cost.",
+      "A documented integration your team can evaluate and maintain.",
+    ],
+    faqs: [
+      {
+        question: "What is LLM integration?",
+        answer:
+          "LLM integration adds an existing language model to a product or workflow and connects it to the approved context, tools, rules, and human review needed for a specific task.",
+      },
+      {
+        question: "Do you train custom foundation models?",
+        answer:
+          "No. AtlasMind212 evaluates and integrates existing models and may configure retrieval, prompts, tools, structured outputs, and evaluations around them.",
+      },
+      {
+        question: "Can an assistant use private company information?",
+        answer:
+          "It can use approved private sources when access controls, provider terms, retention settings, and server-side credential boundaries fit the project's security requirements.",
+      },
+      {
+        question: "How do you reduce incorrect answers?",
+        answer:
+          "The implementation limits the task, grounds responses in approved sources where appropriate, tests representative cases, communicates uncertainty, and provides fallback or human review paths.",
+      },
+      {
+        question: "Can we start with consulting only?",
+        answer:
+          "Yes. A focused assessment or proof of concept can test feasibility, data readiness, provider choices, risks, and operating cost before a production build.",
+      },
+    ],
+    bestFor:
+      "Teams with a specific task and approved information that want to evaluate or implement an LLM capability responsibly.",
+    outcome:
+      "A controlled, evaluated LLM feature that supports a real task without hiding its limits or ownership requirements.",
+  },
+  {
+    slug: "workflow-automation",
+    title: "Workflow Automation",
     shortTitle: "Automation",
     icon: Workflow,
+    engagement: "Automation project",
     description:
-      "Custom n8n, Make, or API background workflows to handle automated follow-ups, alerts, reporting, and handover documentation.",
-    image: {
-      src: "/images/service-ai-automation-tools.webp",
-      alt: "A dark AI automation workflow board connecting n8n, Make, spreadsheets, email, and database nodes",
+      "Reliable workflows that connect forms, email, CRM, databases, and operational tools with alerts and human approval where needed.",
+    heroImage: {
+      src: "/images/editorial-workflow.webp",
+      alt: "A consultant mapping an operational automation workflow on a whiteboard",
     },
-    seoTitle: "AI Workflow Automation with n8n, Make, and APIs",
+    seoTitle: "Workflow Automation with n8n, Make, and APIs",
     metaDescription:
-      "AtlasMind212 builds AI workflow automations for follow-ups, alerts, reporting, CRM sync, and background business operations.",
+      "AtlasMind212 automates business workflows across forms, email, CRM, databases, and reporting using n8n, Make, APIs, or custom code.",
     definition:
-      "AI automation from AtlasMind212 turns repeatable manual operations into reliable background workflows. The work can connect forms, CRMs, spreadsheets, emails, alerts, reports, and AI steps so information moves between tools with fewer copy-paste tasks.",
+      "Workflow automation from AtlasMind212 turns repeatable manual steps into reliable background processes. The work connects the tools your team already uses, validates information as it moves, handles expected failures, and keeps people in control of exceptions and approvals. AI is included only when it improves a specific step.",
     audience:
-      "Operations leaders, founders, and service teams that want to reduce repetitive manual work across disconnected tools.",
+      "Operations teams, founders, and product teams that want to reduce repetitive work and fragile handoffs across disconnected tools.",
     deliverables: [
-      "n8n, Make, or API workflow design",
-      "Automated follow-up logic",
-      "CRM, sheet, email, or database sync",
-      "Error alert and retry paths",
-      "Reporting or notification flows",
-      "Workflow documentation and handoff",
+      "Current workflow and failure-point map",
+      "n8n, Make, API, or custom workflow",
+      "CRM, email, form, database, or reporting connections",
+      "Validation and human approval paths",
+      "Error alerts, retries, and operational visibility",
+      "Workflow ownership and handoff documentation",
     ],
     useCases: [
-      "Send structured lead follow-ups after form submissions.",
-      "Sync CRM, spreadsheet, and email data without manual entry.",
-      "Trigger alerts when a workflow needs human review.",
-      "Generate recurring reports from operational data.",
-      "Add AI classification or summarization to background processes.",
+      "Route and follow up on customer or sales inquiries.",
+      "Synchronize data between a CRM, database, spreadsheet, and email tool.",
+      "Create recurring operational reports and exception alerts.",
+      "Replace repetitive copy-paste work with validated data movement.",
+      "Add optional classification or summarization to a controlled workflow step.",
     ],
     process: [
       {
         title: "Workflow audit",
-        description: "Map the current manual steps, source tools, outputs, and failure points.",
+        description: "Map triggers, manual steps, systems, owners, exceptions, and the measurable operational goal.",
       },
       {
         title: "Automation design",
-        description: "Define triggers, actions, AI steps, validation rules, and handoff conditions.",
+        description: "Define data flow, validation, permissions, approval points, errors, retries, and alerts.",
       },
       {
         title: "Implementation",
-        description: "Build the workflow with n8n, Make, APIs, or custom server routes as needed.",
+        description: "Build and connect the workflow with the simplest suitable platform or custom service.",
       },
       {
-        title: "Reliability pass",
-        description: "Test happy paths, edge cases, alerts, retries, and ownership documentation.",
+        title: "Reliability handoff",
+        description: "Test normal and failure paths, document ownership, and show the team how to operate it.",
       },
     ],
     outcomes: [
-      "Less manual transfer between forms, sheets, CRM, and email.",
-      "More reliable follow-up and notification timing.",
-      "Clearer visibility into workflow errors and exceptions.",
-      "Documented automations your team can operate after handoff.",
+      "Less manual transfer between everyday business tools.",
+      "More consistent timing, validation, and follow-up.",
+      "Clear alerts and ownership when a workflow needs attention.",
+      "Documented automations the team can understand after handoff.",
     ],
     faqs: [
       {
-        question: "What is AI workflow automation?",
+        question: "Does workflow automation require AI?",
         answer:
-          "AI workflow automation combines normal automation steps with AI tasks such as classification, summarization, routing, or drafting so repeatable business processes run with less manual work.",
+          "No. Most reliable workflows use normal triggers, rules, APIs, and validations. AI is added only when a step such as classification or summarization cannot be handled well with deterministic logic.",
       },
       {
         question: "Do you use n8n or Make?",
         answer:
-          "Yes. AtlasMind212 can build workflows in n8n, Make, direct APIs, or custom server routes depending on the reliability, ownership, and integration needs.",
+          "Yes. AtlasMind212 can use n8n, Make, direct APIs, or custom server-side code depending on security, complexity, reliability, and ownership requirements.",
       },
       {
         question: "Can automations include human approval?",
         answer:
-          "Yes. Workflows can pause for review, send alerts, or route exceptions to a person before continuing.",
+          "Yes. A workflow can pause, request review, route an exception, or require approval before a sensitive action continues.",
       },
       {
-        question: "What happens if an automation fails?",
+        question: "What happens when an automation fails?",
         answer:
-          "The implementation can include error handling, retry logic, and alerts so your team knows when a workflow needs attention.",
+          "The agreed reliability scope can include validation, retries, error records, and alerts so failures are visible and recoverable instead of silent.",
       },
       {
-        question: "How long does an automation project take?",
+        question: "Can you improve an existing automation?",
         answer:
-          "A focused AI automation project usually takes 3-5 weeks depending on the number of tools, branches, and reliability requirements.",
+          "Yes, when the existing platform and account access support a reliable review. The project can simplify, document, monitor, or rebuild fragile workflows.",
       },
     ],
-    timeline: "3-5 weeks",
     bestFor:
-      "Operations leaders wanting to eliminate repetitive manual entry, connect fragmented apps, and build error-aware data flows.",
+      "Organizations with repeatable operational work spread across forms, inboxes, spreadsheets, CRMs, databases, and reporting tools.",
     outcome:
-      "End-to-end background processes that synchronize your tools, handle follow-ups, and trigger Slack or email notifications.",
+      "A reliable background process that reduces manual handling while keeping exceptions and ownership visible.",
   },
 ] as const;
 

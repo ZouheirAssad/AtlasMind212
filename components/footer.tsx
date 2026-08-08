@@ -14,7 +14,7 @@ export function Footer() {
               AtlasMind<span className="text-accent">212</span>
             </Link>
             <p className="mt-5 leading-7 text-white/78">
-              Business websites, useful AI integrations, and reliable workflow automation built for real operations.
+              Web applications, backend systems, and practical integrations built around how your business works.
             </p>
             <div className="mt-7 space-y-3 text-sm text-white/85">
               <a href={`mailto:${siteConfig.email}`} className="flex min-h-11 items-center gap-3 hover:text-accent"><Mail className="size-5" /> {siteConfig.email}</a>

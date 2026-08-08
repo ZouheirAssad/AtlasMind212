@@ -9,10 +9,10 @@ import { JsonLd, breadcrumbJsonLd, servicesItemListJsonLd } from "@/lib/seo";
 import { services } from "@/lib/site-data";
 
 export const metadata: Metadata = {
-  title: "AI Services & Implementation",
-  description: "Explore AtlasMind212 services for business websites, AI assistant integrations, and AI workflow automation.",
+  title: "Software Development & Technical Consulting",
+  description: "Explore web development, backend and API development, technical consulting, LLM integration, and workflow automation services from AtlasMind212.",
   alternates: { canonical: "/services" },
-  openGraph: { title: "AI Services & Implementation | AtlasMind212", description: "Business websites, AI integrations, and workflow automation built with practical scope and clean handoff.", url: "/services", type: "website" },
+  openGraph: { title: "Software Development & Technical Consulting | AtlasMind212", description: "Web applications, backend systems, technical consulting, LLM integrations, and workflow automation delivered with a clear scope and handoff.", url: "/services", type: "website" },
 };
 
 export default function ServicesPage() {
@@ -22,23 +22,23 @@ export default function ServicesPage() {
       <PageHero
         variant="split"
         eyebrow="Implementation services"
-        title="Web, AI, and automation that work together."
-        description="We turn useful ideas into production-ready systems with a clear scope, direct communication, and documented ownership."
+        title="Software built around how your business works."
+        description="From web applications and backend systems to focused consulting, integrations, and automation—with a clear scope and documented ownership."
         image={{ src: "/images/editorial-services.webp", alt: "A digital builder reviewing project notes at a studio desk" }}
       />
 
       <section className="bg-white py-20 sm:py-28">
         <Container>
           <Reveal className="max-w-5xl">
-            <h2 className="text-balance text-4xl leading-[1.08] sm:text-6xl">Choose the smallest service that creates a meaningful operational improvement.</h2>
+            <h2 className="text-balance text-4xl leading-[1.08] sm:text-6xl">Choose the focused capability that moves your product or operation forward.</h2>
           </Reveal>
-          <div className="mt-14 grid gap-5 md:grid-cols-3">
+          <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
                 <Reveal key={service.slug} delay={index * 0.05}>
                   <Link href={`/services/${service.slug}`} className="group flex h-full flex-col border border-border bg-white p-7 shadow-[0_10px_35px_rgb(34_25_85/0.07)] transition-colors hover:border-primary">
-                    <div className="flex items-center justify-between"><Icon className="size-7 text-primary" /><span className="text-xs font-bold uppercase tracking-[0.12em] text-muted-foreground">{service.timeline}</span></div>
+                    <div className="flex items-center justify-between gap-4"><Icon className="size-7 shrink-0 text-primary" /><span className="text-right text-xs font-bold uppercase tracking-[0.12em] text-muted-foreground">{service.engagement}</span></div>
                     <h3 className="mt-14 text-3xl font-bold group-hover:text-primary">{service.title}</h3>
                     <p className="mt-4 flex-1 leading-7 text-muted-foreground">{service.description}</p>
                     <span className="mt-8 flex min-h-11 items-center gap-2 font-bold text-primary">View service <ArrowRight className="size-4" /></span>
@@ -77,7 +77,7 @@ export default function ServicesPage() {
 
       <section className="bg-white py-20 sm:py-28">
         <Container className="flex flex-col gap-8 border-y py-12 sm:flex-row sm:items-center sm:justify-between">
-          <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">Next step</p><h2 className="mt-3 text-4xl">Tell us what is slowing the work down.</h2></div>
+          <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">Next step</p><h2 className="mt-3 text-4xl">Tell us what you need to build or improve.</h2></div>
           <Button asChild size="lg"><Link href="/contact">Book a project conversation <ArrowRight /></Link></Button>
         </Container>
       </section>

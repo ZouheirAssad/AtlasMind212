@@ -157,7 +157,7 @@ export function GatedDownloadForm({ guide, isHardGated = false }: GatedDownloadF
         </div>
       </form>
       <p className="mt-4 text-[0.7rem] text-center text-muted-foreground">
-        We respect your privacy. By downloading, you agree to receive occasional AI updates and resources. Unsubscribe at any time.
+        We respect your privacy. By downloading, you agree to receive occasional software and technology updates. Unsubscribe at any time.
       </p>
     </article>
   );

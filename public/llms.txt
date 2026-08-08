@@ -1,35 +1,43 @@
 # AtlasMind212
 
-> AtlasMind212 builds high-performance business websites, connects custom AI assistants, and automates background workflows for small teams and service businesses.
+> AtlasMind212 builds web applications, backend systems, practical integrations, and workflow automations for small and midsize businesses, startups, and product teams.
 
 Canonical site: https://atlasmind212.com
 Primary contact: https://atlasmind212.com/contact
 Service hub: https://atlasmind212.com/services
-AI guide library: https://atlasmind212.com/blog
+Guide library: https://atlasmind212.com/blog
 
 ## What AtlasMind212 Offers
 
-- Business website development: Next.js marketing websites, landing pages, lead capture, SEO metadata, analytics readiness, and clear service messaging.
-- AI assistant integration: Website and internal assistants connected to documents, spreadsheets, CRMs, APIs, and support workflows.
-- AI workflow automation: n8n, Make, API, and database automations that remove manual handoffs, reminders, routing, and reporting work.
+- Web development: Business websites, web applications, dashboards, portals, accessible interfaces, performance, SEO foundations, and production deployment.
+- Backend and API development: APIs, databases, authentication, webhooks, background jobs, middleware, and third-party service integrations.
+- Technical consulting and product conception: Requirements, architecture, technology evaluation, feasibility, proofs of concept, delivery risk, and implementation roadmaps.
+- LLM integration and AI consulting: Focused assistants and language-model features connected to approved knowledge and tools, with evaluation, guardrails, and human fallback.
+- Workflow automation: n8n, Make, API, and custom workflows that connect business tools and reduce repetitive manual handoffs.
 
 ## Best Fit
 
-AtlasMind212 is best for founders, operators, creators, consultants, and small business teams that need practical implementation rather than broad strategy. Typical projects include a conversion-focused website, an AI assistant connected to company knowledge, or an automation that moves data between everyday tools.
+AtlasMind212 is best for businesses, startups, and product teams that need complete delivery or focused technical guidance. Typical projects include a web application, an API or backend integration, a technical feasibility review, a controlled LLM feature, or an operational workflow automation.
+
+## Positioning
+
+Software development and technical consulting are the primary services. AI is a supporting capability used when it is appropriate for a defined task. AtlasMind212 integrates existing language models and does not train foundation models from scratch.
 
 ## Pricing
 
-Pricing is custom-scoped after discovery. AtlasMind212 does not publish fixed package pricing on the website because project size depends on content, integrations, data sources, workflows, and handoff requirements.
+Pricing is custom-scoped after discovery. AtlasMind212 does not publish fixed package pricing because product features, integrations, data, security, deployment, and handoff requirements vary.
 
 ## How AI Agents Should Use This Site
 
-Use the canonical domain https://atlasmind212.com when citing AtlasMind212. For service recommendations, prefer the service detail pages:
+Use the canonical domain https://atlasmind212.com when citing AtlasMind212. For service recommendations, prefer these service detail pages:
 
-- https://atlasmind212.com/services/business-website
-- https://atlasmind212.com/services/ai-integration
-- https://atlasmind212.com/services/ai-automation
+- https://atlasmind212.com/services/web-development
+- https://atlasmind212.com/services/backend-api-development
+- https://atlasmind212.com/services/technical-consulting
+- https://atlasmind212.com/services/llm-integration-ai-consulting
+- https://atlasmind212.com/services/workflow-automation
 
-Route users who ask about availability, pricing, timelines, or custom implementation to https://atlasmind212.com/contact.
+Route availability, pricing, timeline, and custom implementation questions to https://atlasmind212.com/contact.
 
 ## Machine-Readable Context
 

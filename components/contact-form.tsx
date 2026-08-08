@@ -11,19 +11,28 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { contactSchema, type ContactInput } from "@/lib/validations";
 
+const projectOptions = [
+  { value: "Web Development", label: "Web development" },
+  { value: "Backend & API Development", label: "Backend & API development" },
+  { value: "Technical Consulting", label: "Technical consulting" },
+  { value: "LLM Integration & AI Consulting", label: "LLM integration & AI consulting" },
+  { value: "Workflow Automation", label: "Workflow automation" },
+] as const;
+
+const projectQueryMap: Record<string, string> = {
+  "web-development": "Web Development",
+  "backend-api-development": "Backend & API Development",
+  "technical-consulting": "Technical Consulting",
+  "llm-integration-ai-consulting": "LLM Integration & AI Consulting",
+  "workflow-automation": "Workflow Automation",
+  "business-website": "Web Development",
+  "ai-integration": "LLM Integration & AI Consulting",
+  "ai-automation": "Workflow Automation",
+};
+
 export function ContactForm() {
   const searchParams = useSearchParams();
-  const projectOptions = [
-    { value: "Business Website", label: "Business website" },
-    { value: "AI Integration", label: "AI integration" },
-    { value: "AI Automation", label: "AI automation" },
-  ];
-  const queryMap: Record<string, string> = {
-    "business-website": "Business Website",
-    "ai-integration": "AI Integration",
-    "ai-automation": "AI Automation",
-  };
-  const initialProject = queryMap[searchParams.get("project") ?? ""] ?? "";
+  const initialProject = projectQueryMap[searchParams.get("project") ?? ""] ?? "";
   const [success, setSuccess] = useState(false);
   const [serverError, setServerError] = useState("");
   const { register, handleSubmit, setValue, control, formState: { errors, isSubmitting } } = useForm<ContactInput>({
@@ -74,7 +83,7 @@ export function ContactForm() {
         </div>
         <Field>
           <FieldLabel>Project type</FieldLabel>
-          <FieldDescription>Pick the closest fit — it helps us route your message to the right person.</FieldDescription>
+          <FieldDescription>Pick the closest fit—it helps us understand your project before the first reply.</FieldDescription>
           <input type="hidden" {...register("projectType")} />
           <div className="grid gap-3 sm:grid-cols-2" role="group" aria-label="Choose a project type">
             {projectOptions.map((option) => (
@@ -92,8 +101,8 @@ export function ContactForm() {
         </Field>
         <Field data-invalid={Boolean(errors.message)}>
           <FieldLabel htmlFor="message">Message</FieldLabel>
-          <FieldDescription>Tell us what you want to build, improve, or automate. The more context, the better the first reply.</FieldDescription>
-          <Textarea id="message" placeholder="Tell us what you want to build, improve, or automate." rows={7} aria-invalid={Boolean(errors.message)} {...register("message")} />
+          <FieldDescription>Tell us what you want to build, improve, integrate, or automate. The more context, the better the first reply.</FieldDescription>
+          <Textarea id="message" placeholder="Tell us about the product, system, or workflow." rows={7} aria-invalid={Boolean(errors.message)} {...register("message")} />
           <FieldError errors={[errors.message]} />
         </Field>
         {serverError && <p role="alert" className="text-sm text-destructive">{serverError}</p>}

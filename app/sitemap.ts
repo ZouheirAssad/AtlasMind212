@@ -5,7 +5,7 @@ import { services } from "@/lib/site-data";
 
 export const dynamic = "force-dynamic";
 
-const launchDate = new Date("2026-07-01");
+const contentUpdateDate = new Date("2026-08-08");
 
 const staticRoutes = [
   { path: "/", priority: 1, changeFrequency: "weekly" },
@@ -20,7 +20,7 @@ const staticRoutes = [
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const serviceRoutes = services.map((service) => ({
     url: absoluteUrl(`/services/${service.slug}`),
-    lastModified: launchDate,
+    lastModified: contentUpdateDate,
     changeFrequency: "monthly" as const,
     priority: 0.85,
   }));
@@ -30,7 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...staticRoutes.map((route) => ({
       url: absoluteUrl(route.path),
-      lastModified: launchDate,
+      lastModified: contentUpdateDate,
       changeFrequency: route.changeFrequency,
       priority: route.priority,
     })),

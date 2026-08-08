@@ -27,8 +27,10 @@ export function organizationJsonLd() {
     email: siteConfig.email,
     description: siteConfig.description,
     serviceType: [
-      "Business website development",
-      "AI assistant integration",
+      "Web development",
+      "Backend and API development",
+      "Technical consulting and product conception",
+      "LLM integration and AI consulting",
       "Workflow automation",
     ],
   };

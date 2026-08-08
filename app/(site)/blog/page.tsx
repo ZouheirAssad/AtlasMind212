@@ -11,19 +11,19 @@ import { absoluteUrl } from "@/lib/site-config";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
-  title: "AI Guides",
-  description: "Download practical AtlasMind212 AI guides shared from TikTok and the AtlasMind learning library.",
+  title: "Software & Automation Guides",
+  description: "Explore practical AtlasMind212 articles and guides about web development, backend systems, integrations, AI, and workflow automation.",
   alternates: { canonical: "/blog" },
   openGraph: {
-    title: "AI Guides",
-    description: "Download practical AtlasMind212 AI guides shared from TikTok and the AtlasMind learning library.",
+    title: "Software & Automation Guides",
+    description: "Practical articles and guides about web development, backend systems, integrations, AI, and workflow automation.",
     url: absoluteUrl("/blog"),
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "AI Guides",
-    description: "Download practical AtlasMind212 AI guides shared from TikTok and the AtlasMind learning library.",
+    title: "Software & Automation Guides",
+    description: "Practical articles and guides about web development, backend systems, integrations, AI, and workflow automation.",
   },
 };
 
@@ -43,14 +43,14 @@ export default async function BlogPage() {
     <>
       <JsonLd data={breadcrumbJsonLd([
         { name: "Home", href: "/" },
-        { name: "AI Guides", href: "/blog" },
+        { name: "Guides", href: "/blog" },
       ])} />
       <section className="border-b bg-white py-20 sm:py-28">
         <Container>
           <Reveal className="mx-auto max-w-5xl text-center">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">AtlasMind library</p>
             <h1 className="mt-5 text-6xl leading-[0.94] text-display-violet sm:text-8xl lg:text-9xl">Guides</h1>
-            <p className="mx-auto mt-7 max-w-3xl text-xl leading-8 text-muted-foreground">Practical articles and downloadable guides for building better websites, AI integrations, and automated workflows.</p>
+            <p className="mx-auto mt-7 max-w-3xl text-xl leading-8 text-muted-foreground">Practical articles and downloadable guides for building better web products, integrations, AI features, and automated workflows.</p>
           </Reveal>
         </Container>
       </section>
@@ -76,7 +76,7 @@ export default async function BlogPage() {
                   We couldn&rsquo;t reach the guide library right now. Please check back shortly, or reach out and we&rsquo;ll share what you need directly.
                 </p>
                 <Button asChild className="mt-7">
-                  <Link href="/contact?project=ai-integration">
+                  <Link href="/contact?project=technical-consulting">
                     Contact the team <ArrowRight data-icon="inline-end" />
                   </Link>
                 </Button>
@@ -94,7 +94,7 @@ export default async function BlogPage() {
                 </p>
                 <Button asChild variant="outline" className="mt-7">
                   <Link href="/contact">
-                    Ask about AI education <ArrowRight data-icon="inline-end" />
+                    Suggest a guide topic <ArrowRight data-icon="inline-end" />
                   </Link>
                 </Button>
               </div>

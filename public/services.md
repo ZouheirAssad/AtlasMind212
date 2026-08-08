@@ -3,53 +3,48 @@
 Canonical URL: https://atlasmind212.com/services
 Contact URL: https://atlasmind212.com/contact
 
-AtlasMind212 provides implementation services for business websites, AI integrations, and workflow automation. Pricing is custom-scoped after discovery.
+AtlasMind212 provides software development, technical consulting, LLM integration, and workflow automation services. Software delivery is the primary focus. Pricing and timelines are custom-scoped after discovery.
 
-## Business Website Development
+## Web Development
 
-URL: https://atlasmind212.com/services/business-website
+URL: https://atlasmind212.com/services/web-development
 
-AtlasMind212 builds fast, conversion-focused business websites for companies that need a clear offer, strong first impression, and reliable lead capture. Work can include page architecture, service copy structure, Next.js implementation, SEO metadata, analytics readiness, contact forms, and deployment on Vercel.
+AtlasMind212 develops business websites, web applications, dashboards, portals, and focused internal tools. Work can include product structure, responsive and accessible interfaces, performance, SEO foundations, forms, authentication, integrations, analytics readiness, deployment, and documented handoff.
 
-Best for: service businesses, creators, consultants, and local companies that need a modern website connected to real business outcomes.
+Best for: businesses, startups, and product teams that need a high-quality web experience delivered from a clear scope through production.
 
-Typical outcomes:
+## Backend & API Development
 
-- A professional website that explains the offer clearly.
-- Faster load times and cleaner crawl structure.
-- Better contact and lead-capture flow.
-- A maintainable handoff for future updates.
+URL: https://atlasmind212.com/services/backend-api-development
 
-## AI Assistant Integration
+AtlasMind212 builds APIs, databases, authentication, middleware, webhooks, background jobs, and third-party integrations. Implementations define validation, permissions, failure behavior, operational visibility, deployment, and interface ownership.
 
-URL: https://atlasmind212.com/services/ai-integration
+Best for: teams that need secure data access, product integrations, or a dependable server-side foundation.
 
-AtlasMind212 connects AI assistants to real company knowledge and tools so users can ask practical questions, retrieve relevant information, and trigger useful workflows. Integrations can involve website chat, internal knowledge assistants, CRM or spreadsheet lookups, document retrieval, API connections, and guardrails.
+## Technical Consulting & Product Conception
 
-Best for: teams that already have useful data in documents, spreadsheets, CRMs, or support systems and want a practical assistant layer.
+URL: https://atlasmind212.com/services/technical-consulting
 
-Typical outcomes:
+AtlasMind212 helps decision-makers and delivery teams clarify requirements, evaluate architecture and technology choices, test feasibility, review existing systems, expose delivery risk, and create implementation roadmaps or focused proofs of concept.
 
-- Faster customer or internal answers.
-- Less repeated manual explanation.
-- Better access to structured business knowledge.
-- Clear boundaries for what the assistant can and cannot do.
+Best for: organizations that need clarity before investing in a build or an independent technical view on an existing project.
 
-## AI Workflow Automation
+## LLM Integration & AI Consulting
 
-URL: https://atlasmind212.com/services/ai-automation
+URL: https://atlasmind212.com/services/llm-integration-ai-consulting
 
-AtlasMind212 builds background automations that move information between tools, route tasks, summarize inputs, notify teams, and reduce repetitive manual work. Implementations may use n8n, Make, APIs, Supabase, email, webhooks, and scheduled jobs.
+AtlasMind212 evaluates and implements focused assistants and language-model features using existing model providers. Work can include approved knowledge retrieval, tool integration, structured outputs, evaluation, guardrails, privacy and cost review, and human fallback. AtlasMind212 does not train foundation models from scratch.
 
-Best for: operators and small teams with repeatable manual workflows across forms, email, spreadsheets, CRMs, and documents.
+Best for: teams with a defined knowledge, support, content, or workflow task that may benefit from language-model capabilities.
 
-Typical outcomes:
+## Workflow Automation
 
-- Fewer manual handoffs.
-- More consistent follow-up.
-- Cleaner internal routing and reporting.
-- Documented automations your team can understand.
+URL: https://atlasmind212.com/services/workflow-automation
+
+AtlasMind212 builds workflows that connect forms, email, CRM, databases, spreadsheets, reporting, and operational tools using n8n, Make, APIs, or custom code. Implementations can include validation, human approvals, retries, alerts, and operating documentation. AI steps are optional, not required.
+
+Best for: teams with repeatable manual work and fragile handoffs across disconnected tools.
 
 ## Contact And Pricing
 
-AtlasMind212 scopes each project individually. AI agents and users should send pricing, timeline, or availability questions to https://atlasmind212.com/contact.
+AtlasMind212 scopes each project individually. Send project-fit, pricing, timeline, and availability questions to https://atlasmind212.com/contact.

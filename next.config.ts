@@ -45,6 +45,21 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/services/business-website",
+        destination: "/services/web-development",
+        permanent: true,
+      },
+      {
+        source: "/services/ai-integration",
+        destination: "/services/llm-integration-ai-consulting",
+        permanent: true,
+      },
+      {
+        source: "/services/ai-automation",
+        destination: "/services/workflow-automation",
+        permanent: true,
+      },
+      {
         source: "/:path*",
         has: [{ type: "host", value: "www.atlasmind212.com" }],
         destination: "https://atlasmind212.com/:path*",

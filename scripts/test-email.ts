@@ -39,7 +39,7 @@ async function main() {
   const testPayload = {
     name: "Diagnostic Test Submitter",
     email: "test-submitter@example.com",
-    projectType: "ai-integration",
+    projectType: "technical-consulting",
     message:
       "This is a diagnostic test email to verify that Resend email delivery is working correctly.",
     submittedAt: new Date().toISOString(),

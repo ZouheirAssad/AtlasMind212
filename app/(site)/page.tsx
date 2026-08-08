@@ -24,12 +24,12 @@ export default function HomePage() {
         <div className="photo-overlay absolute inset-0" />
         <Container className="relative flex min-h-[46rem] items-end pb-16 pt-32 sm:min-h-[52rem] sm:pb-20">
           <Reveal className="max-w-6xl">
-            <Badge className="mb-7 bg-white text-black">AI services for real work</Badge>
+            <Badge className="mb-7 bg-white text-black">Software delivery and technical consulting</Badge>
             <h1 className="max-w-5xl text-balance text-6xl leading-[0.9] sm:text-8xl lg:text-[7.4rem]">
-              Build smarter <span className="text-accent">with AI.</span>
+              Build the software <span className="text-accent">your work needs.</span>
             </h1>
             <p className="mt-7 max-w-3xl text-xl leading-8 text-white/90 sm:text-2xl">
-              High-performance business websites with useful AI and automation built in.
+              Web applications, backend systems, and practical integrations built around how your business works.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg" className="bg-primary-display text-white hover:bg-primary"><Link href="/contact">Start a project <ArrowRight /></Link></Button>
@@ -42,12 +42,12 @@ export default function HomePage() {
       <section className="editorial-section py-20 sm:py-28">
         <Container className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <Reveal>
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">The shift</p>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">The approach</p>
             <h2 className="mt-5 text-balance text-5xl leading-[1.02] text-display-violet sm:text-7xl">
-              More tools do not create better work.
+              Technology should solve the work in front of you.
             </h2>
             <p className="mt-6 max-w-xl text-lg leading-8 text-muted-foreground">
-              Better work comes from connecting the right website, assistant, and workflow around one useful business outcome.
+              We combine product thinking and implementation experience to build the right interface, backend, integration, or automation for one useful outcome.
             </p>
           </Reveal>
           <Reveal delay={0.08} className="relative editorial-lines">
@@ -66,12 +66,12 @@ export default function HomePage() {
       <section className="editorial-section-tint py-20 sm:py-28">
         <Container>
           <Reveal>
-            <SectionHeading eyebrow="Core services" title="From idea to a working system." description="Focused implementation for the parts of your business that should explain, answer, route, or run automatically." />
+            <SectionHeading eyebrow="Core services" title="From product idea to production system." description="Focused development and consulting for web experiences, backend services, integrations, and operational workflows." />
           </Reveal>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
+          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
               <Reveal key={service.slug} delay={index * 0.05}>
-                <FeatureCard title={service.title} description={service.description} icon={service.icon} meta={service.timeline} href={`/services/${service.slug}`} ctaLabel="View service" />
+                <FeatureCard title={service.title} description={service.description} icon={service.icon} meta={service.engagement} href={`/services/${service.slug}`} ctaLabel="View service" />
               </Reveal>
             ))}
           </div>
@@ -103,7 +103,7 @@ export default function HomePage() {
         <Container className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <Reveal>
             <h2 className="text-balance text-5xl leading-[1.02] sm:text-7xl">Start one useful project this week.</h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">Bring the website, workflow, or operational bottleneck. We will help shape a practical next step.</p>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">Bring the product idea, existing system, or operational bottleneck. We will help shape a practical next step.</p>
             <Button asChild size="lg" className="mt-8"><Link href="/contact">Start a conversation <ArrowRight /></Link></Button>
           </Reveal>
           <Reveal delay={0.08} className="border-l-4 border-primary-display bg-white p-8 shadow-[0_12px_40px_rgb(34_25_85/0.08)] sm:p-10">

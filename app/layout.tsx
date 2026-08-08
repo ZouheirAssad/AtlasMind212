@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
 
 export const metadata: Metadata = {
   title: {
-    default: "AtlasMind212 - Business Websites, AI Integration & Automation",
+    default: "AtlasMind212 - Web Development & Technical Consulting",
     template: "%s | AtlasMind212",
   },
   description: siteConfig.description,
@@ -19,8 +19,8 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "AtlasMind212 - Business Websites, AI Integration & Automation",
-    description: "High-performance business websites, AI integration, and workflow automation.",
+    title: "AtlasMind212 - Web Development & Technical Consulting",
+    description: "Web applications, backend systems, technical consulting, integrations, and workflow automation.",
     url: "/",
     siteName: siteConfig.name,
     locale: siteConfig.locale,
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "AtlasMind212 - Business Websites, AI Integration & Automation",
-    description: "High-performance business websites, AI integration, and workflow automation.",
+    title: "AtlasMind212 - Web Development & Technical Consulting",
+    description: "Web applications, backend systems, technical consulting, integrations, and workflow automation.",
   },
 };
 

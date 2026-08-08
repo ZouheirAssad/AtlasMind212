@@ -39,7 +39,7 @@ export default async function AdminLoginPage({ searchParams }: AdminLoginPagePro
             AtlasMind guide CMS
           </h1>
           <p className="mt-5 text-lg leading-8 text-white/78">
-            Sign in with the Supabase admin account to upload, publish, and manage downloadable AI guides.
+            Sign in with the Supabase admin account to upload, publish, and manage downloadable guides.
           </p>
         </div>
         <div className="flex items-center p-7 sm:p-12"><Suspense fallback={<div className="min-h-80 w-full border bg-card" />}><AdminLoginForm redirectTo={redirectTo} /></Suspense></div>

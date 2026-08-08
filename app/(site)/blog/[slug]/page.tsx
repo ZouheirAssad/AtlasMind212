@@ -83,7 +83,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
                 We couldn&rsquo;t reach the content library right now. Please check back shortly, or get in touch.
               </p>
               <Button asChild variant="outline" className="mt-7">
-                <Link href="/contact?project=ai-integration">
+                <Link href="/contact?project=technical-consulting">
                   Contact the team <ArrowRight data-icon="inline-end" />
                 </Link>
               </Button>
@@ -120,7 +120,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
   const schemas: Array<Record<string, unknown>> = [
     breadcrumbJsonLd([
       { name: "Home", href: "/" },
-      { name: "AI Guides", href: "/blog" },
+      { name: "Guides", href: "/blog" },
       { name: guide.title, href: `/blog/${guide.slug}` },
     ]),
   ];

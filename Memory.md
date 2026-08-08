@@ -2,8 +2,10 @@
 
 ## Product
 
-AtlasMind212 builds high-performance business websites, connects custom AI
-assistants, and automates background workflows.
+AtlasMind212 is a software development and technical consulting studio for
+small and midsize businesses, startups, and product teams. Its primary services
+are web development, backend and API development, and technical consulting.
+LLM integration and workflow automation are supporting implementation services.
 
 ## Current MVP
 
@@ -32,7 +34,7 @@ and a focused contact call to action.
 - SEO/GEO helpers live in `lib/seo.tsx`; public pages use route metadata and
   JSON-LD for organization, website, services, FAQs, breadcrumbs, and guide
   documents.
-- Machine-readable AI context files are served from `public/llms.txt`,
+- Machine-readable company and service context files are served from `public/llms.txt`,
   `public/services.md`, and `public/company.md`.
 - `app/robots.ts` and `app/sitemap.ts` provide crawler directives and dynamic
   sitemap entries for static pages, service detail pages, and published guides.
@@ -139,7 +141,7 @@ Additional SEO/GEO verification on July 1, 2026:
 - The Next.js production build passes.
 - `npm audit --omit=dev` reports zero vulnerabilities.
 - Local route checks pass for `/robots.txt`, `/sitemap.xml`, `/llms.txt`,
-  `/services.md`, `/company.md`, and the three service detail pages.
+  `/services.md`, `/company.md`, and the five service detail pages.
 
 Editorial redesign verification on August 6, 2026:
 
@@ -155,6 +157,21 @@ Editorial redesign verification on August 6, 2026:
   Next.js/PostCSS/Sharp dependency tree. The available automatic fix upgrades
   Next.js and rewrites the dependency tree, so it is intentionally left for a
   dedicated dependency-upgrade change with regression testing.
+
+Software-first service reposition verification on August 8, 2026:
+
+- The public catalog now leads with Web Development, Backend & API Development,
+  and Technical Consulting & Product Conception. LLM Integration & AI Consulting
+  and Workflow Automation are supporting services.
+- Permanent redirects preserve the former `business-website`, `ai-integration`,
+  and `ai-automation` service URLs, and the contact form accepts both old and new
+  query parameters.
+- ESLint and the Next.js 16.2.9 production build pass. Desktop and mobile browser
+  checks cover the homepage, service hub, all five service routes, redirects,
+  contact preselection, horizontal overflow, console errors, and error overlays.
+- `npm audit --omit=dev` reports four high-severity advisories in the
+  Next.js/PostCSS/Sharp/Nano ID dependency tree. Dependency upgrades remain a
+  separate change because the available fix rewrites the committed lockfile.
 
 ## Deployment
 

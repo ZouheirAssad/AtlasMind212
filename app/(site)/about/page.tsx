@@ -10,7 +10,7 @@ import { absoluteUrl } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "About AtlasMind212",
-  description: "Learn how AtlasMind212 builds reliable business websites, AI integrations, and workflow automations with clear scopes and documented handoff.",
+  description: "Learn how AtlasMind212 delivers web applications, backend systems, technical consulting, integrations, and workflow automation with clear scopes and documented handoff.",
   alternates: { canonical: "/about" },
   openGraph: { title: "About AtlasMind212", description: "Reliable digital systems built with clear scopes and documented handoff.", url: absoluteUrl("/about"), type: "website" },
 };
@@ -25,7 +25,7 @@ const principles = [
 export default function AboutPage() {
   return (
     <>
-      <PageHero variant="photo" eyebrow="About AtlasMind212" title="We bring useful digital projects into production." description="A focused implementation partner for business websites, AI assistants, and workflow automation." image={{ src: "/images/editorial-about.webp", alt: "Three digital professionals collaborating around a studio table" }} imagePosition="center" />
+      <PageHero variant="photo" eyebrow="About AtlasMind212" title="We bring useful digital projects into production." description="A focused development and consulting partner for web applications, backend systems, integrations, and automation." image={{ src: "/images/editorial-about.webp", alt: "Three digital professionals collaborating around a studio table" }} imagePosition="center" />
 
       <section className="bg-white py-20 sm:py-28">
         <Container className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
@@ -69,7 +69,7 @@ export default function AboutPage() {
         <Container>
           <Reveal className="max-w-4xl"><p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">Qualification</p><h2 className="mt-5 text-5xl sm:text-6xl">Is AtlasMind212 right for you?</h2></Reveal>
           <div className="mt-12 grid gap-6 md:grid-cols-2">
-            <Reveal className="border-t-4 border-primary bg-white p-8 shadow-[0_12px_40px_rgb(34_25_85/0.08)]"><h3 className="text-2xl font-bold">A strong fit when</h3><ul className="mt-6 space-y-4">{["You need a conversion-focused business website.", "You want AI connected to approved business information and tools.", "You need repetitive work moved into reliable background workflows.", "You value fixed scope, speed, and direct technical communication."].map((text) => <li key={text} className="flex items-start gap-3 leading-7 text-muted-foreground"><Check className="mt-1 size-4 shrink-0 text-primary" />{text}</li>)}</ul></Reveal>
+            <Reveal className="border-t-4 border-primary bg-white p-8 shadow-[0_12px_40px_rgb(34_25_85/0.08)]"><h3 className="text-2xl font-bold">A strong fit when</h3><ul className="mt-6 space-y-4">{["You need a business website or focused web application.", "You need a backend, API, or integration between real systems.", "You want a practical technical recommendation before building.", "You value fixed scope, visible progress, and direct technical communication."].map((text) => <li key={text} className="flex items-start gap-3 leading-7 text-muted-foreground"><Check className="mt-1 size-4 shrink-0 text-primary" />{text}</li>)}</ul></Reveal>
             <Reveal delay={0.08} className="border-t-4 border-black bg-white p-8 shadow-[0_12px_40px_rgb(34_25_85/0.08)]"><h3 className="text-2xl font-bold">Not the right fit when</h3><ul className="mt-6 space-y-4">{["You need a base language model trained from scratch.", "You are looking only for broad strategy without implementation.", "Requirements must change continuously without timeline adjustments.", "You need a round-the-clock custom application support desk."].map((text) => <li key={text} className="flex items-start gap-3 leading-7 text-muted-foreground"><X className="mt-1 size-4 shrink-0 text-foreground" />{text}</li>)}</ul></Reveal>
           </div>
           <Reveal className="mt-16 flex flex-col gap-6 border-y py-10 sm:flex-row sm:items-center sm:justify-between"><div><p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">Get started</p><h2 className="mt-2 text-4xl">Ready to build something useful?</h2></div><div className="flex flex-wrap gap-3"><Button asChild size="lg"><Link href="/contact">Book a scoping call</Link></Button><Button asChild variant="outline" size="lg"><Link href="/services">View services</Link></Button></div></Reveal>

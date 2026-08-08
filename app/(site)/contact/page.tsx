@@ -10,12 +10,12 @@ import { absoluteUrl } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "Contact AtlasMind212",
   description:
-    "Contact AtlasMind212 to scope a business website, AI assistant integration, or workflow automation project.",
+    "Contact AtlasMind212 to scope a web development, backend, technical consulting, LLM integration, or workflow automation project.",
   alternates: { canonical: "/contact" },
   openGraph: {
     title: "Contact AtlasMind212",
     description:
-      "Scope a business website, AI assistant integration, or workflow automation project.",
+      "Scope a web development, backend, technical consulting, LLM integration, or workflow automation project.",
     url: absoluteUrl("/contact"),
     type: "website",
   },
@@ -23,14 +23,14 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Contact AtlasMind212",
     description:
-      "Scope a business website, AI assistant integration, or workflow automation project.",
+      "Scope a web development, backend, technical consulting, LLM integration, or workflow automation project.",
   },
 };
 
 const projectFit = [
-  "Business websites that load fast and convert clearly.",
-  "AI assistants connected to your docs, data, and tools.",
-  "Background automations that remove manual busywork.",
+  "Websites and web applications built around a clear goal.",
+  "Backend services and integrations that connect real systems.",
+  "Technical decisions, LLM features, and workflows that need a practical delivery path.",
 ];
 
 const nextSteps = [
@@ -56,8 +56,8 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact"
-        title="Tell us the bottleneck."
-        description="Share the project, workflow, or blocker. A little context is enough to start - we read every message and reply with a direct, useful answer."
+        title="Tell us what you need to build."
+        description="Share the product, system, workflow, or blocker. A little context is enough to start—we read every message and reply with a direct, useful answer."
       />
       <section className="bg-white py-16 sm:py-24">
         <Container className="grid gap-12 lg:grid-cols-[0.62fr_1.38fr]">
@@ -68,7 +68,7 @@ export default function ContactPage() {
                 Good fit
               </p>
               <h2 className="mt-4 text-4xl leading-[1.08]">
-                Websites, assistants, and workflows built around a real bottleneck.
+                Software and consulting built around a real business or product need.
               </h2>
               <ul className="mt-6 flex flex-col gap-3">
                 {projectFit.map((item) => (

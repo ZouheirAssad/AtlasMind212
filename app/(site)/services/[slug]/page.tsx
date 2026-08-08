@@ -12,19 +12,13 @@ import { getServiceBySlug, services } from "@/lib/site-data";
 
 type ServicePageProps = { params: Promise<{ slug: string }> };
 
-const servicePhotos = {
-  "business-website": { src: "/images/editorial-services.webp", alt: "A digital builder reviewing a business website project" },
-  "ai-integration": { src: "/images/editorial-home-hero.webp", alt: "Two professionals reviewing a connected AI implementation" },
-  "ai-automation": { src: "/images/editorial-workflow.webp", alt: "A consultant mapping an automation workflow on a whiteboard" },
-} as const;
-
 export function generateStaticParams() { return services.map((service) => ({ slug: service.slug })); }
 
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
   if (!service) return { title: "Service not found" };
-  const photo = servicePhotos[service.slug];
+  const photo = service.heroImage;
   return {
     title: service.seoTitle,
     description: service.metaDescription,
@@ -38,7 +32,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
   if (!service) notFound();
-  const photo = servicePhotos[service.slug];
+  const photo = service.heroImage;
   const Icon = service.icon;
   const relatedServices = services.filter((item) => item.slug !== service.slug);
 
@@ -51,7 +45,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
             <Button asChild variant="outline"><Link href="/services"><ArrowLeft /> All services</Link></Button>
             <div className="mt-10 grid gap-12 lg:grid-cols-[1fr_0.82fr] lg:items-center">
               <Reveal>
-                <div className="flex items-center gap-4"><span className="grid size-14 place-items-center bg-primary text-white"><Icon className="size-6" /></span><Badge variant="secondary">{service.timeline}</Badge></div>
+                <div className="flex items-center gap-4"><span className="grid size-14 place-items-center bg-primary text-white"><Icon className="size-6" /></span><Badge variant="secondary">{service.engagement}</Badge></div>
                 <h1 className="mt-8 text-balance text-5xl leading-[0.98] sm:text-7xl">{service.seoTitle}</h1>
                 <p className="mt-7 max-w-3xl text-lg leading-8 text-muted-foreground">{service.definition}</p>
                 <Button asChild size="lg" className="mt-8"><Link href={`/contact?project=${service.slug}`}>Book this project <ArrowRight /></Link></Button>
