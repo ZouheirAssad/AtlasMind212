@@ -24,7 +24,8 @@ export default function ServicesPage() {
         eyebrow="Implementation services"
         title="Software built around how your business works."
         description="From web applications and backend systems to focused consulting, integrations, and automation—with a clear scope and documented ownership."
-        image={{ src: "/images/editorial-services.webp", alt: "A digital builder reviewing project notes at a studio desk" }}
+        image={{ src: "/images/editorial-services-v2.webp", alt: "A web product builder reviewing interface sketches at a studio desk" }}
+        imagePosition="right"
       />
 
       <section className="bg-white py-20 sm:py-28">

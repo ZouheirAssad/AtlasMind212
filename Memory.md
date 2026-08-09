@@ -120,6 +120,10 @@ The active direction is a single light editorial technology theme:
 Typography uses Inter throughout. The site uses original generated documentary
 workplace photography in `public/images/editorial-*.webp`, oversized sans-serif
 headlines, thin rules, asymmetric grids, small radii, and restrained motion.
+The August 2026 image refinement adds six versioned `editorial-*-v2.webp`
+assets composed with deliberate copy-safe space and route-specific workplace
+scenes for the homepage, about page, service overview, consulting, LLM, and
+workflow contexts.
 Public routes live under the URL-neutral `app/(site)` route group. Admin routes
 use a dedicated private shell and the same light tokens in a denser layout.
 
@@ -172,6 +176,24 @@ Software-first service reposition verification on August 8, 2026:
 - `npm audit --omit=dev` reports four high-severity advisories in the
   Next.js/PostCSS/Sharp/Nano ID dependency tree. Dependency upgrades remain a
   separate change because the available fix rewrites the committed lockfile.
+
+Visual asset and responsive refinement verification on August 9, 2026:
+
+- Six original editorial workplace images were generated, reviewed, optimized
+  as WebP, and integrated with stable dimensions, responsive `sizes`, and useful
+  alternative text through `next/image`.
+- The homepage and shared photo heroes now keep copy and image focal points
+  clear at desktop and mobile widths. The contact form follows the compact hero
+  immediately on mobile while retaining the support/form desktop layout.
+- Service cards use one full-card link, overlay navigation has stronger contrast,
+  and footer links retain 44px minimum touch targets.
+- ESLint and the Next.js 16.2.9 production build pass. Browser checks at
+  390x844 and 1440x900 cover the homepage, services, about, contact, all five
+  service routes, mobile navigation, card navigation, image loading, horizontal
+  overflow, touch targets, and console warnings/errors.
+- `npm audit --omit=dev` continues to report the four previously documented
+  high-severity Next.js/PostCSS/Sharp/Nano ID dependency-tree advisories; the
+  dependency upgrade remains intentionally separate from this visual change.
 
 ## Deployment
 

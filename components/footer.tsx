@@ -24,7 +24,7 @@ export function Footer() {
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent">Explore</p>
             <div className="mt-4 flex flex-col">
-              {navItems.map((item) => <Link key={item.href} href={item.href} className="flex min-h-11 w-fit items-center text-white/78 hover:text-white">{item.label}</Link>)}
+              {navItems.map((item) => <Link key={item.href} href={item.href} className="flex min-h-11 min-w-11 w-fit items-center text-white/78 hover:text-white">{item.label}</Link>)}
             </div>
           </div>
           <div>
@@ -36,7 +36,7 @@ export function Footer() {
         </div>
         <div className="mt-12 flex flex-col gap-4 border-t border-white/20 pt-6 text-sm text-white/68 sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {new Date().getFullYear()} AtlasMind212. All rights reserved.</p>
-          <div className="flex gap-6"><Link href="/privacy" className="hover:text-white">Privacy</Link><Link href="/imprint" className="hover:text-white">Imprint</Link></div>
+          <div className="flex gap-4"><Link href="/privacy" className="inline-flex min-h-11 min-w-11 items-center hover:text-white">Privacy</Link><Link href="/imprint" className="inline-flex min-h-11 min-w-11 items-center hover:text-white">Imprint</Link></div>
         </div>
       </Container>
     </footer>

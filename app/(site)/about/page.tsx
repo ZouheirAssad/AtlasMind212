@@ -25,7 +25,7 @@ const principles = [
 export default function AboutPage() {
   return (
     <>
-      <PageHero variant="photo" eyebrow="About AtlasMind212" title="We bring useful digital projects into production." description="A focused development and consulting partner for web applications, backend systems, integrations, and automation." image={{ src: "/images/editorial-about.webp", alt: "Three digital professionals collaborating around a studio table" }} imagePosition="center" />
+      <PageHero variant="photo" eyebrow="About AtlasMind212" title="We bring useful digital projects into production." description="A focused development and consulting partner for web applications, backend systems, integrations, and automation." image={{ src: "/images/editorial-about-v2.webp", alt: "Three digital professionals planning a software project around a studio table" }} imagePosition="right" />
 
       <section className="bg-white py-20 sm:py-28">
         <Container className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
@@ -53,7 +53,7 @@ export default function AboutPage() {
       <section className="bg-white py-20 sm:py-28">
         <Container className="grid gap-14 lg:grid-cols-2 lg:items-center">
           <Reveal className="relative editorial-lines">
-            <Image src="/images/editorial-workflow.webp" alt="Two professionals reviewing a workflow on a whiteboard" width={1536} height={1024} sizes="(max-width: 1024px) 100vw, 50vw" className="aspect-[3/2] w-full object-cover" />
+            <Image src="/images/editorial-consulting-v2.webp" alt="Two professionals evaluating a software architecture diagram on a whiteboard" width={1536} height={1024} sizes="(max-width: 1024px) 100vw, 50vw" className="aspect-[3/2] w-full object-cover" />
           </Reveal>
           <Reveal delay={0.08}>
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">Working together</p>

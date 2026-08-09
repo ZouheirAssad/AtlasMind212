@@ -138,7 +138,9 @@ summary:focus-visible {
 .editorial-lines::after { bottom: 2rem; right: 0; }
 
 .photo-overlay {
-  background: linear-gradient(90deg, rgb(0 0 0 / 0.52), rgb(0 0 0 / 0.12) 58%, rgb(0 0 0 / 0.05));
+  background:
+    linear-gradient(180deg, rgb(0 0 0 / 0.36), transparent 24%),
+    linear-gradient(90deg, rgb(0 0 0 / 0.64), rgb(0 0 0 / 0.24) 58%, rgb(0 0 0 / 0.08));
 }
 
 .editorial-rule { border-top: 1px solid var(--border); }
@@ -162,7 +164,7 @@ summary:focus-visible {
 
 @media (max-width: 640px) {
   .photo-overlay {
-    background: linear-gradient(180deg, rgb(0 0 0 / 0.28), rgb(0 0 0 / 0.5));
+    background: linear-gradient(180deg, rgb(0 0 0 / 0.42), rgb(0 0 0 / 0.58));
   }
 
   .editorial-lines::before,

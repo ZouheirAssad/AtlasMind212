@@ -16,7 +16,7 @@ export function Header() {
   return (
     <header className={cn(
       "inset-x-0 top-0 z-40",
-      overlay ? "absolute text-white" : "sticky border-b bg-white/94 text-foreground backdrop-blur-xl",
+      overlay ? "absolute border-b border-white/10 bg-black/20 text-white backdrop-blur-sm" : "sticky border-b bg-white/94 text-foreground backdrop-blur-xl",
     )}>
       <Container className="flex h-20 items-center justify-between gap-6">
         <Link href="/" className="flex min-h-11 items-center gap-3" aria-label="AtlasMind212 home">

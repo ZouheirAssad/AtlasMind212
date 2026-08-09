@@ -14,18 +14,18 @@ export default function HomePage() {
     <>
       <section className="relative min-h-[46rem] overflow-hidden bg-black text-white sm:min-h-[52rem]">
         <Image
-          src="/images/editorial-home-hero.webp"
-          alt="Two digital professionals reviewing a project together in a bright studio"
+          src="/images/editorial-home-hero-v2.webp"
+          alt="Two digital professionals reviewing a web product together at a studio table"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="object-cover object-[72%_center] sm:object-center"
         />
         <div className="photo-overlay absolute inset-0" />
         <Container className="relative flex min-h-[46rem] items-end pb-16 pt-32 sm:min-h-[52rem] sm:pb-20">
-          <Reveal className="max-w-6xl">
-            <Badge className="mb-7 bg-white text-black">Software delivery and technical consulting</Badge>
-            <h1 className="max-w-5xl text-balance text-6xl leading-[0.9] sm:text-8xl lg:text-[7.4rem]">
+          <Reveal className="w-full min-w-0 max-w-6xl">
+            <Badge className="mb-7 max-w-full whitespace-normal bg-white text-left text-black">Software delivery and technical consulting</Badge>
+            <h1 className="max-w-5xl text-balance text-5xl leading-[0.92] sm:text-8xl sm:leading-[0.9] lg:max-w-2xl lg:text-[5.25rem]">
               Build the software <span className="text-accent">your work needs.</span>
             </h1>
             <p className="mt-7 max-w-3xl text-xl leading-8 text-white/90 sm:text-2xl">
@@ -52,8 +52,8 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={0.08} className="relative editorial-lines">
             <Image
-              src="/images/editorial-workflow.webp"
-              alt="A consultant mapping a practical digital workflow with a colleague"
+              src="/images/editorial-workflow-v2.webp"
+              alt="Two professionals mapping a dependable digital workflow on a whiteboard"
               width={1536}
               height={1024}
               sizes="(max-width: 1024px) 100vw, 55vw"

@@ -55,13 +55,14 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
+        compact
         eyebrow="Contact"
         title="Tell us what you need to build."
         description="Share the product, system, workflow, or blocker. A little context is enough to start—we read every message and reply with a direct, useful answer."
       />
       <section className="bg-white py-16 sm:py-24">
         <Container className="grid gap-12 lg:grid-cols-[0.62fr_1.38fr]">
-          <Reveal className="flex flex-col gap-10 lg:sticky lg:top-28 lg:self-start">
+          <Reveal className="order-2 flex flex-col gap-10 lg:order-1 lg:sticky lg:top-28 lg:self-start">
 
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">
@@ -119,7 +120,7 @@ export default function ContactPage() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.08}>
+          <Reveal className="order-1 lg:order-2" delay={0.08}>
             <Suspense fallback={<div className="min-h-[36rem] border bg-secondary/30" />}>
               <ContactForm />
             </Suspense>

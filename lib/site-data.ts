@@ -24,8 +24,8 @@ export const services = [
     description:
       "Fast, accessible business websites and web applications designed around clear user journeys and measurable business goals.",
     heroImage: {
-      src: "/images/editorial-services.webp",
-      alt: "A developer reviewing a web application project at a studio desk",
+      src: "/images/editorial-services-v2.webp",
+      alt: "A web product builder reviewing interface sketches at a studio desk",
     },
     seoTitle: "Web Development for Business Websites & Web Apps",
     metaDescription:
@@ -114,8 +114,8 @@ export const services = [
     description:
       "Secure APIs, databases, middleware, and server-side systems that connect products, partners, and operational data.",
     heroImage: {
-      src: "/images/editorial-workflow.webp",
-      alt: "Two professionals mapping the data flow for a backend system",
+      src: "/images/editorial-workflow-v2.webp",
+      alt: "Two professionals mapping the data flow for a backend system on a whiteboard",
     },
     seoTitle: "Backend & API Development for Digital Products",
     metaDescription:
@@ -204,8 +204,8 @@ export const services = [
     description:
       "Practical technical direction for product ideas, architecture decisions, proofs of concept, delivery risks, and existing systems.",
     heroImage: {
-      src: "/images/editorial-about.webp",
-      alt: "A product team discussing technical options around a studio table",
+      src: "/images/editorial-consulting-v2.webp",
+      alt: "Two professionals evaluating technical options at a whiteboard",
     },
     seoTitle: "Technical Consulting & Product Conception",
     metaDescription:
@@ -294,8 +294,8 @@ export const services = [
     description:
       "Purpose-built assistants and language-model features connected to approved knowledge, tools, and human review paths.",
     heroImage: {
-      src: "/images/editorial-home-hero.webp",
-      alt: "Two professionals reviewing requirements for an LLM integration",
+      src: "/images/editorial-llm-v2.webp",
+      alt: "Two professionals evaluating an LLM feature against approved source documents",
     },
     seoTitle: "LLM Integration & Practical AI Consulting",
     metaDescription:
@@ -384,8 +384,8 @@ export const services = [
     description:
       "Reliable workflows that connect forms, email, CRM, databases, and operational tools with alerts and human approval where needed.",
     heroImage: {
-      src: "/images/editorial-workflow.webp",
-      alt: "A consultant mapping an operational automation workflow on a whiteboard",
+      src: "/images/editorial-workflow-v2.webp",
+      alt: "Two professionals mapping an operational automation workflow on a whiteboard",
     },
     seoTitle: "Workflow Automation with n8n, Make, and APIs",
     metaDescription:
