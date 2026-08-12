@@ -10,9 +10,9 @@ import { services } from "@/lib/site-data";
 
 export const metadata: Metadata = {
   title: "Software Development & Technical Consulting",
-  description: "Explore web development, backend and API development, technical consulting, LLM integration, and workflow automation services from AtlasMind212.",
+  description: "Explore web development, backend and API development, technical consulting, LLM integration, and workflow automation services from AtlasMind.",
   alternates: { canonical: "/services" },
-  openGraph: { title: "Software Development & Technical Consulting | AtlasMind212", description: "Web applications, backend systems, technical consulting, LLM integrations, and workflow automation delivered with a clear scope and handoff.", url: "/services", type: "website" },
+  openGraph: { title: "Software Development & Technical Consulting | AtlasMind", description: "Web applications, backend systems, technical consulting, LLM integrations, and workflow automation delivered with a clear scope and handoff.", url: "/services", type: "website" },
 };
 
 export default function ServicesPage() {
@@ -38,7 +38,7 @@ export default function ServicesPage() {
               const Icon = service.icon;
               return (
                 <Reveal key={service.slug} delay={index * 0.05}>
-                  <Link href={`/services/${service.slug}`} className="group flex h-full flex-col border border-border bg-white p-7 shadow-[0_10px_35px_rgb(34_25_85/0.07)] transition-colors hover:border-primary">
+                  <Link href={`/services/${service.slug}`} className="group flex h-full flex-col border border-border bg-white p-7 shadow-[0_10px_35px_rgb(64_68_71/0.07)] transition-colors hover:border-primary">
                     <div className="flex items-center justify-between gap-4"><Icon className="size-7 shrink-0 text-primary" /><span className="text-right text-xs font-bold uppercase tracking-[0.12em] text-muted-foreground">{service.engagement}</span></div>
                     <h3 className="mt-14 text-3xl font-bold group-hover:text-primary">{service.title}</h3>
                     <p className="mt-4 flex-1 leading-7 text-muted-foreground">{service.description}</p>
@@ -51,7 +51,7 @@ export default function ServicesPage() {
         </Container>
       </section>
 
-      <section className="bg-[#f7f6ff] py-20 sm:py-28">
+      <section className="bg-[var(--surface-raised)] py-20 sm:py-28">
         <Container className="space-y-20">
           {services.map((service, index) => {
             const Icon = service.icon;

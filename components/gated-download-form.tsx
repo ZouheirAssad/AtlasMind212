@@ -65,7 +65,7 @@ export function GatedDownloadForm({ guide, isHardGated = false }: GatedDownloadF
 
   if (success) {
     return (
-      <article className="border-l-4 border-primary bg-[#f7f6ff] p-6 text-center sm:p-8">
+      <article className="border-l-4 border-primary bg-[var(--surface-raised)] p-6 text-center sm:p-8">
         <CheckCircle2 className="size-10 mx-auto text-primary" />
         <h3 className="mt-4 font-display text-2xl text-primary">Download started</h3>
         <p className="mt-2 text-sm text-muted-foreground">Your PDF should appear in your browser downloads. You can start it again if needed.</p>
@@ -77,7 +77,7 @@ export function GatedDownloadForm({ guide, isHardGated = false }: GatedDownloadF
   }
 
   return (
-    <article className="border border-border bg-card p-6 shadow-[0_12px_40px_rgb(34_25_85/0.08)] sm:p-8">
+    <article className="border border-border bg-card p-6 shadow-[0_12px_40px_rgb(64_68_71/0.08)] sm:p-8">
       <div className="flex items-center gap-3">
         <span className="flex size-11 items-center justify-center bg-secondary text-primary">
           <Download className="size-5" />

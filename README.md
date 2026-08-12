@@ -1,6 +1,6 @@
-# AtlasMind212 MVP
+# AtlasMind MVP
 
-Next.js App Router website for AtlasMind212.
+Next.js App Router website for AtlasMind.
 
 ## Local setup
 
@@ -58,14 +58,14 @@ SUPABASE_SERVICE_ROLE_KEY=
 ADMIN_EMAILS=you@example.com
 
 RESEND_API_KEY=
-CONTACT_NOTIFICATION_FROM=AtlasMind212 <onboarding@resend.dev>
+CONTACT_NOTIFICATION_FROM=AtlasMind <onboarding@resend.dev>
 CONTACT_NOTIFICATION_TO=zouhirassad@gmail.com
 ```
 
 - `NEXT_PUBLIC_SITE_URL` controls absolute metadata, canonical, and social preview URLs. Production should use `https://atlasmind212.com`.
 - `SUPABASE_SERVICE_ROLE_KEY` and `RESEND_API_KEY` are only used on the server side and must never be exposed or prefixed with `NEXT_PUBLIC_`.
 - `ADMIN_EMAILS` is a comma-separated bootstrap allowlist for the private guide CMS. Admins invited from `/admin/admins` are authorized with Supabase Auth `app_metadata.role = "admin"`.
-- For first email tests, use Resend's default sender: `AtlasMind212 <onboarding@resend.dev>`. Resend only allows this sender to email the address associated with your Resend account.
+- For first email tests, use Resend's default sender: `AtlasMind <onboarding@resend.dev>`. Resend only allows this sender to email the address associated with your Resend account.
 - For production delivery to other recipients, `CONTACT_NOTIFICATION_FROM` must match a verified sender address or domain configured in your Resend account.
 
 ## AI Guides CMS

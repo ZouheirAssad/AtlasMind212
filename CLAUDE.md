@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-AtlasMind212 — a single Next.js 16 App Router site combining public marketing surfaces (pages, services, blog/AI guides, contact + lead intake) with a private admin CMS (guides, admins, analytics). Backend: Supabase (Postgres + Auth + Storage), Resend (transactional email), Vercel (hosting + Web Analytics).
+AtlasMind — a single Next.js 16 App Router site combining public marketing surfaces (pages, services, blog/AI guides, contact + lead intake) with a private admin CMS (guides, admins, analytics). The repository and internal project identifiers retain the legacy `atlasmind212` name. Backend: Supabase (Postgres + Auth + Storage), Resend (transactional email), Vercel (hosting + Web Analytics).
 
 **No test suite, no CI workflow.** Correctness is verified with lint + production build + manual browser checks.
 

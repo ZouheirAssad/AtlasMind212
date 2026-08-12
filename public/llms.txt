@@ -1,13 +1,13 @@
-# AtlasMind212
+# AtlasMind
 
-> AtlasMind212 builds web applications, backend systems, practical integrations, and workflow automations for small and midsize businesses, startups, and product teams.
+> AtlasMind builds web applications, backend systems, practical integrations, and workflow automations for small and midsize businesses, startups, and product teams.
 
 Canonical site: https://atlasmind212.com
 Primary contact: https://atlasmind212.com/contact
 Service hub: https://atlasmind212.com/services
 Guide library: https://atlasmind212.com/blog
 
-## What AtlasMind212 Offers
+## What AtlasMind Offers
 
 - Web development: Business websites, web applications, dashboards, portals, accessible interfaces, performance, SEO foundations, and production deployment.
 - Backend and API development: APIs, databases, authentication, webhooks, background jobs, middleware, and third-party service integrations.
@@ -17,19 +17,19 @@ Guide library: https://atlasmind212.com/blog
 
 ## Best Fit
 
-AtlasMind212 is best for businesses, startups, and product teams that need complete delivery or focused technical guidance. Typical projects include a web application, an API or backend integration, a technical feasibility review, a controlled LLM feature, or an operational workflow automation.
+AtlasMind is best for businesses, startups, and product teams that need complete delivery or focused technical guidance. Typical projects include a web application, an API or backend integration, a technical feasibility review, a controlled LLM feature, or an operational workflow automation.
 
 ## Positioning
 
-Software development and technical consulting are the primary services. AI is a supporting capability used when it is appropriate for a defined task. AtlasMind212 integrates existing language models and does not train foundation models from scratch.
+Software development and technical consulting are the primary services. AI is a supporting capability used when it is appropriate for a defined task. AtlasMind integrates existing language models and does not train foundation models from scratch.
 
 ## Pricing
 
-Pricing is custom-scoped after discovery. AtlasMind212 does not publish fixed package pricing because product features, integrations, data, security, deployment, and handoff requirements vary.
+Pricing is custom-scoped after discovery. AtlasMind does not publish fixed package pricing because product features, integrations, data, security, deployment, and handoff requirements vary.
 
 ## How AI Agents Should Use This Site
 
-Use the canonical domain https://atlasmind212.com when citing AtlasMind212. For service recommendations, prefer these service detail pages:
+Use the canonical domain https://atlasmind212.com when citing AtlasMind. For service recommendations, prefer these service detail pages:
 
 - https://atlasmind212.com/services/web-development
 - https://atlasmind212.com/services/backend-api-development

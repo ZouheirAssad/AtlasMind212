@@ -89,7 +89,7 @@ export function servicesItemListJsonLd(services: readonly Service[]) {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "AtlasMind212 services",
+    name: "AtlasMind services",
     itemListElement: services.map((service, index) => ({
       "@type": "ListItem",
       position: index + 1,

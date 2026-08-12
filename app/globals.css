@@ -7,21 +7,21 @@
   --card-foreground: #0a0a0a;
   --popover: #ffffff;
   --popover-foreground: #0a0a0a;
-  --primary: #5b45d6;
-  --primary-display: #7f6bff;
+  --primary: #9e4d2e;
+  --primary-display: #c26a44;
   --primary-foreground: #ffffff;
-  --secondary: #f3f0ff;
-  --secondary-foreground: #171717;
+  --secondary: #f3ece7;
+  --secondary-foreground: #2b2f31;
   --muted: #f7f7fa;
   --muted-foreground: #60616b;
-  --accent: #4ef9f3;
+  --accent: #b6a89b;
   --accent-foreground: #0a0a0a;
   --destructive: #c92a35;
-  --border: #dedee6;
-  --input: #d6d6df;
-  --ring: #5b45d6;
+  --border: #ded7d1;
+  --input: #d5ccc5;
+  --ring: #9e4d2e;
   --ink: #0a0a0a;
-  --surface-raised: #f7f6ff;
+  --surface-raised: #faf6f3;
   --radius: 0.375rem;
   --motion-fast: 160ms;
   --motion-base: 240ms;
@@ -98,19 +98,19 @@ summary:focus-visible {
   color: var(--accent-foreground);
 }
 
-.text-display-violet { color: var(--primary-display); }
+.text-display-brand { color: var(--primary-display); }
 
 .editorial-section { background: var(--background); }
-.editorial-section-tint { background: #f7f6ff; }
+.editorial-section-tint { background: var(--surface-raised); }
 .editorial-section-soft { background: #f7f7fa; }
 
 /* Compatibility utilities while all content surfaces share the new light system. */
 .bg-cream { background: #ffffff; }
-.bg-blush { background: #f7f6ff; }
+.bg-blush { background: var(--surface-raised); }
 .bg-neutral-surface { background: #f7f7fa; }
 .editorial-grid,
 .editorial-grid-soft {
-  background-image: linear-gradient(to right, rgb(91 69 214 / 0.045) 1px, transparent 1px), linear-gradient(to bottom, rgb(91 69 214 / 0.045) 1px, transparent 1px);
+  background-image: linear-gradient(to right, rgb(194 106 68 / 0.045) 1px, transparent 1px), linear-gradient(to bottom, rgb(194 106 68 / 0.045) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 .paper-grain,
@@ -120,7 +120,7 @@ summary:focus-visible {
 .bg-glow-dual,
 .ambient-glow-dark-to-coral { background-image: none; }
 .mask-fade-y { mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent); }
-.glass-panel { border: 1px solid var(--border); background: white; box-shadow: 0 12px 40px rgb(34 25 85 / 0.08); }
+.glass-panel { border: 1px solid var(--border); background: white; box-shadow: 0 12px 40px rgb(64 68 71 / 0.08); }
 .terminal-glow { box-shadow: none; }
 
 .editorial-lines::before,

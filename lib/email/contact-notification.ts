@@ -42,16 +42,16 @@ function buildHtml(payload: ContactNotificationPayload): string {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>New contact submission — AtlasMind212</title>
+    <title>New contact submission — AtlasMind</title>
   </head>
-  <body style="margin:0;background:#f7f6ff;font-family:Inter,Arial,sans-serif">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f7f6ff">
+  <body style="margin:0;background:#faf6f3;font-family:Inter,Arial,sans-serif">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#faf6f3">
       <tr>
         <td style="padding:32px 16px">
-          <table role="presentation" align="center" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border:1px solid #dedee6;border-radius:6px;overflow:hidden">
+          <table role="presentation" align="center" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border:1px solid #ded7d1;border-radius:6px;overflow:hidden">
             <tr>
-              <td style="padding:24px 32px;background:#5b45d6">
-                <span style="font-family:Inter,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#4ef9f3">AtlasMind212</span>
+              <td style="padding:24px 32px;background:#404447">
+                <span style="font-family:Inter,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#ffffff">AtlasMind</span>
                 <h1 style="margin:8px 0 0;font-size:20px;font-weight:650;color:#ffffff">New contact submission</h1>
               </td>
             </tr>
@@ -62,14 +62,14 @@ function buildHtml(payload: ContactNotificationPayload): string {
                 </table>
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:24px">
                   <tr>
-                    <td style="padding:12px 16px;background:#f7f6ff;border-left:4px solid #7f6bff;font-size:15px;line-height:1.6;color:#0a0a0a">${message}</td>
+                    <td style="padding:12px 16px;background:#faf6f3;border-left:4px solid #c26a44;font-size:15px;line-height:1.6;color:#0a0a0a">${message}</td>
                   </tr>
                 </table>
               </td>
             </tr>
             <tr>
               <td style="padding:16px 32px 24px;font-size:12px;color:#94a3b8">
-                Sent from the AtlasMind212 contact form.
+                Sent from the AtlasMind contact form.
               </td>
             </tr>
           </table>

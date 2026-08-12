@@ -197,7 +197,7 @@ type GuideEditorProps = {
 
 function GuideEditor({ guide, thumbnailUrl, pdfUrl }: GuideEditorProps) {
   return (
-    <article className="overflow-hidden rounded-md border bg-card shadow-[0_10px_35px_rgb(34_25_85/0.07)]">
+    <article className="overflow-hidden rounded-md border bg-card shadow-[0_10px_35px_rgb(64_68_71/0.07)]">
       <div className="grid gap-0 lg:grid-cols-[18rem_1fr]">
         <div className="relative min-h-64 bg-secondary flex flex-col justify-center items-center p-6 border-b lg:border-b-0 lg:border-r">
           {thumbnailUrl ? (
@@ -341,7 +341,7 @@ export default async function AdminGuidesPage({ searchParams }: AdminGuidesPageP
           </div>
         ) : (
           <>
-            <div className="rounded-md border bg-card p-6 shadow-[0_10px_35px_rgb(34_25_85/0.07)] sm:p-8">
+            <div className="rounded-md border bg-card p-6 shadow-[0_10px_35px_rgb(64_68_71/0.07)] sm:p-8">
               <div className="mb-7 flex items-center gap-3">
                 <span className="flex size-11 items-center justify-center rounded-sm bg-secondary text-primary">
                   <Plus className="size-5" />

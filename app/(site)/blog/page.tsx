@@ -12,7 +12,7 @@ import { absoluteUrl } from "@/lib/site-config";
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Software & Automation Guides",
-  description: "Explore practical AtlasMind212 articles and guides about web development, backend systems, integrations, AI, and workflow automation.",
+  description: "Explore practical AtlasMind articles and guides about web development, backend systems, integrations, AI, and workflow automation.",
   alternates: { canonical: "/blog" },
   openGraph: {
     title: "Software & Automation Guides",
@@ -49,13 +49,13 @@ export default async function BlogPage() {
         <Container>
           <Reveal className="mx-auto max-w-5xl text-center">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">AtlasMind library</p>
-            <h1 className="mt-5 text-6xl leading-[0.94] text-display-violet sm:text-8xl lg:text-9xl">Guides</h1>
+            <h1 className="mt-5 text-6xl leading-[0.94] text-display-brand sm:text-8xl lg:text-9xl">Guides</h1>
             <p className="mx-auto mt-7 max-w-3xl text-xl leading-8 text-muted-foreground">Practical articles and downloadable guides for building better web products, integrations, AI features, and automated workflows.</p>
           </Reveal>
         </Container>
       </section>
 
-      <section className="bg-[#f7f6ff] py-16 sm:py-24">
+      <section className="bg-[var(--surface-raised)] py-16 sm:py-24">
         <Container className="max-w-5xl">
           {guidesWithThumbnails.length ? (
             <div>
@@ -67,7 +67,7 @@ export default async function BlogPage() {
             </div>
           ) : isUnavailable ? (
             <Reveal>
-              <div className="mx-auto flex max-w-2xl flex-col items-center border border-dashed border-primary/40 bg-white p-10 text-center shadow-[0_12px_40px_rgb(34_25_85/0.08)]">
+              <div className="mx-auto flex max-w-2xl flex-col items-center border border-dashed border-primary/40 bg-white p-10 text-center shadow-[0_12px_40px_rgb(64_68_71/0.08)]">
                 <span className="flex size-14 items-center justify-center bg-secondary text-primary">
                   <FileText className="size-6" />
                 </span>
@@ -84,7 +84,7 @@ export default async function BlogPage() {
             </Reveal>
           ) : (
             <Reveal>
-              <div className="mx-auto flex max-w-2xl flex-col items-center border border-dashed bg-white p-10 text-center shadow-[0_12px_40px_rgb(34_25_85/0.08)]">
+              <div className="mx-auto flex max-w-2xl flex-col items-center border border-dashed bg-white p-10 text-center shadow-[0_12px_40px_rgb(64_68_71/0.08)]">
                 <span className="flex size-14 items-center justify-center bg-secondary text-primary">
                   <FileText className="size-6" />
                 </span>

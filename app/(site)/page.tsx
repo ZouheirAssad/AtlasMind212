@@ -43,7 +43,7 @@ export default function HomePage() {
         <Container className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <Reveal>
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">The approach</p>
-            <h2 className="mt-5 text-balance text-5xl leading-[1.02] text-display-violet sm:text-7xl">
+            <h2 className="mt-5 text-balance text-5xl leading-[1.02] text-display-brand sm:text-7xl">
               Technology should solve the work in front of you.
             </h2>
             <p className="mt-6 max-w-xl text-lg leading-8 text-muted-foreground">
@@ -106,7 +106,7 @@ export default function HomePage() {
             <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">Bring the product idea, existing system, or operational bottleneck. We will help shape a practical next step.</p>
             <Button asChild size="lg" className="mt-8"><Link href="/contact">Start a conversation <ArrowRight /></Link></Button>
           </Reveal>
-          <Reveal delay={0.08} className="border-l-4 border-primary-display bg-white p-8 shadow-[0_12px_40px_rgb(34_25_85/0.08)] sm:p-10">
+          <Reveal delay={0.08} className="border-l-4 border-primary-display bg-white p-8 shadow-[0_12px_40px_rgb(64_68_71/0.08)] sm:p-10">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">A useful first scope</p>
             <ul className="mt-6 space-y-5">
               {["One clear business outcome", "The few systems that need to connect", "A fixed implementation path", "A maintainable handover"].map((item) => (

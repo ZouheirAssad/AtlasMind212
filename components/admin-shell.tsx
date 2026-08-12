@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BarChart3, BookOpen, ShieldCheck } from "lucide-react";
+import { BrandLogo } from "@/components/brand-logo";
 import { cn } from "@/lib/utils";
 
 const adminItems = [
@@ -23,8 +23,10 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
       <header className="border-b bg-white">
         <div className="mx-auto flex min-h-20 max-w-[96rem] flex-col gap-4 px-5 py-4 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-10">
           <Link href="/admin/guides" className="flex min-h-11 items-center gap-3 font-bold tracking-[-0.03em]">
-            <Image src="/atlasmind-logo.png" alt="" width={38} height={38} className="size-9 object-cover" />
-            <span>AtlasMind212 <span className="font-medium text-muted-foreground">Admin</span></span>
+            <span className="grid size-11 place-items-center bg-[#faf6f3]">
+              <BrandLogo variant="mark" className="size-10" />
+            </span>
+            <span>AtlasMind <span className="font-medium text-muted-foreground">Admin</span></span>
           </Link>
           <nav aria-label="Admin navigation" className="flex flex-wrap gap-1">
             {adminItems.map(({ href, label, icon: Icon }) => {

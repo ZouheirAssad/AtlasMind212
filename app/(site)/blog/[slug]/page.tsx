@@ -70,9 +70,9 @@ export default async function GuidePage({ params }: GuidePageProps) {
   if (result.status === "unavailable") {
     return (
       <article>
-        <section className="bg-[#f7f6ff] py-16 sm:py-24">
+        <section className="bg-[var(--surface-raised)] py-16 sm:py-24">
           <Container>
-            <div className="mx-auto flex max-w-2xl flex-col items-center border border-dashed border-primary/40 bg-card p-10 text-center shadow-[0_12px_40px_rgb(34_25_85/0.08)]">
+            <div className="mx-auto flex max-w-2xl flex-col items-center border border-dashed border-primary/40 bg-card p-10 text-center shadow-[0_12px_40px_rgb(64_68_71/0.08)]">
               <span className="flex size-14 items-center justify-center border border-primary/30 bg-secondary text-primary">
                 <FileText className="size-6" />
               </span>
@@ -134,7 +134,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
   return (
     <article>
       <JsonLd data={schemas} />
-      <section className="bg-[#f7f6ff] py-12 sm:py-20">
+      <section className="bg-[var(--surface-raised)] py-12 sm:py-20">
         <Container>
           <Button asChild variant="outline" className="mb-8">
             <Link href="/blog">
@@ -183,7 +183,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
             </div>
 
             {thumbnailUrl && (
-              <div className="relative overflow-hidden border bg-secondary shadow-[0_12px_40px_rgb(34_25_85/0.1)]">
+              <div className="relative overflow-hidden border bg-secondary shadow-[0_12px_40px_rgb(64_68_71/0.1)]">
                 <Image
                   src={thumbnailUrl}
                   alt={guide.thumbnail_alt || guide.title}
@@ -212,7 +212,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
                   Get a handy downloadable PDF version of this article to save, reference, or share with your team.
                 </p>
                 {canDownload ? (
-                  <div className="flex flex-col gap-4 border-l-4 border-primary bg-[#f7f6ff] p-6 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex flex-col gap-4 border-l-4 border-primary bg-[var(--surface-raised)] p-6 sm:flex-row sm:items-center sm:justify-between">
                     <div>
                       <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">Unlocked</p>
                       <h4 className="text-xl font-semibold mt-1">Your PDF is ready for download.</h4>
@@ -238,7 +238,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
       {!guide.article_body && hasPdf && canDownload && (
         <section className="bg-white py-16">
           <Container>
-            <div className="border bg-card p-6 shadow-[0_12px_40px_rgb(34_25_85/0.08)] sm:p-8">
+            <div className="border bg-card p-6 shadow-[0_12px_40px_rgb(64_68_71/0.08)] sm:p-8">
               <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">Unlocked Direct PDF</p>

@@ -29,9 +29,9 @@ export const services = [
     },
     seoTitle: "Web Development for Business Websites & Web Apps",
     metaDescription:
-      "AtlasMind212 designs and develops fast business websites and web applications with accessible interfaces, integrations, SEO foundations, and documented handoff.",
+      "AtlasMind designs and develops fast business websites and web applications with accessible interfaces, integrations, SEO foundations, and documented handoff.",
     definition:
-      "AtlasMind212 develops production-ready websites and web applications that make a service easier to understand, a process easier to use, or a digital product easier to operate. Each project combines clear structure, responsive implementation, accessibility, performance, integrations, deployment, and maintainable handoff.",
+      "AtlasMind develops production-ready websites and web applications that make a service easier to understand, a process easier to use, or a digital product easier to operate. Each project combines clear structure, responsive implementation, accessibility, performance, integrations, deployment, and maintainable handoff.",
     audience:
       "Small and midsize businesses, startups, and product teams that need a new website, customer portal, dashboard, or focused web application.",
     deliverables: [
@@ -77,7 +77,7 @@ export const services = [
       {
         question: "What kinds of web projects do you build?",
         answer:
-          "AtlasMind212 builds business websites, landing pages, web applications, dashboards, portals, and focused internal tools. The scope is shaped around the users and business outcome rather than a fixed page package.",
+          "AtlasMind builds business websites, landing pages, web applications, dashboards, portals, and focused internal tools. The scope is shaped around the users and business outcome rather than a fixed page package.",
       },
       {
         question: "Can you work with an existing website or application?",
@@ -119,9 +119,9 @@ export const services = [
     },
     seoTitle: "Backend & API Development for Digital Products",
     metaDescription:
-      "AtlasMind212 builds secure APIs, databases, middleware, webhooks, and backend services for web products and business systems.",
+      "AtlasMind builds secure APIs, databases, middleware, webhooks, and backend services for web products and business systems.",
     definition:
-      "Backend and API development from AtlasMind212 creates the dependable layer behind a website, application, or business process. Work can include data models, authentication, integrations, webhooks, background jobs, and documented interfaces designed for secure operation and future maintenance.",
+      "Backend and API development from AtlasMind creates the dependable layer behind a website, application, or business process. Work can include data models, authentication, integrations, webhooks, background jobs, and documented interfaces designed for secure operation and future maintenance.",
     audience:
       "Product teams, startups, and established businesses that need reliable server-side functionality or connections between existing systems.",
     deliverables: [
@@ -165,7 +165,7 @@ export const services = [
     ],
     faqs: [
       {
-        question: "What backend work can AtlasMind212 deliver?",
+        question: "What backend work can AtlasMind deliver?",
         answer:
           "Projects can include REST APIs, server routes, databases, authentication, webhooks, scheduled jobs, realtime features, middleware, and third-party service integrations.",
       },
@@ -187,7 +187,7 @@ export const services = [
       {
         question: "Can this service support an existing development team?",
         answer:
-          "Yes, as a clearly scoped delivery or consulting engagement with agreed interfaces and ownership. AtlasMind212 does not advertise open-ended staff augmentation.",
+          "Yes, as a clearly scoped delivery or consulting engagement with agreed interfaces and ownership. AtlasMind does not advertise open-ended staff augmentation.",
       },
     ],
     bestFor:
@@ -211,7 +211,7 @@ export const services = [
     metaDescription:
       "Get practical technical consulting for product requirements, architecture, technology selection, feasibility, proofs of concept, estimates, and delivery planning.",
     definition:
-      "Technical consulting from AtlasMind212 turns an idea, bottleneck, or difficult technology decision into an actionable delivery path. The engagement combines business context with implementation experience to clarify requirements, evaluate options, expose risks, and define what should be built next.",
+      "Technical consulting from AtlasMind turns an idea, bottleneck, or difficult technology decision into an actionable delivery path. The engagement combines business context with implementation experience to clarify requirements, evaluate options, expose risks, and define what should be built next.",
     audience:
       "Decision-makers, founders, and product or engineering teams that need an independent technical view before or during delivery.",
     deliverables: [
@@ -277,7 +277,7 @@ export const services = [
       {
         question: "Does this include ongoing team coaching?",
         answer:
-          "The service can include working sessions and knowledge transfer inside a defined engagement, but AtlasMind212 does not currently offer open-ended embedded coaching or team leadership.",
+          "The service can include working sessions and knowledge transfer inside a defined engagement, but AtlasMind does not currently offer open-ended embedded coaching or team leadership.",
       },
     ],
     bestFor:
@@ -299,9 +299,9 @@ export const services = [
     },
     seoTitle: "LLM Integration & Practical AI Consulting",
     metaDescription:
-      "AtlasMind212 evaluates and implements LLM assistants and AI features with approved data, system integrations, guardrails, evaluation, and human handoff.",
+      "AtlasMind evaluates and implements LLM assistants and AI features with approved data, system integrations, guardrails, evaluation, and human handoff.",
     definition:
-      "LLM integration and AI consulting from AtlasMind212 starts by deciding whether a language model is useful for the job. When it is, the work connects an existing model to approved knowledge and systems, defines guardrails and human fallback, evaluates real behavior, and documents the cost and ownership required for production use.",
+      "LLM integration and AI consulting from AtlasMind starts by deciding whether a language model is useful for the job. When it is, the work connects an existing model to approved knowledge and systems, defines guardrails and human fallback, evaluates real behavior, and documents the cost and ownership required for production use.",
     audience:
       "Businesses and product teams with a concrete knowledge, support, content, or workflow use case that may benefit from language-model capabilities.",
     deliverables: [
@@ -352,7 +352,7 @@ export const services = [
       {
         question: "Do you train custom foundation models?",
         answer:
-          "No. AtlasMind212 evaluates and integrates existing models and may configure retrieval, prompts, tools, structured outputs, and evaluations around them.",
+          "No. AtlasMind evaluates and integrates existing models and may configure retrieval, prompts, tools, structured outputs, and evaluations around them.",
       },
       {
         question: "Can an assistant use private company information?",
@@ -389,9 +389,9 @@ export const services = [
     },
     seoTitle: "Workflow Automation with n8n, Make, and APIs",
     metaDescription:
-      "AtlasMind212 automates business workflows across forms, email, CRM, databases, and reporting using n8n, Make, APIs, or custom code.",
+      "AtlasMind automates business workflows across forms, email, CRM, databases, and reporting using n8n, Make, APIs, or custom code.",
     definition:
-      "Workflow automation from AtlasMind212 turns repeatable manual steps into reliable background processes. The work connects the tools your team already uses, validates information as it moves, handles expected failures, and keeps people in control of exceptions and approvals. AI is included only when it improves a specific step.",
+      "Workflow automation from AtlasMind turns repeatable manual steps into reliable background processes. The work connects the tools your team already uses, validates information as it moves, handles expected failures, and keeps people in control of exceptions and approvals. AI is included only when it improves a specific step.",
     audience:
       "Operations teams, founders, and product teams that want to reduce repetitive work and fragile handoffs across disconnected tools.",
     deliverables: [
@@ -442,7 +442,7 @@ export const services = [
       {
         question: "Do you use n8n or Make?",
         answer:
-          "Yes. AtlasMind212 can use n8n, Make, direct APIs, or custom server-side code depending on security, complexity, reliability, and ownership requirements.",
+          "Yes. AtlasMind can use n8n, Make, direct APIs, or custom server-side code depending on security, complexity, reliability, and ownership requirements.",
       },
       {
         question: "Can automations include human approval?",

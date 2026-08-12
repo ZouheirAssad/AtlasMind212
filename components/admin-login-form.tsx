@@ -38,7 +38,7 @@ export function AdminLoginForm({ redirectTo = "/admin/guides" }: { redirectTo?: 
   const unauthorized = searchParams.get("error") === "unauthorized";
 
   return (
-    <form onSubmit={onSubmit} className="w-full border bg-card p-6 shadow-[0_12px_40px_rgb(34_25_85/0.08)] sm:p-8" noValidate>
+    <form onSubmit={onSubmit} className="w-full border bg-card p-6 shadow-[0_12px_40px_rgb(64_68_71/0.08)] sm:p-8" noValidate>
       <FieldGroup>
         <Field data-invalid={Boolean(error || unauthorized)}>
           <FieldLabel htmlFor="admin-email">Email</FieldLabel>

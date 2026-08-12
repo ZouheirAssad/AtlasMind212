@@ -58,7 +58,7 @@ export function ContactForm() {
 
   if (success) {
     return (
-      <div className="flex min-h-80 flex-col items-center justify-center gap-4 border bg-card p-8 text-center shadow-[0_12px_40px_rgb(34_25_85/0.08)]">
+      <div className="flex min-h-80 flex-col items-center justify-center gap-4 border bg-card p-8 text-center shadow-[0_12px_40px_rgb(64_68_71/0.08)]">
         <CheckCircle2 className="size-10 text-primary" />
         <h2 className="text-3xl font-semibold">Your message is on its way.</h2>
         <p className="max-w-md text-muted-foreground">Thanks for the context. Your message was sent and stored — we read every submission and reply with a direct, useful answer, usually within 2 business days.</p>
@@ -67,7 +67,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="border bg-card p-6 shadow-[0_12px_40px_rgb(34_25_85/0.08)] sm:p-10" noValidate>
+    <form onSubmit={handleSubmit(onSubmit)} className="border bg-card p-6 shadow-[0_12px_40px_rgb(64_68_71/0.08)] sm:p-10" noValidate>
       <FieldGroup>
         <div className="grid gap-7 sm:grid-cols-2">
           <Field data-invalid={Boolean(errors.name)}>

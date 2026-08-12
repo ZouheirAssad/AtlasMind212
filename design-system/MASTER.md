@@ -1,10 +1,10 @@
-# AtlasMind212 Design System
+# AtlasMind Design System
 
 ## Direction
 
 Light editorial technology: direct, capable, human, and practical. The system
 uses documentary workplace photography, oversized sans-serif statements,
-white and pale-violet canvases, thin rules, and restrained violet/aqua brand
+white and warm-ivory canvases, thin rules, and restrained copper/taupe brand
 signals. It is inspired by modern European digital studios without copying
 another company’s imagery, identity, copy, or page content.
 
@@ -20,29 +20,31 @@ another company’s imagery, identity, copy, or page content.
 
 - Canvas: `#FFFFFF`
 - Soft neutral surface: `#F7F7FA`
-- Tinted editorial surface: `#F7F6FF`
+- Warm secondary surface: `#F3ECE7`
+- Tinted editorial surface: `#FAF6F3`
 - Main text: `#0A0A0A`
 - Muted text: `#60616B`
-- Reference violet for large display accents: `#7F6BFF`
-- Accessible interactive violet: `#5B45D6`
-- Violet hover: `#4933BD`
-- Aqua accent: `#4EF9F3`
-- Border: `#DEDEE6`
+- Charcoal brand surface: `#404447`
+- Display copper: `#C26A44`
+- Accessible interactive copper: `#9E4D2E`
+- Copper hover: `#823B23`
+- Taupe accent: `#B6A89B`
+- Border: `#DED7D1`
 - Destructive: `#C92A35`
 
-Use display violet for large text and decorative rules. Use the stronger
-interactive violet for buttons, links, focus, and small text. Aqua is a sparse
-highlight with dark foreground text; it is not body text on white. Red and
-amber remain semantic colors only.
+Use display copper for large text and decorative rules. Use the darker
+interactive copper for buttons, links, focus, and small text. Taupe is a sparse
+highlight with dark foreground text and is not used as small text on charcoal.
+Red and amber remain semantic colors only.
 
 ## Layout And Surfaces
 
 - Use full-bleed photographic heroes or clean split compositions.
-- Alternate white, soft neutral, and pale-violet sections.
+- Alternate white, soft neutral, and warm-ivory sections.
 - Prefer asymmetrical editorial grids and generous vertical rhythm.
 - Cards are flat white surfaces with 0–8px radii, thin borders, and subtle
-  violet-neutral shadows.
-- Use 1–4px violet rules and section dividers instead of glow, glass, or
+  charcoal-neutral shadows.
+- Use 1–4px copper rules and section dividers instead of glow, glass, or
   decorative technical grids.
 - Admin pages use the same tokens in a denser dedicated private shell.
 
@@ -58,8 +60,8 @@ amber remain semantic colors only.
 
 Use original, text-free documentary workplace photography: real-looking
 people, modest studios, whiteboards, laptops, notes, cables, and natural light.
-Keep skin, fabric, paper, and architectural texture believable. Add violet or
-aqua line motifs with CSS or local SVG overlays rather than baking branding
+Keep skin, fabric, paper, and architectural texture believable. Add copper or
+taupe line motifs with CSS or local SVG overlays rather than baking branding
 into photographs. Avoid copied reference assets, staged stock-photo smiles,
 generic robots, holograms, neon lighting, fake UI text, and futuristic AI
 cliches.
@@ -70,16 +72,24 @@ the LCP image.
 
 ## Brand Assets
 
+The AtlasMind source artwork lives at `assets/atlasmind-logo-source.jpeg`.
+Production assets are the transparent full lockup at
+`public/atlasmind-logo.png`, the square transparent mark at
+`public/atlasmind-mark.png`, the extracted wordmarks at
+`public/atlasmind-wordmark.png` and `public/atlasmind-wordmark-inverse.png`,
+and the platform icons under `app/`. Use the mark with the original wordmark in
+compact headers and the inverse wordmark on dark surfaces.
+
 Official tool logos remain local under `public/brands/` and preserve their
-original proportions and colors. When logos appear, use white or pale-violet
+original proportions and colors. When logos appear, use white or warm-neutral
 tiles with neutral borders. Do not use third-party runtime logo dependencies.
 
 ## Accessibility
 
 - WCAG AA contrast for text and controls.
 - Minimum interactive target: 44px.
-- Visible violet focus rings on links, controls, fields, summaries, and menus.
-- Aqua controls always use dark text.
+- Visible copper focus rings on links, controls, fields, summaries, and menus.
+- Taupe controls always use dark text.
 - Dialogs and sheets retain titles, descriptions, Escape handling, focus
   trapping, and focus return.
 - Navigation exposes `aria-current` and mobile menus remain keyboard usable.

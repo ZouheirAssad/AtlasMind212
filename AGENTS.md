@@ -2,8 +2,10 @@
 
 ## Project
 
-AtlasMind212 is a single Next.js App Router marketing site for AI education,
+AtlasMind is a single Next.js App Router marketing site for AI education,
 workflow/tool libraries, services, lead capture, and contact intake.
+The repository, canonical domain, and internal project identifiers retain the
+legacy `atlasmind212` name for compatibility.
 
 ## Commands
 
@@ -35,6 +37,8 @@ workflow/tool libraries, services, lead capture, and contact intake.
   brand assets.
 - Reusable shadcn/Radix-style primitives live in `components/ui`; composed site
   components live in `components`.
+- House-brand assets are `public/atlasmind-logo.png` and
+  `public/atlasmind-mark.png`; render them through `components/brand-logo.tsx`.
 
 ## Data And API
 
@@ -53,9 +57,9 @@ workflow/tool libraries, services, lead capture, and contact intake.
 
 - Tailwind CSS v4 is configured through `app/globals.css` and
   `@tailwindcss/postcss`; there is no `tailwind.config.*` file.
-- Treat `design-system/MASTER.md` as the visual source of truth: Atlas Night
-  `#020617`, navy surfaces, Electric Cyan for functional emphasis, sparse Atlas
-  Red only.
+- Treat `design-system/MASTER.md` as the visual source of truth: white and warm
+  neutral surfaces, charcoal brand panels, accessible copper interactions, and
+  sparse taupe accents.
 - Preserve visible focus states, 44px minimum touch targets, keyboard access,
   and reduced-motion behavior.
 - Use `next/image` for project imagery with stable dimensions and useful alt

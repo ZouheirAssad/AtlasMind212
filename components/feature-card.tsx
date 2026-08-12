@@ -43,7 +43,7 @@ export function FeatureCard({
   if (href) {
     return (
       <Link href={href} className="group block h-full rounded-md">
-        <Card className="relative h-full overflow-hidden transition-[border-color,box-shadow] duration-200 group-hover:border-primary/60 group-hover:shadow-[0_14px_42px_rgb(34_25_85/0.13)] group-focus-visible:border-primary">
+        <Card className="relative h-full overflow-hidden transition-[border-color,box-shadow] duration-200 group-hover:border-primary/60 group-hover:shadow-[0_14px_42px_rgb(64_68_71/0.13)] group-focus-visible:border-primary">
           {content}
         </Card>
       </Link>

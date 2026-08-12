@@ -1,8 +1,8 @@
 export const siteConfig = {
-  name: "AtlasMind212",
+  name: "AtlasMind",
   url: getSiteUrl(),
   description:
-    "AtlasMind212 builds web applications, backend systems, practical integrations, and workflow automations for businesses and product teams.",
+    "AtlasMind builds web applications, backend systems, practical integrations, and workflow automations for businesses and product teams.",
   email: "hello@atlasmind212.com",
   locale: "en_US",
 } as const;

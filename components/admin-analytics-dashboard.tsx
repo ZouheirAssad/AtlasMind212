@@ -41,10 +41,10 @@ const RANGE_OPTIONS: Array<{ key: AnalyticsRangeKey; label: string }> = [
   { key: "all", label: "All" },
 ];
 
-const cyan = "#5b45d6";
-const cyanSoft = "rgba(127, 107, 255, 0.14)";
+const brandCopper = "#9e4d2e";
+const brandCopperSoft = "rgba(194, 106, 68, 0.14)";
 const steel = "#60616b";
-const navyLine = "rgba(91, 69, 214, 0.16)";
+const brandGrid = "rgba(194, 106, 68, 0.16)";
 
 function formatNumber(value: number | null) {
   return value === null ? "Not connected" : new Intl.NumberFormat("en").format(value);
@@ -66,7 +66,7 @@ function KpiCard({
   icon: typeof Users;
 }) {
   return (
-    <article className="min-h-36 rounded-md border bg-card p-5 shadow-[0_10px_35px_rgb(34_25_85/0.07)]">
+    <article className="min-h-36 rounded-md border bg-card p-5 shadow-[0_10px_35px_rgb(64_68_71/0.07)]">
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-muted-foreground">{label}</p>
@@ -93,7 +93,7 @@ function Panel({
   className?: string;
 }) {
   return (
-    <section className={cn("rounded-md border bg-card p-5 shadow-[0_10px_35px_rgb(34_25_85/0.07)] sm:p-6", className)}>
+    <section className={cn("rounded-md border bg-card p-5 shadow-[0_10px_35px_rgb(64_68_71/0.07)] sm:p-6", className)}>
       <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
         <div>
           {eyebrow && <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-primary">{eyebrow}</p>}
@@ -124,18 +124,18 @@ function TrafficTrend({ data }: { data: AnalyticsDashboardData }) {
         <AreaChart data={data.trends} margin={{ left: -18, right: 8, top: 8, bottom: 0 }}>
           <defs>
             <linearGradient id="pageviewsFill" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="5%" stopColor={cyan} stopOpacity={0.32} />
-              <stop offset="95%" stopColor={cyan} stopOpacity={0.02} />
+              <stop offset="5%" stopColor={brandCopper} stopOpacity={0.32} />
+              <stop offset="95%" stopColor={brandCopper} stopOpacity={0.02} />
             </linearGradient>
           </defs>
-          <CartesianGrid stroke={navyLine} strokeDasharray="4 4" vertical={false} />
+          <CartesianGrid stroke={brandGrid} strokeDasharray="4 4" vertical={false} />
           <XAxis dataKey="label" tick={{ fill: steel, fontSize: 12 }} tickLine={false} axisLine={false} minTickGap={22} />
           <YAxis tick={{ fill: steel, fontSize: 12 }} tickLine={false} axisLine={false} allowDecimals={false} />
           <Tooltip
-            cursor={{ stroke: cyan, strokeOpacity: 0.3 }}
-            contentStyle={{ background: "#ffffff", border: "1px solid #dedee6", borderRadius: 6, color: "#0a0a0a" }}
+            cursor={{ stroke: brandCopper, strokeOpacity: 0.3 }}
+            contentStyle={{ background: "#ffffff", border: "1px solid #ded7d1", borderRadius: 6, color: "#0a0a0a" }}
           />
-          <Area type="monotone" dataKey="pageviews" name="Pageviews" stroke={cyan} fill="url(#pageviewsFill)" strokeWidth={2} />
+          <Area type="monotone" dataKey="pageviews" name="Pageviews" stroke={brandCopper} fill="url(#pageviewsFill)" strokeWidth={2} />
           <Area type="monotone" dataKey="visitors" name="Visitors" stroke="#94a3b8" fill="transparent" strokeWidth={2} />
         </AreaChart>
       </ResponsiveContainer>
@@ -152,14 +152,14 @@ function DownloadTrend({ data }: { data: AnalyticsDashboardData }) {
     <div className="h-72 w-full">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data.trends} margin={{ left: -18, right: 8, top: 8, bottom: 0 }}>
-          <CartesianGrid stroke={navyLine} strokeDasharray="4 4" vertical={false} />
+          <CartesianGrid stroke={brandGrid} strokeDasharray="4 4" vertical={false} />
           <XAxis dataKey="label" tick={{ fill: steel, fontSize: 12 }} tickLine={false} axisLine={false} minTickGap={22} />
           <YAxis tick={{ fill: steel, fontSize: 12 }} tickLine={false} axisLine={false} allowDecimals={false} />
           <Tooltip
-            cursor={{ fill: cyanSoft }}
-            contentStyle={{ background: "#ffffff", border: "1px solid #dedee6", borderRadius: 6, color: "#0a0a0a" }}
+            cursor={{ fill: brandCopperSoft }}
+            contentStyle={{ background: "#ffffff", border: "1px solid #ded7d1", borderRadius: 6, color: "#0a0a0a" }}
           />
-          <Bar dataKey="downloads" name="Downloads" fill={cyan} radius={[8, 8, 0, 0]} />
+          <Bar dataKey="downloads" name="Downloads" fill={brandCopper} radius={[8, 8, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>
@@ -251,7 +251,7 @@ function RecentEvents({ rows }: { rows: RecentEventRow[] }) {
 export function AdminAnalyticsDashboard({ data }: { data: AnalyticsDashboardData }) {
   return (
     <div className="space-y-6">
-      <div className="flex flex-col gap-4 rounded-md border bg-card p-5 shadow-[0_10px_35px_rgb(34_25_85/0.07)] lg:flex-row lg:items-center lg:justify-between">
+      <div className="flex flex-col gap-4 rounded-md border bg-card p-5 shadow-[0_10px_35px_rgb(64_68_71/0.07)] lg:flex-row lg:items-center lg:justify-between">
         <div>
           <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-primary">Window</p>
           <h2 className="mt-1 text-2xl font-semibold">{data.range.label}</h2>

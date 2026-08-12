@@ -44,7 +44,7 @@ export default async function AdminAnalyticsPage({ searchParams }: AdminAnalytic
             </Badge>
             <h1 className="font-display text-5xl tracking-[-0.04em] sm:text-6xl">Analytics</h1>
             <p className="mt-4 max-w-2xl text-muted-foreground">
-              Traffic, guide downloads, lead capture, and source health for AtlasMind212.
+              Traffic, guide downloads, lead capture, and source health for AtlasMind.
             </p>
           </div>
           <div className="flex flex-wrap gap-2">

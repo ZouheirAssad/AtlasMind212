@@ -10,8 +10,8 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
 
 export const metadata: Metadata = {
   title: {
-    default: "AtlasMind212 - Web Development & Technical Consulting",
-    template: "%s | AtlasMind212",
+    default: "AtlasMind - Web Development & Technical Consulting",
+    template: "%s | AtlasMind",
   },
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "AtlasMind212 - Web Development & Technical Consulting",
+    title: "AtlasMind - Web Development & Technical Consulting",
     description: "Web applications, backend systems, technical consulting, integrations, and workflow automation.",
     url: "/",
     siteName: siteConfig.name,
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "AtlasMind212 - Web Development & Technical Consulting",
+    title: "AtlasMind - Web Development & Technical Consulting",
     description: "Web applications, backend systems, technical consulting, integrations, and workflow automation.",
   },
 };

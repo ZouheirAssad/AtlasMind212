@@ -13,7 +13,7 @@ export function GuideCard({ guide, thumbnailUrl, priority = false }: { guide: Gu
         {thumbnailUrl ? (
           <Image src={thumbnailUrl} alt={guide.thumbnail_alt || guide.title} fill sizes="(max-width: 768px) 100vw, 240px" priority={priority} className="object-cover transition-transform duration-300 group-hover:scale-[1.025]" />
         ) : (
-          <div className="absolute inset-0 grid place-items-center bg-[#f3f0ff] text-5xl font-bold text-primary-display">A</div>
+          <div className="absolute inset-0 grid place-items-center bg-secondary text-5xl font-bold text-primary-display">A</div>
         )}
       </Link>
       <div className="flex flex-col justify-center py-5 md:py-0">

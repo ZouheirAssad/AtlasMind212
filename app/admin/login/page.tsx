@@ -28,8 +28,8 @@ export default async function AdminLoginPage({ searchParams }: AdminLoginPagePro
   const redirectTo = params.next?.startsWith("/admin") ? params.next : "/admin/guides";
 
   return (
-    <section className="min-h-screen bg-[#f7f6ff] py-16 sm:py-24">
-      <Container className="grid min-h-[40rem] gap-0 border bg-white shadow-[0_18px_60px_rgb(34_25_85/0.1)] lg:grid-cols-[0.82fr_1.18fr] lg:items-stretch">
+    <section className="min-h-screen bg-[var(--surface-raised)] py-16 sm:py-24">
+      <Container className="grid min-h-[40rem] gap-0 border bg-white shadow-[0_18px_60px_rgb(64_68_71/0.1)] lg:grid-cols-[0.82fr_1.18fr] lg:items-stretch">
         <div className="flex max-w-xl flex-col justify-center bg-primary p-8 text-white sm:p-12">
           <Badge className="mb-5 bg-white text-primary hover:bg-white">Owner access</Badge>
           <div className="mb-5 flex size-14 items-center justify-center bg-white/12 text-white">

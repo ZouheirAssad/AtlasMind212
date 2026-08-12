@@ -75,7 +75,7 @@ export default async function AdminsPage({ searchParams }: AdminsPageProps) {
         )}
 
         <div className="grid gap-6 lg:grid-cols-[0.82fr_1.18fr]">
-          <form action={inviteAdmin} className="rounded-md border bg-card p-6 shadow-[0_10px_35px_rgb(34_25_85/0.07)] sm:p-8">
+          <form action={inviteAdmin} className="rounded-md border bg-card p-6 shadow-[0_10px_35px_rgb(64_68_71/0.07)] sm:p-8">
             <div className="mb-7 flex items-center gap-3">
               <span className="flex size-11 items-center justify-center rounded-sm bg-secondary text-primary">
                 <UserPlus className="size-5" />
@@ -100,7 +100,7 @@ export default async function AdminsPage({ searchParams }: AdminsPageProps) {
             </FieldGroup>
           </form>
 
-          <div className="rounded-md border bg-card p-6 shadow-[0_10px_35px_rgb(34_25_85/0.07)] sm:p-8">
+          <div className="rounded-md border bg-card p-6 shadow-[0_10px_35px_rgb(64_68_71/0.07)] sm:p-8">
             <div className="mb-7 flex items-center gap-3">
               <span className="flex size-11 items-center justify-center rounded-sm bg-secondary text-primary">
                 <ShieldCheck className="size-5" />

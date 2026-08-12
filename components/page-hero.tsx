@@ -46,7 +46,7 @@ export function PageHero({
         <Container className="grid min-h-[38rem] gap-0 px-0 lg:grid-cols-2 lg:px-10">
           <Reveal className="flex min-w-0 flex-col justify-center px-5 py-20 sm:px-8 lg:px-0 lg:pr-16">
             <Badge className="mb-6">{eyebrow}</Badge>
-            <h1 className="text-balance text-5xl leading-[0.96] text-display-violet sm:text-7xl">{title}</h1>
+            <h1 className="text-balance text-5xl leading-[0.96] text-display-brand sm:text-7xl">{title}</h1>
             <p className="mt-7 max-w-xl text-lg leading-8 text-white/78">{description}</p>
           </Reveal>
           <div className="relative min-h-[28rem] lg:min-h-full">
@@ -58,11 +58,11 @@ export function PageHero({
   }
 
   return (
-    <section className={cn("border-b bg-[#f7f6ff]", compact ? "py-14 sm:py-20" : "py-20 sm:py-28")}>
+    <section className={cn("border-b bg-[var(--surface-raised)]", compact ? "py-14 sm:py-20" : "py-20 sm:py-28")}>
       <Container>
         <Reveal className="max-w-5xl">
           <Badge variant="secondary">{eyebrow}</Badge>
-          <h1 className="mt-6 text-balance text-5xl leading-[0.98] text-display-violet sm:text-7xl lg:text-8xl">{title}</h1>
+          <h1 className="mt-6 text-balance text-5xl leading-[0.98] text-display-brand sm:text-7xl lg:text-8xl">{title}</h1>
           <p className="mt-7 max-w-3xl text-xl leading-8 text-muted-foreground">{description}</p>
         </Reveal>
       </Container>

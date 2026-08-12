@@ -8,12 +8,12 @@ import { Reveal } from "@/components/reveal";
 import { absoluteUrl } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Contact AtlasMind212",
+  title: "Contact AtlasMind",
   description:
-    "Contact AtlasMind212 to scope a web development, backend, technical consulting, LLM integration, or workflow automation project.",
+    "Contact AtlasMind to scope a web development, backend, technical consulting, LLM integration, or workflow automation project.",
   alternates: { canonical: "/contact" },
   openGraph: {
-    title: "Contact AtlasMind212",
+    title: "Contact AtlasMind",
     description:
       "Scope a web development, backend, technical consulting, LLM integration, or workflow automation project.",
     url: absoluteUrl("/contact"),
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Contact AtlasMind212",
+    title: "Contact AtlasMind",
     description:
       "Scope a web development, backend, technical consulting, LLM integration, or workflow automation project.",
   },
@@ -81,7 +81,7 @@ export default function ContactPage() {
               </ul>
             </div>
 
-            <div className="border-l-4 border-primary-display bg-[#f7f6ff] p-6">
+            <div className="border-l-4 border-primary-display bg-[var(--surface-raised)] p-6">
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">
                 What happens next
               </p>

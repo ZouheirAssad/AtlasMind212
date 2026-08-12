@@ -1,8 +1,8 @@
-# AtlasMind212 Project Memory
+# AtlasMind Project Memory
 
 ## Product
 
-AtlasMind212 is a software development and technical consulting studio for
+AtlasMind is a software development and technical consulting studio for
 small and midsize businesses, startups, and product teams. Its primary services
 are web development, backend and API development, and technical consulting.
 LLM integration and workflow automation are supporting implementation services.
@@ -108,14 +108,17 @@ VERCEL_ANALYTICS_DRAIN_SECRET
 The active direction is a single light editorial technology theme:
 
 - Canvas: white `#FFFFFF`
-- Tinted surface: `#F7F6FF`
+- Tinted surface: `#FAF6F3`
+- Warm secondary surface: `#F3ECE7`
 - Soft neutral surface: `#F7F7FA`
 - Main text: `#0A0A0A`
 - Muted text: `#60616B`
-- Display violet: `#7F6BFF`
-- Interactive violet: `#5B45D6`
-- Aqua accent: `#4EF9F3`
-- Border: `#DEDEE6`
+- Charcoal brand surface: `#404447`
+- Display copper: `#C26A44`
+- Interactive copper: `#9E4D2E`
+- Copper hover: `#823B23`
+- Taupe accent: `#B6A89B`
+- Border: `#DED7D1`
 
 Typography uses Inter throughout. The site uses original generated documentary
 workplace photography in `public/images/editorial-*.webp`, oversized sans-serif
@@ -126,6 +129,13 @@ scenes for the homepage, about page, service overview, consulting, LLM, and
 workflow contexts.
 Public routes live under the URL-neutral `app/(site)` route group. Admin routes
 use a dedicated private shell and the same light tokens in a denser layout.
+The public display brand is AtlasMind while the canonical domain, mailbox
+addresses, package name, Supabase project ID, and repository directory retain
+their existing `atlasmind212` identifiers for compatibility. The source logo
+is stored at `assets/atlasmind-logo-source.jpeg`; the transparent full lockup
+and mark are served from `public/atlasmind-logo.png` and
+`public/atlasmind-mark.png`, with platform icons provided through App Router
+icon files.
 
 ## Quality Baseline
 
@@ -195,6 +205,24 @@ Visual asset and responsive refinement verification on August 9, 2026:
   high-severity Next.js/PostCSS/Sharp/Nano ID dependency-tree advisories; the
   dependency upgrade remains intentionally separate from this visual change.
 
+AtlasMind brand refresh verification on August 10, 2026:
+
+- The supplied AtlasMind artwork is preserved as the source asset and produces
+  a transparent full lockup, a transparent square mark, and 512px/180px App
+  Router icons. The former AtlasMind212 logo source is removed.
+- The public display name is AtlasMind across page copy, metadata, JSON-LD,
+  machine-readable company files, admin labels, and contact notification email
+  content; canonical `atlasmind212.com` URLs and mailbox addresses remain.
+- The visual system now uses charcoal, accessible copper, display copper,
+  taupe, and warm-neutral tokens. Legacy violet/aqua runtime values are removed.
+- ESLint and the Next.js 16.2.9 production build pass. Browser checks at
+  390x844 and 1440x1000 cover the overlay and light headers, mobile navigation,
+  services hero, footer lockup, admin login, icon metadata, horizontal overflow,
+  console warnings/errors, and framework error overlays.
+- `npm audit --omit=dev` continues to report the four previously documented
+  high-severity Next.js/PostCSS/Sharp/Nano ID dependency-tree advisories; the
+  dependency upgrade remains intentionally separate from this brand change.
+
 ## Deployment
 
 The project is prepared for Vercel. The production canonical domain is
@@ -206,7 +234,7 @@ environment variables in the Vercel project settings (`NEXT_PUBLIC_SITE_URL`,
 `supabase/schema.sql` before testing form submissions against a production
 Supabase project, and verify the Resend sender domain
 before production delivery. Local first-pass tests can use
-`AtlasMind212 <onboarding@resend.dev>` for `CONTACT_NOTIFICATION_FROM`, but
+`AtlasMind <onboarding@resend.dev>` for `CONTACT_NOTIFICATION_FROM`, but
 Resend only permits that sender to email the Resend account address.
 `supabase/schema.sql` grants `service_role` insert/select access for
 `public.leads` and `public.contact_messages`; no public insert policies are
