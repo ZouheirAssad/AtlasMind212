@@ -107,7 +107,7 @@ export default function ContactPage() {
                 <Mail className="mt-1 size-5 text-primary" />
                 <div>
                   <p className="font-semibold">Email</p>
-                  <p className="text-muted-foreground">hello@atlasmind212.com</p>
+                  <p className="text-muted-foreground">contact@atlasmind212.com</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">

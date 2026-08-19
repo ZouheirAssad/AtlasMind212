@@ -3,7 +3,7 @@ export const siteConfig = {
   url: getSiteUrl(),
   description:
     "AtlasMind builds web applications, backend systems, practical integrations, and workflow automations for businesses and product teams.",
-  email: "hello@atlasmind212.com",
+  email: "contact@atlasmind212.com",
   locale: "en_US",
 } as const;
 
