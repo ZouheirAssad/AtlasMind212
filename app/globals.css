@@ -149,7 +149,7 @@ summary:focus-visible {
 
 .skip-link {
   position: fixed;
-  left: 1rem;
+  inset-inline-start: 1rem;
   top: 1rem;
   z-index: 100;
   transform: translateY(-180%);
@@ -181,3 +181,44 @@ summary:focus-visible {
     animation-iteration-count: 1 !important;
   }
 }
+
+/* ---------- Localization: Arabic (RTL) ---------- */
+
+/* Inter has no Arabic glyphs; Arabic pages use Noto Sans Arabic first. */
+html[lang="ar"] body,
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] .font-display,
+html[lang="ar"] .font-sans,
+html[lang="ar"] .font-mono {
+  font-family: var(--font-arabic), var(--font-inter), Arial, sans-serif;
+}
+
+/* CMS guide content stays English inside Arabic pages. */
+html[lang="ar"] [lang="en"],
+html[lang="ar"] [lang="en"] h1,
+html[lang="ar"] [lang="en"] h2 {
+  font-family: var(--font-inter), Arial, sans-serif;
+}
+
+/* Arabic letters join; negative or wide tracking breaks the script. */
+html[lang="ar"] body,
+html[lang="ar"] body * {
+  letter-spacing: 0 !important;
+}
+
+/* Tight display line-heights clip Arabic ascenders/descenders. */
+html[lang="ar"] h1,
+html[lang="ar"] h2 {
+  line-height: 1.25;
+}
+
+/* Directional arrows point the reading direction. */
+[dir="rtl"] .lucide-arrow-right,
+[dir="rtl"] .lucide-arrow-left,
+[dir="rtl"] .lucide-arrow-up-right {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .editorial-lines::before { left: auto; right: 0; }
+[dir="rtl"] .editorial-lines::after { right: auto; left: 0; }

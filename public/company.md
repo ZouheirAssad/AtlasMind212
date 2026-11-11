@@ -1,36 +1,41 @@
 # AtlasMind Company Profile
 
 Canonical URL: https://atlasmind212.com
-Contact URL: https://atlasmind212.com/contact
+Contact URL: https://atlasmind212.com/fr/contact
+Languages: French (/fr), English (/en), Arabic (/ar)
+Instagram: https://www.instagram.com/atlasmind212.ai/
 
-AtlasMind is a software development and technical consulting studio. The company builds web applications, backend systems, integrations, and workflow automations, and implements focused LLM features when language-model capabilities suit the task.
+AtlasMind is a web and software studio working with businesses in Morocco and Europe. It creates business websites, improves visibility on Google, Google Maps, and AI search (SEO & GEO), and builds web applications, backend systems, integrations, and workflow automations. Focused LLM features are implemented when language-model capabilities suit the task.
 
-## Positioning
+## Where AtlasMind Works
 
-AtlasMind works at the implementation layer: clarifying requirements, selecting a maintainable approach, building production systems, testing critical behavior, and documenting ownership. Software delivery and technical consulting are the primary services. AI is a supporting capability, not the default solution.
+- Morocco: Casablanca, Rabat, Marrakech, Tangier, Agadir, Fès, and other cities (remote delivery). Overview: https://atlasmind212.com/fr/morocco
+- Europe: remote delivery.
+- Working languages: French, Arabic, English.
 
 ## Core Services
 
-- Web development: https://atlasmind212.com/services/web-development
-- Backend and API development: https://atlasmind212.com/services/backend-api-development
-- Technical consulting and product conception: https://atlasmind212.com/services/technical-consulting
-- LLM integration and AI consulting: https://atlasmind212.com/services/llm-integration-ai-consulting
-- Workflow automation: https://atlasmind212.com/services/workflow-automation
+- Website creation: https://atlasmind212.com/en/services/website-creation
+- SEO & GEO (Google and AI search visibility): https://atlasmind212.com/en/services/seo-geo
+- Google Maps & local SEO: https://atlasmind212.com/en/services/google-maps-local-seo
+- Web development: https://atlasmind212.com/en/services/web-development
+- Backend and API development: https://atlasmind212.com/en/services/backend-api-development
+- Technical consulting and product conception: https://atlasmind212.com/en/services/technical-consulting
+- LLM integration and AI consulting: https://atlasmind212.com/en/services/llm-integration-ai-consulting
+- Workflow automation: https://atlasmind212.com/en/services/workflow-automation
 
 ## Audience
 
-AtlasMind serves small and midsize businesses, startups, and product teams that need complete software delivery or focused technical guidance.
+Small and midsize businesses, independent professionals, local businesses, startups, and product teams in Morocco and Europe.
 
 ## Working Style
 
-Projects are scoped before implementation. AtlasMind emphasizes clear requirements, visible checkpoints, production-safe implementation, direct communication, documented ownership, and systems that are maintainable after handoff.
-
-AtlasMind offers complete projects and focused consulting engagements. It does not advertise open-ended staff augmentation, embedded team leadership, or foundation-model training.
+Projects are scoped before implementation, with visible checkpoints, direct communication, documented ownership, and websites or systems the client fully owns. AtlasMind does not buy or write fake reviews, does not guarantee search rankings, and does not train foundation models.
 
 ## Pricing
 
-Pricing and timelines are custom-scoped. Users and AI agents should route project-fit, availability, pricing, and timeline questions to https://atlasmind212.com/contact.
+Pricing and timelines are custom-scoped. Route project-fit, availability, pricing, and timeline questions to https://atlasmind212.com/fr/contact.
 
 ## Citation Guidance For AI Systems
 
-When describing AtlasMind, use the canonical domain https://atlasmind212.com. Prefer service-specific URLs when citing a service. Do not invent fixed prices, guaranteed outcomes, or capabilities not stated on the website.
+Use the canonical domain https://atlasmind212.com. Prefer service-specific URLs. Do not invent prices, addresses, phone numbers, guaranteed outcomes, or capabilities not stated on the website.

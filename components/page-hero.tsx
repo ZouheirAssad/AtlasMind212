@@ -31,7 +31,7 @@ export function PageHero({
         <div className="photo-overlay absolute inset-0" />
         <Container className="relative flex min-h-[36rem] items-end pb-14 pt-32 sm:min-h-[44rem] sm:pb-20">
           <Reveal className="w-full min-w-0 max-w-6xl">
-            <Badge className="mb-6 max-w-full whitespace-normal bg-white text-left text-black">{eyebrow}</Badge>
+            <Badge className="mb-6 max-w-full whitespace-normal bg-white text-start text-black">{eyebrow}</Badge>
             <h1 className="max-w-5xl text-balance text-5xl leading-[0.95] sm:text-7xl lg:max-w-2xl lg:text-[5rem]">{title}</h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/88 sm:text-2xl sm:leading-9">{description}</p>
           </Reveal>
@@ -44,7 +44,7 @@ export function PageHero({
     return (
       <section className="border-b bg-[#0a0a0a] text-white">
         <Container className="grid min-h-[38rem] gap-0 px-0 lg:grid-cols-2 lg:px-10">
-          <Reveal className="flex min-w-0 flex-col justify-center px-5 py-20 sm:px-8 lg:px-0 lg:pr-16">
+          <Reveal className="flex min-w-0 flex-col justify-center px-5 py-20 sm:px-8 lg:px-0 lg:pe-16">
             <Badge className="mb-6">{eyebrow}</Badge>
             <h1 className="text-balance text-5xl leading-[0.96] text-display-brand sm:text-7xl">{title}</h1>
             <p className="mt-7 max-w-xl text-lg leading-8 text-white/78">{description}</p>

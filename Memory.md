@@ -22,6 +22,57 @@ Public routes:
 - `/privacy`
 - `/imprint`
 
+### Morocco, services and SEO/GEO (2026-11-11)
+
+- Services (8): website-creation, seo-geo, google-maps-local-seo, then the
+  original five. `/morocco` (all locales) is the Morocco landing page; the
+  homepage has a Morocco section and the footer links to it.
+- Structured data: Organization has `areaServed` (Morocco, Europe),
+  `knowsLanguage`, `contactPoint`, `knowsAbout`; `/morocco` adds a
+  ProfessionalService with the served cities plus FAQPage.
+- `app/robots.ts` names AI crawlers (GPTBot, OAI-SearchBot, PerplexityBot,
+  ClaudeBot, Google-Extended, ...) explicitly; `public/llms.txt`,
+  `company.md`, `services.md` describe the new services, Morocco and the
+  `/fr` `/en` `/ar` URLs.
+- Business facts live in `lib/site-config.ts` (phone, WhatsApp, legal data,
+  address, founder, social profiles). Empty string = not provided: the
+  WhatsApp button, phone links, imprint publisher section, schema fields and
+  llms.txt lines stay hidden. Only Instagram is set so far.
+- `/llms.txt` is generated (`app/llms.txt/route.ts`); click events
+  `whatsapp_click` / `phone_click` go to Vercel Analytics only (client
+  `track()`), not to Supabase.
+- `Reveal` slides content only (no opacity:0 in server HTML) so crawlers do
+  not see hidden text. Security headers are set in `next.config.ts`; the CSP
+  restricts framing/base/form/object only, not script sources.
+
+### Localization (en / fr / ar)
+
+Every public route exists in French (`/fr/about`), English (`/en/about`) and
+Arabic (`/ar/about`, right-to-left); every locale is prefixed. Routes live
+under `app/[locale]/(site)`, and `app/[locale]/layout.tsx` is the root layout
+that sets `<html lang dir>`. An unprefixed URL (`/`, old links like `/about`)
+gets a 307 from `proxy.ts` to the visitor's language: the `NEXT_LOCALE` cookie
+(set whenever a prefixed page is viewed, so the switcher choice sticks), then
+the device/browser `Accept-Language`, otherwise French (`defaultLocale`).
+hreflang `x-default` points at the unprefixed, auto-redirecting URL.
+The admin CMS (`app/admin/layout.tsx`, its own root layout) stays English-only.
+
+- UI copy: `lib/i18n/dictionaries/{en,fr,ar}.ts` (`fr`/`ar` are type-checked
+  against the English shape, so missing keys fail the build).
+- Service copy: English in `lib/site-data.ts`; French/Arabic in
+  `lib/content/services.{fr,ar}.ts`, merged by `getServices(locale)`.
+- Links: `localizePath(locale, path)` on the server, `useI18n().href(path)` in
+  client components. Metadata via `localizedMetadata()` (canonical + hreflang);
+  the sitemap lists every locale with alternates.
+- RTL: use logical Tailwind classes (`ms-`, `pe-`, `border-s`, `start-0`,
+  `text-start`). Arabic uses Noto Sans Arabic and zero letter-spacing
+  (`app/globals.css`); arrow icons are mirrored in RTL.
+- Guide/blog content from the CMS is single-language (English) and rendered
+  with `lang="en" dir="ltr"` inside French/Arabic pages; only the surrounding
+  UI is translated. Contact `projectType` values stay English in storage.
+- French and Arabic copy, including the legal pages, was machine-assisted and
+  has not been reviewed by a native speaker or lawyer.
+
 The homepage uses an original full-bleed editorial photograph, oversized value
 statement, asymmetric implementation story, service modules, process steps,
 and a focused contact call to action.
@@ -257,3 +308,4 @@ set `VERCEL_ANALYTICS_DRAIN_SECRET` and configure the Vercel drain endpoint as
 - Lead delivery records data in Supabase; lead email notification is not
   implemented (contact form only).
 - Lighthouse scores have not been recorded yet.
+- CMS guides are English-only; there is no per-locale guide content.

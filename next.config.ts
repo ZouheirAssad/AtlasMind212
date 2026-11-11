@@ -42,6 +42,23 @@ const nextConfig: NextConfig = {
         ]
       : [],
   },
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), browsing-topics=()" },
+          { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains" },
+          // Framing/plugin/base restrictions only; script sources are not
+          // locked down because Next.js inline scripts would need nonces.
+          { key: "Content-Security-Policy", value: "frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'" },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
       {
@@ -50,13 +67,28 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/:locale(en|fr|ar)/services/business-website",
+        destination: "/:locale/services/web-development",
+        permanent: true,
+      },
+      {
         source: "/services/ai-integration",
         destination: "/services/llm-integration-ai-consulting",
         permanent: true,
       },
       {
+        source: "/:locale(en|fr|ar)/services/ai-integration",
+        destination: "/:locale/services/llm-integration-ai-consulting",
+        permanent: true,
+      },
+      {
         source: "/services/ai-automation",
         destination: "/services/workflow-automation",
+        permanent: true,
+      },
+      {
+        source: "/:locale(en|fr|ar)/services/ai-automation",
+        destination: "/:locale/services/workflow-automation",
         permanent: true,
       },
       {

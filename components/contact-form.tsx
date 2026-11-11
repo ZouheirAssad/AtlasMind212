@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CheckCircle2, LoaderCircle, Send } from "lucide-react";
 import { useSearchParams } from "next/navigation";
@@ -9,17 +9,25 @@ import { Button } from "@/components/ui/button";
 import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { contactSchema, type ContactInput } from "@/lib/validations";
+import { useI18n } from "@/components/i18n/i18n-provider";
+import { createContactSchema, type ContactInput } from "@/lib/validations";
 
+// Values stay in English so stored submissions and notifications are consistent across locales.
 const projectOptions = [
-  { value: "Web Development", label: "Web development" },
-  { value: "Backend & API Development", label: "Backend & API development" },
-  { value: "Technical Consulting", label: "Technical consulting" },
-  { value: "LLM Integration & AI Consulting", label: "LLM integration & AI consulting" },
-  { value: "Workflow Automation", label: "Workflow automation" },
+  "Website Creation",
+  "SEO & GEO",
+  "Google Maps & Local SEO",
+  "Web Development",
+  "Backend & API Development",
+  "Technical Consulting",
+  "LLM Integration & AI Consulting",
+  "Workflow Automation",
 ] as const;
 
 const projectQueryMap: Record<string, string> = {
+  "website-creation": "Website Creation",
+  "seo-geo": "SEO & GEO",
+  "google-maps-local-seo": "Google Maps & Local SEO",
   "web-development": "Web Development",
   "backend-api-development": "Backend & API Development",
   "technical-consulting": "Technical Consulting",
@@ -31,12 +39,15 @@ const projectQueryMap: Record<string, string> = {
 };
 
 export function ContactForm() {
+  const { dict } = useI18n();
+  const t = dict.contactForm;
+  const schema = useMemo(() => createContactSchema(dict.validation), [dict.validation]);
   const searchParams = useSearchParams();
   const initialProject = projectQueryMap[searchParams.get("project") ?? ""] ?? "";
   const [success, setSuccess] = useState(false);
   const [serverError, setServerError] = useState("");
   const { register, handleSubmit, setValue, control, formState: { errors, isSubmitting } } = useForm<ContactInput>({
-    resolver: zodResolver(contactSchema),
+    resolver: zodResolver(schema),
     defaultValues: { name: "", email: "", projectType: initialProject, message: "" },
   });
   const projectType = useWatch({ control, name: "projectType" });
@@ -49,8 +60,7 @@ export function ContactForm() {
       body: JSON.stringify(values),
     });
     if (!response.ok) {
-      const data = await response.json().catch(() => null);
-      setServerError(data?.error ?? "Something went wrong. Please try again.");
+      setServerError(t.genericError);
       return;
     }
     setSuccess(true);
@@ -60,8 +70,8 @@ export function ContactForm() {
     return (
       <div className="flex min-h-80 flex-col items-center justify-center gap-4 border bg-card p-8 text-center shadow-[0_12px_40px_rgb(64_68_71/0.08)]">
         <CheckCircle2 className="size-10 text-primary" />
-        <h2 className="text-3xl font-semibold">Your message is on its way.</h2>
-        <p className="max-w-md text-muted-foreground">Thanks for the context. Your message was sent and stored — we read every submission and reply with a direct, useful answer, usually within 2 business days.</p>
+        <h2 className="text-3xl font-semibold">{t.successTitle}</h2>
+        <p className="max-w-md text-muted-foreground">{t.successText}</p>
       </div>
     );
   }
@@ -71,46 +81,46 @@ export function ContactForm() {
       <FieldGroup>
         <div className="grid gap-7 sm:grid-cols-2">
           <Field data-invalid={Boolean(errors.name)}>
-            <FieldLabel htmlFor="contact-name">Name</FieldLabel>
-            <Input id="contact-name" placeholder="Your name" aria-invalid={Boolean(errors.name)} {...register("name")} />
+            <FieldLabel htmlFor="contact-name">{t.name}</FieldLabel>
+            <Input id="contact-name" placeholder={t.namePlaceholder} aria-invalid={Boolean(errors.name)} {...register("name")} />
             <FieldError errors={[errors.name]} />
           </Field>
           <Field data-invalid={Boolean(errors.email)}>
-            <FieldLabel htmlFor="contact-email">Email</FieldLabel>
-            <Input id="contact-email" type="email" placeholder="you@example.com" aria-invalid={Boolean(errors.email)} {...register("email")} />
+            <FieldLabel htmlFor="contact-email">{t.email}</FieldLabel>
+            <Input id="contact-email" type="email" placeholder={t.emailPlaceholder} dir="ltr" aria-invalid={Boolean(errors.email)} {...register("email")} />
             <FieldError errors={[errors.email]} />
           </Field>
         </div>
         <Field>
-          <FieldLabel>Project type</FieldLabel>
-          <FieldDescription>Pick the closest fit—it helps us understand your project before the first reply.</FieldDescription>
+          <FieldLabel>{t.projectType}</FieldLabel>
+          <FieldDescription>{t.projectTypeHelp}</FieldDescription>
           <input type="hidden" {...register("projectType")} />
-          <div className="grid gap-3 sm:grid-cols-2" role="group" aria-label="Choose a project type">
+          <div className="grid gap-3 sm:grid-cols-2" role="group" aria-label={t.projectTypeAria}>
             {projectOptions.map((option) => (
               <button
-                key={option.value}
+                key={option}
                 type="button"
-                aria-pressed={projectType === option.value}
-                onClick={() => setValue("projectType", option.value, { shouldDirty: true })}
-                className={`min-h-14 cursor-pointer rounded-sm border p-4 text-left text-sm font-semibold transition-colors ${projectType === option.value ? "border-primary bg-primary text-primary-foreground" : "bg-background hover:border-primary hover:bg-secondary"}`}
+                aria-pressed={projectType === option}
+                onClick={() => setValue("projectType", option, { shouldDirty: true })}
+                className={`min-h-14 cursor-pointer rounded-sm border p-4 text-start text-sm font-semibold transition-colors ${projectType === option ? "border-primary bg-primary text-primary-foreground" : "bg-background hover:border-primary hover:bg-secondary"}`}
               >
-                {option.label}
+                {t.projectOptions[option]}
               </button>
             ))}
           </div>
         </Field>
         <Field data-invalid={Boolean(errors.message)}>
-          <FieldLabel htmlFor="message">Message</FieldLabel>
-          <FieldDescription>Tell us what you want to build, improve, integrate, or automate. The more context, the better the first reply.</FieldDescription>
-          <Textarea id="message" placeholder="Tell us about the product, system, or workflow." rows={7} aria-invalid={Boolean(errors.message)} {...register("message")} />
+          <FieldLabel htmlFor="message">{t.message}</FieldLabel>
+          <FieldDescription>{t.messageHelp}</FieldDescription>
+          <Textarea id="message" placeholder={t.messagePlaceholder} rows={7} aria-invalid={Boolean(errors.message)} {...register("message")} />
           <FieldError errors={[errors.message]} />
         </Field>
         {serverError && <p role="alert" className="text-sm text-destructive">{serverError}</p>}
         <Button type="submit" size="lg" disabled={isSubmitting}>
           {isSubmitting ? <LoaderCircle data-icon="inline-start" className="animate-spin" /> : <Send data-icon="inline-start" />}
-          {isSubmitting ? "Sending your message…" : "Send your message"}
+          {isSubmitting ? t.sending : t.send}
         </Button>
-        <p className="text-xs text-muted-foreground">We reply with a real answer — no automated funnels or sales scripts. Your details are only used to respond to this message.</p>
+        <p className="text-xs text-muted-foreground">{t.privacyNote}</p>
       </FieldGroup>
     </form>
   );

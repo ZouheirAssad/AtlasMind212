@@ -92,7 +92,7 @@ function parseInline(text: string): React.ReactNode[] {
 
 function parseListBlock(lines: string[]): React.ReactNode {
   return (
-    <ul className="ml-6 mt-4 list-disc text-muted-foreground">
+    <ul className="ms-6 mt-4 list-disc text-muted-foreground">
       {lines.map((line, index) => {
         const content = line.replace(/^\s*[-*]\s+/, "");
         return <li key={index}>{parseInline(content)}</li>;

@@ -8,11 +8,22 @@ export const leadSchema = z.object({
   source: z.string().trim().max(100).optional(),
 });
 
-export const contactSchema = z.object({
-  name: z.string().trim().min(2, "Please enter your name.").max(80),
-  email: z.string().trim().email("Please enter a valid email address."),
-  projectType: z.string().trim().max(120).optional(),
-  message: z.string().trim().min(10, "Please share a little more about your project.").max(3000),
+export type ContactValidationMessages = { name: string; email: string; message: string };
+
+/** Contact schema with localized messages; the rules are identical for every locale. */
+export function createContactSchema(messages: ContactValidationMessages) {
+  return z.object({
+    name: z.string().trim().min(2, messages.name).max(80),
+    email: z.string().trim().email(messages.email),
+    projectType: z.string().trim().max(120).optional(),
+    message: z.string().trim().min(10, messages.message).max(3000),
+  });
+}
+
+export const contactSchema = createContactSchema({
+  name: "Please enter your name.",
+  email: "Please enter a valid email address.",
+  message: "Please share a little more about your project.",
 });
 
 export const guideMetadataSchema = z.object({

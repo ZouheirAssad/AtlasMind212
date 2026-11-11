@@ -1,6 +1,38 @@
-import { absoluteUrl, siteConfig } from "@/lib/site-config";
+import { absoluteUrl, isSet, siteConfig, socialProfiles } from "@/lib/site-config";
 import type { Guide } from "@/lib/guides";
 import type { Service } from "@/lib/site-data";
+import { getDictionary } from "@/lib/i18n";
+import { defaultLocale, localizePath, type Locale } from "@/lib/i18n/config";
+
+function localUrl(locale: Locale, path: string) {
+  return absoluteUrl(localizePath(locale, path));
+}
+
+/** Drops undefined/null/empty values so schema never carries empty fields. */
+function compact<T extends Record<string, unknown>>(value: T): Partial<T> {
+  return Object.fromEntries(
+    Object.entries(value).filter(([, v]) => v !== undefined && v !== null && v !== "" && !(Array.isArray(v) && v.length === 0)),
+  ) as Partial<T>;
+}
+
+function postalAddressJsonLd() {
+  const { street, city, postalCode, country } = siteConfig.address;
+  if (!isSet(street) && !isSet(city)) return undefined;
+  return compact({ "@type": "PostalAddress", streetAddress: street, addressLocality: city, postalCode, addressCountry: country });
+}
+
+function founderJsonLd() {
+  const { founder } = siteConfig;
+  if (!isSet(founder.name)) return undefined;
+  return compact({
+    "@type": "Person",
+    name: founder.name,
+    jobTitle: founder.jobTitle,
+    image: isSet(founder.image) ? absoluteUrl(founder.image) : undefined,
+    sameAs: isSet(founder.url) ? [founder.url] : undefined,
+    worksFor: { "@id": absoluteUrl("/#organization") },
+  });
+}
 
 export type JsonLdValue = Record<string, unknown> | Array<Record<string, unknown>>;
 
@@ -17,26 +49,89 @@ export function JsonLd({ data }: { data: JsonLdValue }) {
   );
 }
 
-export function organizationJsonLd() {
-  return {
+export function organizationJsonLd(locale: Locale = defaultLocale) {
+  return compact({
     "@context": "https://schema.org",
     "@type": "Organization",
     "@id": absoluteUrl("/#organization"),
     name: siteConfig.name,
     url: siteConfig.url,
     email: siteConfig.email,
-    description: siteConfig.description,
+    description: getDictionary(locale).meta.siteDescription,
+    logo: absoluteUrl(siteConfig.logo),
+    image: absoluteUrl(siteConfig.logo),
+    legalName: siteConfig.legal.legalName,
+    telephone: siteConfig.phone,
+    address: postalAddressJsonLd(),
+    foundingDate: siteConfig.foundingDate,
+    founder: founderJsonLd(),
+    sameAs: socialProfiles().map((profile) => profile.url),
+    hasMap: siteConfig.social.googleBusinessProfile,
+    areaServed: AREA_SERVED,
+    knowsLanguage: ["fr", "ar", "en"],
+    contactPoint: compact({
+      "@type": "ContactPoint",
+      contactType: "sales",
+      email: siteConfig.email,
+      telephone: siteConfig.phone,
+      url: localUrl(locale, "/contact"),
+      availableLanguage: ["French", "Arabic", "English"],
+      areaServed: ["MA", "EU"],
+    }),
+    knowsAbout: [
+      "Website creation",
+      "Search engine optimization (SEO)",
+      "Generative engine optimization (GEO)",
+      "Google Business Profile and Google Maps optimization",
+      "Local SEO",
+      "Web development",
+      "Backend and API development",
+      "LLM integration",
+      "Workflow automation",
+    ],
     serviceType: [
+      "Website creation",
+      "SEO and GEO",
+      "Google Maps and local SEO",
       "Web development",
       "Backend and API development",
       "Technical consulting and product conception",
       "LLM integration and AI consulting",
       "Workflow automation",
     ],
+  });
+}
+
+const AREA_SERVED = [
+  { "@type": "Country", name: "Morocco", identifier: "MA" },
+  { "@type": "Place", name: "Europe" },
+];
+
+/** ProfessionalService entity for the Morocco page, listing the cities served. */
+export function moroccoServiceAreaJsonLd(locale: Locale, cities: readonly string[], description: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": localUrl(locale, "/morocco#service-area"),
+    name: `${siteConfig.name} Morocco`,
+    url: localUrl(locale, "/morocco"),
+    description,
+    email: siteConfig.email,
+    telephone: isSet(siteConfig.phone) ? siteConfig.phone : undefined,
+    address: postalAddressJsonLd(),
+    hasMap: isSet(siteConfig.social.googleBusinessProfile) ? siteConfig.social.googleBusinessProfile : undefined,
+    image: absoluteUrl(siteConfig.logo),
+    parentOrganization: { "@id": absoluteUrl("/#organization") },
+    inLanguage: locale,
+    knowsLanguage: ["fr", "ar", "en"],
+    areaServed: [
+      { "@type": "Country", name: "Morocco", identifier: "MA" },
+      ...cities.map((city) => ({ "@type": "City", name: city, containedInPlace: { "@type": "Country", name: "Morocco" } })),
+    ],
   };
 }
 
-export function websiteJsonLd() {
+export function websiteJsonLd(locale: Locale = defaultLocale) {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -44,7 +139,7 @@ export function websiteJsonLd() {
     name: siteConfig.name,
     url: siteConfig.url,
     publisher: { "@id": absoluteUrl("/#organization") },
-    inLanguage: "en",
+    inLanguage: locale,
   };
 }
 
@@ -61,16 +156,17 @@ export function breadcrumbJsonLd(items: Array<{ name: string; href: string }>) {
   };
 }
 
-export function serviceJsonLd(service: Service) {
+export function serviceJsonLd(service: Service, locale: Locale = defaultLocale) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": absoluteUrl(`/services/${service.slug}#service`),
+    "@id": localUrl(locale, `/services/${service.slug}#service`),
     name: service.title,
     serviceType: service.title,
-    url: absoluteUrl(`/services/${service.slug}`),
+    url: localUrl(locale, `/services/${service.slug}`),
+    inLanguage: locale,
     provider: { "@id": absoluteUrl("/#organization") },
-    areaServed: "Worldwide",
+    areaServed: AREA_SERVED,
     audience: {
       "@type": "Audience",
       audienceType: service.audience,
@@ -78,14 +174,14 @@ export function serviceJsonLd(service: Service) {
     description: service.definition,
     offers: {
       "@type": "Offer",
-      description: "Custom-scoped project pricing is provided after discovery.",
+      description: getDictionary(locale).serviceDetail.offerDescription,
       availability: "https://schema.org/InStock",
-      url: absoluteUrl(`/contact?project=${service.slug}`),
+      url: localUrl(locale, `/contact?project=${service.slug}`),
     },
   };
 }
 
-export function servicesItemListJsonLd(services: readonly Service[]) {
+export function servicesItemListJsonLd(services: readonly Service[], locale: Locale = defaultLocale) {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -95,10 +191,10 @@ export function servicesItemListJsonLd(services: readonly Service[]) {
       position: index + 1,
       item: {
         "@type": "Service",
-        "@id": absoluteUrl(`/services/${service.slug}#service`),
+        "@id": localUrl(locale, `/services/${service.slug}#service`),
         name: service.title,
         description: service.definition,
-        url: absoluteUrl(`/services/${service.slug}`),
+        url: localUrl(locale, `/services/${service.slug}`),
         provider: { "@id": absoluteUrl("/#organization") },
       },
     })),
@@ -120,8 +216,8 @@ export function faqJsonLd(faqs: Service["faqs"]) {
   };
 }
 
-export function guideDigitalDocumentJsonLd(guide: Guide, imageUrl: string) {
-  const pageUrl = absoluteUrl(`/blog/${guide.slug}`);
+export function guideDigitalDocumentJsonLd(guide: Guide, imageUrl: string, locale: Locale = defaultLocale) {
+  const pageUrl = localUrl(locale, `/blog/${guide.slug}`);
 
   return {
     "@context": "https://schema.org",
@@ -133,7 +229,7 @@ export function guideDigitalDocumentJsonLd(guide: Guide, imageUrl: string) {
     url: pageUrl,
     datePublished: guide.published_at ?? guide.created_at,
     dateModified: guide.updated_at,
-    author: {
+    author: founderJsonLd() ?? {
       "@type": "Organization",
       name: siteConfig.name,
       url: siteConfig.url,
@@ -146,8 +242,8 @@ export function guideDigitalDocumentJsonLd(guide: Guide, imageUrl: string) {
   };
 }
 
-export function articleBlogPostingJsonLd(guide: Guide, imageUrl: string) {
-  const pageUrl = absoluteUrl(`/blog/${guide.slug}`);
+export function articleBlogPostingJsonLd(guide: Guide, imageUrl: string, locale: Locale = defaultLocale) {
+  const pageUrl = localUrl(locale, `/blog/${guide.slug}`);
 
   return {
     "@context": "https://schema.org",
@@ -158,7 +254,7 @@ export function articleBlogPostingJsonLd(guide: Guide, imageUrl: string) {
     url: pageUrl,
     datePublished: guide.published_at ?? guide.created_at,
     dateModified: guide.updated_at,
-    author: {
+    author: founderJsonLd() ?? {
       "@type": "Organization",
       name: siteConfig.name,
       url: siteConfig.url,
